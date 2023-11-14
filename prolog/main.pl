@@ -11,13 +11,19 @@ clear_all.
 starting_conditions :-
     assert(current_pos(place)).
 
+
+h :- 
+    instructions,
+    nl.
+
 instructions :-
-    write('Instructions'),
-    write('go(Place)'),
-    write('look_around'),
-    write('take(Item)'),
-    write('drop(Item)'),
-    write('inventory'),
+    write('Instructions or h - will write this message'), nl,
+    write('go(Place) - will try to move you closer to something') ,nl,
+    write('look or look_around - will tell you what is around you'),nl,
+    write('investigate - you will try to find out about thing you are standing next to'), nl,
+    write('take(Item)'),nl,
+    write('drop(Item)'),nl,
+    write('inventory - will list ontents of your inventory'),nl,
     nl.
 
 start :- 

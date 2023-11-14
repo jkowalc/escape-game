@@ -12,6 +12,9 @@ go(_) :-
     write('You can\'t go there'),
     !, nl.
 
+look :-
+    look_around.
+
 look_around :- 
     current_pos(CurrentPlace),
     write('Possible destinations: '),
