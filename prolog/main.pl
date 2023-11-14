@@ -27,6 +27,7 @@ instructions :-
     nl.
 
 start :- 
+    tty_clear,
     clear_all,
     instructions,
     starting_conditions,
