@@ -19,7 +19,7 @@ h :-
 instructions :-
     write('Instructions or h - will write this message'), nl,
     write('go(Place) - will try to move you closer to something') ,nl,
-    write('look or look_around - will tell you what is around you'),nl,
+    write('look - will tell you what is around you'),nl,
     write('investigate - you will try to find out about thing you are standing next to'), nl,
     write('take(Item)'),nl,
     write('drop(Item)'),nl,
