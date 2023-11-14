@@ -17,6 +17,6 @@ look :-
 
 look_around :- 
     current_pos(CurrentPlace),
-    write('Possible destinations: '),
+    write('Possible destinations: '),nl,
     path(CurrentPlace, Place),
     write(Place), !, nl.

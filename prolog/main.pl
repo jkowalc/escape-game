@@ -9,7 +9,7 @@ clear_all :-
 clear_all.
 
 starting_conditions :-
-    assert(current_pos(place)).
+    assert(current_pos(main_room)).
 
 
 h :- 
