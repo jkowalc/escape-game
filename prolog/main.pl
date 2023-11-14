@@ -13,6 +13,11 @@ starting_conditions :-
 
 instructions :-
     write('Instructions'),
+    write('go(Place)'),
+    write('look_around'),
+    write('take(Item)'),
+    write('drop(Item)'),
+    write('inventory'),
     nl.
 
 start :- 

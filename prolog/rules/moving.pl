@@ -12,8 +12,7 @@ go(_) :-
     write('You can\'t go there'),
     !, nl.
 
-% For debugging mainly. Can also be left in game if needed.
-list_places :- 
+look_around :- 
     current_pos(CurrentPlace),
     write('Possible destinations: '),
     path(CurrentPlace, Place),
