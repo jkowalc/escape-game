@@ -3,7 +3,7 @@
 
 go(Place) :- 
     current_pos(CurrentPlace),
-    path(CurrentPlace, Place),
+    (path(CurrentPlace, Place) ; one_way_path(CurrentPlace, Place)),
     retract(current_pos(CurrentPlace)),
     assert(current_pos(Place)),
     look,
