@@ -6,6 +6,7 @@ go(Place) :-
     path(CurrentPlace, Place),
     retract(current_pos(CurrentPlace)),
     assert(current_pos(Place)),
+    look,
     !, nl.
 
 go(_) :-
@@ -13,9 +14,6 @@ go(_) :-
     !, nl.
 
 look :-
-    look_around.
-
-look_around :-
     current_pos(CurrentPlace),
     write('Possible destinations: '), nl,
     findall(Place, path(CurrentPlace, Place), Places),
@@ -31,3 +29,4 @@ print_places([]).
 print_places([Place | Rest]) :-
     write(Place), nl,
     print_places(Rest).
+ 
