@@ -4,7 +4,7 @@
 
 take(Item) :-
     holding(Item),
-    write('You''re already holding it!'),
+    write('You`re already holding it!'),
     !, nl.
 
 take(Item) :-
@@ -16,7 +16,7 @@ take(Item) :-
     !, nl.
 
 take(_) :-
-    write('I don''t see it here.'),
+    write('I don`t see it here.'),
     nl.
 
 
@@ -31,7 +31,7 @@ drop(Item) :-
     !, nl.
 
 drop(_) :-
-    write('You aren''t holding it!'),
+    write('You aren`t holding it!'),
     nl.
 
 inventory :- 
