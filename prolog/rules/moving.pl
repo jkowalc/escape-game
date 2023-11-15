@@ -3,7 +3,7 @@
 
 go(Place) :- 
     current_pos(CurrentPlace),
-    (path(CurrentPlace, Place) ; one_way_path(CurrentPlace, Place)),
+    (path(CurrentPlace, Place) ; one_way_path(CurrentPlace, Place); reverse_path(CurrentPlace,Place)),
     retract(current_pos(CurrentPlace)),
     assert(current_pos(Place)),
     look,
@@ -18,6 +18,8 @@ look :-
     write('Possible destinations: '), nl,
     findall(Place, path(CurrentPlace, Place), Places),
     print_places(Places),
+    findall(Place, reverse_path(CurrentPlace, Place), R_Places),
+    print_places(R_Places),
     (   findall(OneWayPlace, one_way_path(CurrentPlace, OneWayPlace), OneWayPlaces),
         OneWayPlaces \= []  % Check if OneWayPlaces is not an empty list
     ->  write('One-way destinations: '), nl,
