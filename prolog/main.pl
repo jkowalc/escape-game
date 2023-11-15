@@ -1,6 +1,7 @@
 :- ensure_loaded([
     rules/inventory,
-    rules/moving
+    rules/moving,
+    descriptions/descriptions
 ]).
 
 clear_all :-
@@ -21,6 +22,7 @@ instructions :-
     write('go(Place) - will try to move you closer to something') ,nl,
     write('look - will tell you what is around you'),nl,
     write('investigate - you will try to find out about thing you are standing next to'), nl,
+    write('describe - you will try decribe surroundings best you can'), nl,
     write('take(Item)'),nl,
     write('drop(Item)'),nl,
     write('inventory - will list ontents of your inventory'),nl,
