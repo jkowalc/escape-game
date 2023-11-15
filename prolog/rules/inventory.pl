@@ -4,7 +4,7 @@
 
 take(Item) :-
     holding(Item),
-    write('You`re already holding it!'),
+    write("You're already holding it!"),
     !, nl.
 
 take(Item) :-
@@ -12,11 +12,11 @@ take(Item) :-
     item_at(Item, Place),
     retract(item_at(Item, Place)),
     assert(holding(Item)),
-    write('OK.'),
+    write("OK."),
     !, nl.
 
 take(_) :-
-    write('I don`t see it here.'),
+    write("I don't see it here."),
     nl.
 
 
@@ -27,15 +27,15 @@ drop(Item) :-
     current_pos(Place),
     retract(holding(Item)),
     assert(item_at(Item, Place)),
-    write('OK.'),
+    write("OK."),
     !, nl.
 
 drop(_) :-
-    write('You aren`t holding it!'),
+    write("You aren't holding it!"),
     nl.
 
 inventory :- 
-    write('Your inventory: '),
+    write("Your inventory: "),
     holding(Item),
-    write(Item), write(' '),
+    write(Item), write(" "),
     !.
