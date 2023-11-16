@@ -27,6 +27,8 @@ description(chair) :-
     Looks comfy apart of clay mud wiped all over it..."),nl.
 description(vent_cover) :-
     write("    This vent cover looks big enouth for me to go inside..."),nl.
+description(vent) :-
+    write("    There is a mice in here!"),nl.
 description(heavy_door) :-
     write("    Big heavy door closed shut.
     Nail marks and scratches don't make me feel good about it..."),nl.
@@ -142,6 +144,8 @@ description(main_room_entrance) :-
 description(exit_door) :-
     write("    It's my way out. I just need a key to open it."),nl.
 
+description(_) :-
+    write("     I can't see anything!").
 
 describe :- 
     current_pos(CurrentPlace),
