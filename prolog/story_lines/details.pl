@@ -19,7 +19,8 @@ examine(desk) :-
 examine(fire_place) :-
     write("    Fire place wasnt used in a long time but thera are still some chared but sturdy pices of wood.
     LONG STICK always can come in handy.
-    ---ITEMS FOUND---").
+    ---ITEM FOUND---"), % TODO place item here
+    assert(item_at(long_stick, fire_place)). % TODO place cheese here
 examine(painting) :-
     write("    It's very dameged. Oh! The TORN CORNER of the painting is peeling back from the frame!
     ---NEW PATH UNLOCKED---"),
@@ -34,17 +35,16 @@ examine(chair) :-
     assert(path(chair, vent_cover)).
 examine(vent_cover) :-
     write("    It seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool...").
-examine(vent_cover) :-
-    write("    This vent cover looks big enouth for me to go inside...").
 examine(heavy_door) :-
-    write("    Big heavy door closed shut.
-    Nail marks and scratches don't make me feel good about it...").
-examine(bed) :-
-    write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
-    I guess I can take a sit for a while to think...").
-
-examine(_) :-
-    write("    Nothing to be seen here...").
+    write("    I can't open them! They must be locked from the outside...").
+examine(sit_on_bed) :-
+    write("    Hello little buddy. I've found a TEDDY BEAR hidden under the blanket
+    ---ITEM FOUND---"). % TODO place item here
+    assert(item_at(teddy_bear, sit_on_bed)). % TODO place cheese here
+examine(window) :-
+    write("    RAVEN is beeg and doesn't seem to be scared by me at all. /*He just vibin*/
+    Maybe if I had something to push him away I could acces his nest.
+    Thermometer shows that there is 40 degrees below 0, it must be broken. Right?").
 
 examine(_) :-
     write("    Nothing to be seen here...").

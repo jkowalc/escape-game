@@ -26,11 +26,6 @@ desctiption(torn_corner) :-
 desctiption(chair) :-
     write("    Old chair lined with red fabric. 
     Looks comfy apart of clay mud wiped all over it...").
-desctiption(window) :-
-    write("    Dirty window looking out over moody forest. 
-    Thermometer is hanging on the other side.
-    On a window still sits a RAVEN in his NEST.
-    I don't feel like opening a window with him (or her) on the other side.").
 desctiption(vent_cover) :-
     write("    This vent cover looks big enouth for me to go inside...").
 desctiption(heavy_door) :-
@@ -39,12 +34,17 @@ desctiption(heavy_door) :-
 desctiption(bed) :-
     write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
     I guess I can take a sit for a while to think...").
-
-desctiption(_) :-
-    write("    Nothing to be seen here...").
-
-desctiption(_) :-
-    write("    Nothing to be seen here...").
+desctiption(sit_on_bed) :-
+    write("    The bed is sqeeqing and the blanket is itchy. But it feels good to rest for a second.").
+desctiption(window) :-
+    write("    Dirty window looking out over moody forest. 
+    Thermometer is hanging on the other side.
+    On a window still sits a RAVEN in his NEST.
+    I don't feel like opening a window with him (or her) on the other side.").
+desctiption(bottom_drawer) :-
+    write("    There is a small bite of cheese. It won't fill my stomag but may come in handy later.
+    ---ITEM FOUND---"),
+    assert(item_at(cheese, bottom_drawer)). % TODO place cheese here
 
 desctiption(_) :-
     write("    Nothing to be seen here...").
