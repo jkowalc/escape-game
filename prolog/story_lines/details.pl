@@ -54,7 +54,7 @@ examine(office) :-
 examine(coffee_table) :-
     write("    I found a CORRIDOR KEY taped underneeth the table.
     ---ITEM FOUND---"),
-    asser(item_at(corridor_key, coffee_table)),nl.
+    assert(item_at(corridor_key, coffee_table)),nl.
 examine(computer) :-
     write("    It's turned off and will stay that way... I can see that few parts were ripped out of it's case. 
     I won't boot without a HARD DRIVE"),nl.
