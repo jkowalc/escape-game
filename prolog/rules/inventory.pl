@@ -1,6 +1,9 @@
 /* These rules describe how to pick up an object. */
-:- ensure_loaded(moving).
-:- dynamic item_at/2, holding/1.
+:- ensure_loaded([
+    'moving',
+    '../map/items'
+]).
+:- dynamic holding/1.
 
 take(Item) :-
     holding(Item),
@@ -9,8 +12,8 @@ take(Item) :-
 
 take(Item) :-
     current_pos(Place),
-    item_at(Item, Place),
-    retract(item_at(Item, Place)),
+    pickable_item_at(Item, Place),
+    retract(pickable_item_at(Item, Place)),
     assert(holding(Item)),
     write("OK."),
     !, nl.
@@ -26,7 +29,7 @@ drop(Item) :-
     holding(Item),
     current_pos(Place),
     retract(holding(Item)),
-    assert(item_at(Item, Place)),
+    assert(pickable_item_at(Item, Place)),
     write("OK."),
     !, nl.
 

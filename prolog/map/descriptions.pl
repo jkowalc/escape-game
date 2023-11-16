@@ -36,7 +36,7 @@ description(bed) :-
     write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
     I guess I can take a sit for a while to think...
     ---ITEM FOUND---"),
-    assert(item_at(pillow,bed)),nl.
+    assert(pickable_item_at(pillow,bed)),nl.
 description(sit_on_bed) :-
     write("    The bed is sqeeqing and the blanket is itchy.
     But it feels good to rest for a second."),nl.
@@ -48,11 +48,11 @@ description(window) :-
 description(bottom_drawer) :-
     write("    There is a small bite of cheese. It won't fill my stomach but may come in handy later.
     ---ITEM FOUND---"),
-    assert(item_at(cheese, bottom_drawer)),nl. % TODO place cheese here
+    assert(pickable_item_at(cheese, bottom_drawer)),nl. % TODO place cheese here
 description(nest) :-
     write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest.
     ---ITEM FOUND---"),
-    assert(item_at(screwdriver_bit, nest)),nl.
+    assert(pickable_item_at(screwdriver_bit, nest)),nl.
 
 %%%%%%%%%%%%%%%%%%%%%%%%office
 description(office) :-
@@ -73,7 +73,7 @@ description(cupboard) :-
     assert(path(cupboard, right_compartment)),nl.%has journal.
 description(left_compartment) :-
     write("    User manual about assembling PC's. May be usefull"),
-    assert(item_at(assembly_manual, left_compartment)),nl.
+    assert(pickable_item_at(assembly_manual, left_compartment)),nl.
 description(right_compartment) :-
     write("    Old journal covered with leather burried in useless junk at the botom of the compartment."),
     assert(path(right_compartment, journal)),nl.
@@ -125,7 +125,7 @@ description(corridor) :-
 description(display_case) :-
     write("    Glass display case, there is a UV flashlight inside
     ---ITEM UNLOCKED---"),
-    assert(item_at(uv_flashlight,display_case)),nl.
+    assert(pickable_item_at(uv_flashlight,display_case)),nl.
 description(key_case) :-
     write("    Locked key box. Big beautifull key is stored inside. 
     It has to be opened by inputing a code on a keypad"),nl.
@@ -151,4 +151,3 @@ describe :-
     current_pos(CurrentPlace),
     description(CurrentPlace),
     !, nl.
-
