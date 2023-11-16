@@ -1,4 +1,4 @@
-:- ensure_loaded('../map/paths'),nl.
+:- ensure_loaded('../map/paths').
 %%%%Rooms
 examine(main_room) :-
     write("    Hmmmm... Whoever lived here must have left long ago... 
@@ -72,10 +72,3 @@ examine(_) :-
 
 examine(_) :-
     write("    There is nothing usefull to be found..."),nl.
-
-
-inspect :- 
-    current_pos(CurrentPlace),
-    examine(CurrentPlace),
-    !, nl.
-

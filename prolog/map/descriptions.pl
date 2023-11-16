@@ -2,7 +2,7 @@
     '../map/paths',
     '../rules/moving',
     '../rules/inventory'
-]),nl.
+]).
 % :- discontiguous path/2.
 
 %%%main_room

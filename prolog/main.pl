@@ -2,8 +2,7 @@
     rules/inventory,
     rules/moving,
     rules/secret_code,
-    story_lines/descriptions,
-    story_lines/details
+    rules/interaction
 ]).
 
 clear_all :-
@@ -15,7 +14,6 @@ clear_all.
 
 starting_conditions :-
     assert(current_pos(main_room)).
-
 
 h :- 
     instructions,
@@ -39,4 +37,4 @@ start :-
     clear_all,
     instructions,
     starting_conditions,
-    !, nl.
+    !.
