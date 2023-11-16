@@ -42,7 +42,7 @@ desctiption(window) :-
     On a window still sits a RAVEN in his NEST.
     I don't feel like opening a window with him (or her) on the other side.").
 desctiption(bottom_drawer) :-
-    write("    There is a small bite of cheese. It won't fill my stomag but may come in handy later.
+    write("    There is a small bite of cheese. It won't fill my stomach but may come in handy later.
     ---ITEM FOUND---"),
     assert(item_at(cheese, bottom_drawer)). % TODO place cheese here
 
