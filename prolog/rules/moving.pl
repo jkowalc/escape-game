@@ -1,5 +1,8 @@
 :- dynamic current_pos/1.
-:- ensure_loaded('../map/paths').
+:- ensure_loaded([
+    '../map/paths',
+    '../map/on_arrival'
+]).
 
 move(Place) :- %used for forced movemnet of player.
     current_pos(CurrentPlace),
@@ -9,10 +12,10 @@ move(Place) :- %used for forced movemnet of player.
 
 go(Place) :- 
     current_pos(CurrentPlace),
-    (path(CurrentPlace, Place) ; reverse_path(CurrentPlace,Place)),
+    (path(CurrentPlace, Place); path(Place, CurrentPlace)),
     retract(current_pos(CurrentPlace)),
     assert(current_pos(Place)),
-    move(Place),
+    on_arrival(Place),
     look,
     !, nl.
 
@@ -20,16 +23,12 @@ go(_) :-
     write('You can\'t go there'),
     !, nl.
 
-look :-
+look :- 
     current_pos(CurrentPlace),
-    write('Possible destinations: '), nl,
-    findall(Place, path(CurrentPlace, Place), Places),
-    print_places(Places),
-    findall(Place, reverse_path(CurrentPlace, Place), R_Places),
-    print_places(R_Places).
+    write('Possible destinations: '),
+    (path(CurrentPlace, Place); path(Place, CurrentPlace)),
+    write(Place), write(" "), 
+    fail.
 
-print_places([]).
-print_places([Place | Rest]) :-
-    write(Place), nl,
-    print_places(Rest).
- 
+look :-
+    !.

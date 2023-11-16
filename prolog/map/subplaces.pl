@@ -1,0 +1,1 @@
+:- dynamic subplace/2.

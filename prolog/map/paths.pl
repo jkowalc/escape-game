@@ -47,11 +47,5 @@ path(main_room, heavy_door).
 path(office, corridor_door).
 path(corridor_door, corridor).
 
-
-
-% Bidirectional paths
-reverse_path(Place, OtherPlace) :-
-    path(OtherPlace, Place).
-
 % path(place, otherplace).
 % path()
