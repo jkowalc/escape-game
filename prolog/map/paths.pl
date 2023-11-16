@@ -2,13 +2,13 @@
 
 %%%%% MAIN ROOM
 path(main_room, desk).
-path(desk, top_drawer).
-path(desk, mid_drawer).
-path(desk, bottom_drawer).
+% path(desk, top_drawer).
+% path(desk, mid_drawer).
+% path(desk, bottom_drawer).
 path(main_room, bed).
 path(bed, sit_on_bed).
 path(main_room, painting).
-path(painting, corner).
+% path(painting, torn_corner).
 path(main_room, window).
 path(window, nest).
 path(window, outside).
