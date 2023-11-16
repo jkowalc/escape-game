@@ -1,7 +1,8 @@
 :- ensure_loaded('../map/paths').
 %%%%Rooms
 desctiption(main_room) :-
-    write("    I'm in a small dark room. It' full of creepy energy all around...").
+    write("    I'm in a small dark room. It' full of creepy energy all around...
+    Surroundig is dirty and the room is very cold...").
 desctiption(office) :-
     write("    I'm standing in a middle of poorly lit, destroyed office room.
     Not many things are where they supposed to be. I feel like somebody must have pluderd it long time ago...").
@@ -19,6 +20,9 @@ desctiption(fire_place) :-
 desctiption(painting) :-
     write("    It's a mastepice I've seen in history books.
     It is beatifull, at least it was... before someone dameged it").
+desctiption(torn_corner) :-
+    write("    It's a torn corner of a painting. 
+    Fabric is deattached from glded wooden frame.")
 desctiption(chair) :-
     write("    Old chair lined with red fabric. 
     Looks comfy apart of clay mud wiped all over it...").
@@ -32,9 +36,9 @@ desctiption(vent_cover) :-
 desctiption(heavy_door) :-
     write("    Big heavy door closed shut.
     Nail marks and scratches don't make me feel good about it...").
-
-desctiption(_) :-
-    write("    Nothing to be seen here...").
+desctiption(bed) :-
+    write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
+    I guess I can take a sit for a while to think...").
 
 desctiption(_) :-
     write("    Nothing to be seen here...").
