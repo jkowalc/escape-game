@@ -1,12 +1,15 @@
 :- ensure_loaded([
     rules/inventory,
     rules/moving,
+    rules/secret_code,
     story_lines/descriptions,
     story_lines/details
 ]).
 
 clear_all :-
-    retractall(current_pos(_)), retractall(item_at(_, _)), retractall(holding(_)).
+    retractall(current_pos(_)), 
+    % retractall(item_at(_, _)),
+    retractall(holding(_)).
 
 clear_all.
 
@@ -28,6 +31,7 @@ instructions :-
     write("take(Item)"),nl,
     write("drop(Item)"),nl,
     write("inventory - will list ontents of your inventory"),nl,
+    write("enter_code(lock, code) - enters a code to a lock"),nl,
     nl.
 
 start :- 
