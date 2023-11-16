@@ -38,12 +38,24 @@ examination(chair) :-
     assert(path(chair, vent_cover)),nl.
 examination(vent_cover) :-
     write("    It seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool..."),nl.
+examination(wooden_box) :-
+    write("     This wooden box looks pretty rough, although it might be impossible to open it by force. But there is some kind of mechanism"),nl.
+    assert(item_at(color_code, wooden_box)).
+examination(color_code) :-
+    write("     Quite bizzare contraption. There are 4 button which all are different color - red, green, blue and yellow.
+    Maybe I have to press them in some order?"),nl.
+    write("     To enter code use do like so - enter_code(blueYellowGreenRed)").
 examination(heavy_door) :-
     write("    I can't open them! They must be locked from the outside..."),nl.
 examination(sit_on_bed) :-
-    write("    Hello little buddy. I've found a TEDDY BEAR hidden under the blanket
+    write("    Hello little buddy. I've found a TEDDY BEAR hidden under the GREEN duvet
     ---ITEM FOUND---"), % TODO place item here
     assert(pickable_item_at(teddy_bear, sit_on_bed)),nl. % TODO place cheese here
+examination(bed) :-
+    write("    There's a bed with disgustingly YELLOW legs. Your eyes are pulled to two CRIMSON blood-like pillows.
+    However quilt seems to be quite different, it calmes you down adn reminds of life outside.")
+examination(teddy_bear) :-
+    wirte("    It's lifeless button eyes in pair with his dyed-out BLUE body create dull entirety, which dampens you down")
 examination(window) :-
     write("    RAVEN is beeg and doesn't seem to be scared by me at all. /*He just vibin*/
     Maybe if I had something to push him away I could acces his nest.

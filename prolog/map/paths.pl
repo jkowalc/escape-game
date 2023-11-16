@@ -18,6 +18,7 @@ path(main_room, chair).
 % path(chair, vent_cover).
 path(vent_cover, vent).
 path(chair, vent).
+path(main_room, wooden_box).
 
 
 %%%%% OFFICE
