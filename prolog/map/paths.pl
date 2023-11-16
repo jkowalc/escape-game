@@ -1,8 +1,5 @@
 :- dynamic path/2.
 
-
-path(main_room, display_case).
-
 %%%%% MAIN ROOM
 path(main_room, desk).
 % path(desk, top_drawer).
@@ -35,7 +32,7 @@ path(office, cupboard).
 % path(journal, page_1).
 % path(journal, page_2).
 % path(journal, page_3).
-path(page_3, half_torn_page_4). %open after examining page_3
+% path(page_3, half_torn_page_4). %open after examining page_3
 
 %%%%%corridor
 path(corridor, key_case). %has exit key
