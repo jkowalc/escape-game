@@ -45,10 +45,6 @@ on_arrival(window) :-
     Thermometer is hanging on the other side.
     On a window still sits a RAVEN in his NEST.
     I don't feel like opening a window with him (or her) on the other side."),nl.
-on_arrival(bottom_drawer) :-
-    write("    There is a small bite of cheese. It won't fill my stomach but may come in handy later.
-    ---ITEM FOUND---"),
-    assert(pickable_item_at(cheese, bottom_drawer)),nl. % TODO place cheese here
 on_arrival(nest) :-
     write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest.
     ---ITEM FOUND---"),
@@ -68,51 +64,9 @@ on_arrival(cupboard) :-
     write("    Wide cupboard. It's rotting away abaut to fall appart.
     It has 3 compartments. I'should check if there is something usefull in there.
     ---PATH UNLOCKED---"),
-    assert(path(cupboard, left_compartment)),
-    assert(path(cupboard, midle_compartment)),
-    assert(path(cupboard, right_compartment)),nl.%has journal.
-on_arrival(left_compartment) :-
-    write("    User manual about assembling PC's. May be usefull"),
-    assert(pickable_item_at(assembly_manual, left_compartment)),nl.
-on_arrival(right_compartment) :-
-    write("    Old journal covered with leather burried in useless junk at the botom of the compartment."),
-    assert(path(right_compartment, journal)),nl.
-on_arrival(journal) :-
-    write("    Leather is worn and pages turned yellow over time.
-    You can see that only first three pages are filled."),
-    assert(path(journal, page_1)),
-    assert(path(journal, page_2)),
-    assert(path(journal, page_3)),nl.
-    
-on_arrival(page_1) :-
-    write("         Date: October 13, 2006
-    Darkness crawls through the corridors of my mind like a swarm of malevolent insects. 
-    The whispers persist, ceaseless and haunting, echoing in the hollow chambers of my fractured sanity.
-    Shadows dance with perverse delight, casting grotesque silhouettes upon the walls of my soul.
-    I am tethered to the precipice of madness,
-    teetering on the edge of a yawning abyss that beckons me into the depths of my own depravity."),nl.
-on_arrival(page_2) :-
-    write("         Date: October 14, 2006
-    The walls, they watch me with eyes unseen, judging my every thought and action.
-    The air is thick with the stench of decay, as if the very fabric of reality is unraveling.
-    I hear the scratching, the scraping, the insidious skittering of unseen vermin that gnaw at the edges of my consciousness.
-    Whispers become screams, and the laughter, oh, the laughter that echoes through the desolate corridors of my tortured mind."),nl.
-on_arrival(page_3) :-
-    write("         dAT: oCToB 8 000
-    In the mirror, I see a visage contorted by the twisted hands of my own derangement.
-    Hollow eyes reflect the void within, a void that hungers for the forbidden knowledge that courses through the veins of the universe.
-    The boundaries between dream and waking nightmare blur into a grotesque tapestry of torment.
-    I have become a vessel for the eldritch forces that seep through the fissures of reality,
-    a conduit for the unspeakable horrors that claw at the fragile membrane of sanity.
-
-    I am lost in the labyrinth of my own delusions,
-    a madman condemned to dance upon the razor's edge between the realms of the living and the damned.
-    This journal, my only confidante in `this descent into madness,
-    bears witness to the unraveling of a mind consumed by the"),nl.
-on_arrival(page_4) :-
-    write("     darkness that lurks in the hidden recesses of the soul.
-    Within the desolate corridors of my tortured mind, a cryptic mantra emerges: 'WhispersOfTheAbyss'.
-    It guards the forbidden knowledge, a digital key to the eldritch realms that pulse beneath the surface of our reality"),nl.
+    assert(subplace(cupboard, left_compartment)),
+    assert(subplace(cupboard, middle_compartment)),
+    assert(subplace(cupboard, right_compartment)),nl.%has journal.
 
 on_arrival(office_safe) :-
     write("    Small but sturdy. Too havy to lift. 
