@@ -12,7 +12,7 @@ move(Place) :- %used for forced movemnet of player.
 
 go(Place) :- 
     current_pos(CurrentPlace),
-    path(CurrentPlace, Place),
+    (path(CurrentPlace, Place); path(Place, CurrentPlace)),
     retract(current_pos(CurrentPlace)),
     assert(current_pos(Place)),
     description(Place),
@@ -26,7 +26,7 @@ go(_) :-
 look :- 
     current_pos(CurrentPlace),
     write('Possible destinations: '),
-    path(CurrentPlace, Place),
+    (path(CurrentPlace, Place); path(Place, CurrentPlace)),
     write(Place), write(" "), 
     fail.
 
