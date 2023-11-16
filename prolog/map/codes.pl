@@ -1,0 +1,1 @@
+trueCode(Place, 1).
