@@ -78,8 +78,8 @@ desctiption(right_compartment) :-
 desctiption(journal) :-
     write("    Leather is worn and pages turned yellow over time.
     You can see that only first three pages are filled."),
-    assert(path(journal, page_1)).
-    assert(path(journal, page_2)).
+    assert(path(journal, page_1)),
+    assert(path(journal, page_2)),
     assert(path(journal, page_3)).
     
 desctiption(page_1) :-
@@ -120,10 +120,10 @@ desctiption(office_safe) :-
 desctiption(corridor) :-
     write("    Long corrior with paint flaking off the walls due to dense and hiumid air around.
     It`s connecting the office with the main room where I was trapped before... ").
-desctiption(dispaly_case) :-
+desctiption(display_case) :-
     write("    Glass display case, there is a UV flashlight inside
     ---ITEM UNLOCKED---"),
-    assert(item_at(uv_flashlight,dispaly_case)).
+    assert(item_at(uv_flashlight,display_case)).
 desctiption(key_case) :-
     write("    Locked key box. Big beautifull key is stored inside. 
     It has to be opened by inputing a code on a keypad").

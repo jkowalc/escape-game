@@ -38,7 +38,7 @@ examine(heavy_door) :-
     write("    I can't open them! They must be locked from the outside...").
 examine(sit_on_bed) :-
     write("    Hello little buddy. I've found a TEDDY BEAR hidden under the blanket
-    ---ITEM FOUND---"). % TODO place item here
+    ---ITEM FOUND---"), % TODO place item here
     assert(item_at(teddy_bear, sit_on_bed)). % TODO place cheese here
 examine(window) :-
     write("    RAVEN is beeg and doesn't seem to be scared by me at all. /*He just vibin*/
