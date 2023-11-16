@@ -30,7 +30,7 @@ examination(painting) :-
     assert(path(painting, torn_corner)),nl.
 examination(torn_corner) :-
     write("    After pulling the canvas back I realised that there is a message scratched into painting backing.
-    It says:-------------CLUE CLUE CLUE CLUE CLUE CLUE CLUE-------------"),nl. % TODO clue behind painting
+    It says:\"I have 4 legs, two heads, huge slender body and little friend.\""),nl. % TODO clue behind painting
 examination(chair) :-
     write("    Mud smeared on top looks like a foot print... Why someone was standing on top of it?
     Oh! I can move it underneeth the vent I've seen before
