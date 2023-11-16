@@ -21,16 +21,16 @@ path(chair, vent).
 
 %%%%% OFFICE
 path(office, coffee_table).
-path(office, attic_entrance).
+% path(office, attic_entrance).
 path(office, cupboard).
-path(cupboard, left_compartment).
-path(cupboard, midle_compartment).
-path(cupboard, right_compartment).%has journal
+% path(cupboard, left_compartment).
+% path(cupboard, midle_compartment).
+% path(cupboard, right_compartment).%has journal
 %%%journal
-path(right_compartment, journal).
-path(journal, page_1).
-path(journal, page_2).
-path(journal, page_3).
+% path(right_compartment, journal).
+% path(journal, page_1).
+% path(journal, page_2).
+% path(journal, page_3).
 path(page_3, half_torn_page_4). %open after examining page_3
 
 %%%%%corridor

@@ -3,12 +3,11 @@
 examine(main_room) :-
     write("    Hmmmm... Whoever lived here must have left long ago... 
     I feel a cool breeze coming from a vent located under the celing.").
-% examine(office) :-
-%     write("    I'm standing in a middle of poorly lit, destroyed office room.
-%     Not many things are where they supposed to be. I feel like somebody must have pluderd it long time ago...").
+
 % examine(corridor) :-
 %     write("    Long corrior with paint flaking off the walls due to dense and hiumid air around.
 %     It`s connecting the office with the main room where I was trapped before... ").
+
 %%%main_room
 examine(desk) :-
     write("    There are few drawers under the desk. I can try to open them.
@@ -46,17 +45,26 @@ examine(window) :-
     Maybe if I had something to push him away I could acces his nest.
     Thermometer shows that there is 40 degrees below 0, it must be broken. Right?").
 
-examine(_) :-
-    write("    Nothing to be seen here...").
-
-examine(_) :-
-    write("    Nothing to be seen here...").
-
-examine(_) :-
-    write("    Nothing to be seen here...").
-
-examine(_) :-
-    write("    Nothing to be seen here...").
+%%%%%%%%%%%%%%office
+examine(office) :-
+    write("    Man this place is devastated. Walls with holes punched into them, blinds ripped off the window.
+    I can see an trapdoor under the ceeling. I can't reach it...
+    ---PATH UNLOCKED---"),
+    assert(path(office, attic_entrance)).
+examine(coffee_table) :-
+    write("    I found a CORRIDOR KEY taped underneeth the table.
+    ---ITEM FOUND---"),
+    asser(item_at(corridor_key, coffee_table)).
+examine(computer) :-
+    write("    It's turned off and will stay that way... I can see that few parts were ripped out of it's case. 
+    I won't boot without a HARD DRIVE").
+examine(attic_entrance) :-
+    write("    Trapdoor has a T shaped handle. I may be able to hook something on it to pull it open").
+examine(page_3) :-
+    write("    It's not finished, 
+    /upon futher inspection you found a torn out page placed back at the end of a journal/
+    ---PATH UNLOCKED---"),
+    assert(path(page_3, page_4)).
 
 examine(_) :-
     write("    Nothing to be seen here...").
