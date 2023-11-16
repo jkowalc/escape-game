@@ -6,98 +6,98 @@
 % :- discontiguous path/2.
 
 %%%main_room
-description(main_room) :-
+on_arrival(main_room) :-
     write("    I'm in a small dark room. It' full of creepy energy all around...
     Surroundig is dirty and the room is very cold..."),nl.
-description(desk) :-
+on_arrival(desk) :-
     write("    An old desk covered with dust. 
     The chair was mooved to the other end of a room, so I can't sit here..."),nl.
-description(fire_place) :-
+on_arrival(fire_place) :-
     write("    It's and big antique fireplace.
     I wish it was lit so I could warm myself up. 
     Unfortunetly without matches even the half bured CANDLE sitting on top will be no use for me..."),nl.
-description(painting) :-
+on_arrival(painting) :-
     write("    It's a mastepice I've seen in history books.
     It is beatifull, at least it was... before someone dameged it"),nl.
-description(torn_corner) :-
+on_arrival(torn_corner) :-
     write("    It's a torn corner of a painting. 
     Fabric is deattached from glded wooden frame."),nl.
-description(chair) :-
+on_arrival(chair) :-
     write("    Old chair lined with red fabric. 
     Looks comfy apart of clay mud wiped all over it..."),nl.
-description(vent_cover) :-
+on_arrival(vent_cover) :-
     write("    This vent cover looks big enouth for me to go inside..."),nl.
-description(vent) :-
+on_arrival(vent) :-
     write("    There is a mice in here!"),nl.
-description(heavy_door) :-
+on_arrival(heavy_door) :-
     write("    Big heavy door closed shut.
     Nail marks and scratches don't make me feel good about it..."),nl.
-description(bed) :-
+on_arrival(bed) :-
     write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
     I guess I can take a sit for a while to think...
     ---ITEM FOUND---"),
     assert(pickable_item_at(pillow,bed)),nl.
-description(sit_on_bed) :-
+on_arrival(sit_on_bed) :-
     write("    The bed is sqeeqing and the blanket is itchy.
     But it feels good to rest for a second."),nl.
-description(window) :-
+on_arrival(window) :-
     write("    Dirty window looking out over moody forest. 
     Thermometer is hanging on the other side.
     On a window still sits a RAVEN in his NEST.
     I don't feel like opening a window with him (or her) on the other side."),nl.
-description(bottom_drawer) :-
+on_arrival(bottom_drawer) :-
     write("    There is a small bite of cheese. It won't fill my stomach but may come in handy later.
     ---ITEM FOUND---"),
     assert(pickable_item_at(cheese, bottom_drawer)),nl. % TODO place cheese here
-description(nest) :-
+on_arrival(nest) :-
     write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest.
     ---ITEM FOUND---"),
     assert(pickable_item_at(screwdriver_bit, nest)),nl.
 
 %%%%%%%%%%%%%%%%%%%%%%%%office
-description(office) :-
+on_arrival(office) :-
     write("    I'm standing in a middle of poorly lit, destroyed office room.
     Not many things are where they supposed to be. I feel like somebody must have pluderd it long time ago..."),nl.
-description(coffee_table) :-
+on_arrival(coffee_table) :-
     write("    I don't feel right about that coffee table. It's wiped clean of dust comared to the rest of the room."),nl.
-description(computer) :-
+on_arrival(computer) :-
     write("    Old PC. It's turned off. I hope it's OS was made in this centry..."),nl.
-description(attic_entrance) :-
+on_arrival(attic_entrance) :-
     write("    Old trapdoor. I can't reach it in any way possible..."),nl.
-description(cupboard) :-
+on_arrival(cupboard) :-
     write("    Wide cupboard. It's rotting away abaut to fall appart.
     It has 3 compartments. I'should check if there is something usefull in there.
     ---PATH UNLOCKED---"),
     assert(path(cupboard, left_compartment)),
     assert(path(cupboard, midle_compartment)),
     assert(path(cupboard, right_compartment)),nl.%has journal.
-description(left_compartment) :-
+on_arrival(left_compartment) :-
     write("    User manual about assembling PC's. May be usefull"),
     assert(pickable_item_at(assembly_manual, left_compartment)),nl.
-description(right_compartment) :-
+on_arrival(right_compartment) :-
     write("    Old journal covered with leather burried in useless junk at the botom of the compartment."),
     assert(path(right_compartment, journal)),nl.
-description(journal) :-
+on_arrival(journal) :-
     write("    Leather is worn and pages turned yellow over time.
     You can see that only first three pages are filled."),
     assert(path(journal, page_1)),
     assert(path(journal, page_2)),
     assert(path(journal, page_3)),nl.
     
-description(page_1) :-
+on_arrival(page_1) :-
     write("         Date: October 13, 2006
     Darkness crawls through the corridors of my mind like a swarm of malevolent insects. 
     The whispers persist, ceaseless and haunting, echoing in the hollow chambers of my fractured sanity.
     Shadows dance with perverse delight, casting grotesque silhouettes upon the walls of my soul.
     I am tethered to the precipice of madness,
     teetering on the edge of a yawning abyss that beckons me into the depths of my own depravity."),nl.
-description(page_2) :-
+on_arrival(page_2) :-
     write("         Date: October 14, 2006
     The walls, they watch me with eyes unseen, judging my every thought and action.
     The air is thick with the stench of decay, as if the very fabric of reality is unraveling.
     I hear the scratching, the scraping, the insidious skittering of unseen vermin that gnaw at the edges of my consciousness.
     Whispers become screams, and the laughter, oh, the laughter that echoes through the desolate corridors of my tortured mind."),nl.
-description(page_3) :-
+on_arrival(page_3) :-
     write("         dAT: oCToB 8 000
     In the mirror, I see a visage contorted by the twisted hands of my own derangement.
     Hollow eyes reflect the void within, a void that hungers for the forbidden knowledge that courses through the veins of the universe.
@@ -109,30 +109,30 @@ description(page_3) :-
     a madman condemned to dance upon the razor's edge between the realms of the living and the damned.
     This journal, my only confidante in `this descent into madness,
     bears witness to the unraveling of a mind consumed by the"),nl.
-description(page_4) :-
+on_arrival(page_4) :-
     write("     darkness that lurks in the hidden recesses of the soul.
     Within the desolate corridors of my tortured mind, a cryptic mantra emerges: 'WhispersOfTheAbyss'.
     It guards the forbidden knowledge, a digital key to the eldritch realms that pulse beneath the surface of our reality"),nl.
 
-description(office_safe) :-
+on_arrival(office_safe) :-
     write("    Small but sturdy. Too havy to lift. 
     It opens by unlocking a turning code mechanism"),nl.
 
 %%%%%%%%%%%corridor
-description(corridor) :-
+on_arrival(corridor) :-
     write("    Long corrior with paint flaking off the walls due to dense and hiumid air around.
     It`s connecting the office with the main room where I was trapped before... "),nl.
-description(display_case) :-
+on_arrival(display_case) :-
     write("    Glass display case, there is a UV flashlight inside
     ---ITEM UNLOCKED---"),
     assert(pickable_item_at(uv_flashlight,display_case)),nl.
-description(key_case) :-
+on_arrival(key_case) :-
     write("    Locked key box. Big beautifull key is stored inside. 
     It has to be opened by inputing a code on a keypad"),nl.
-description(pad_10_digit) :-
+on_arrival(pad_10_digit) :-
     write("    10 digit keypad that will open key case when the code is right. There are 5 empty spots where code will apperar.
         [_ _ _ _ _]"),nl.
-description(main_room_entrance) :-
+on_arrival(main_room_entrance) :-
     write("     I'm on the other side of that heavy door. I can unlock it now and go back to main room
     ---PATH UNLOCKED---"),
     assert(path(corridor, main_room)),
@@ -141,13 +141,13 @@ description(main_room_entrance) :-
     retract(path(corridor,main_room_entrance)),
     look.
 
-description(exit_door) :-
+on_arrival(exit_door) :-
     write("    It's my way out. I just need a key to open it."),nl.
 
-description(_) :-
+on_arrival(_) :-
     write("     I can't see anything!").
 
 describe :- 
     current_pos(CurrentPlace),
-    description(CurrentPlace),
+    on_arrival(CurrentPlace),
     !, nl.

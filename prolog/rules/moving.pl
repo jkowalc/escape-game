@@ -1,7 +1,7 @@
 :- dynamic current_pos/1.
 :- ensure_loaded([
     '../map/paths',
-    '../map/descriptions'
+    '../map/on_arrival'
 ]).
 
 move(Place) :- %used for forced movemnet of player.
@@ -15,7 +15,7 @@ go(Place) :-
     (path(CurrentPlace, Place); path(Place, CurrentPlace)),
     retract(current_pos(CurrentPlace)),
     assert(current_pos(Place)),
-    description(Place),
+    on_arrival(Place),
     look,
     !, nl.
 

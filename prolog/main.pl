@@ -20,16 +20,16 @@ h :-
     nl.
 
 instructions :-
-    write("Instructions or h - will write this message"), nl,
-    write("go(Place) - will try to move you closer to something") ,nl,
-    write("look - will tell you what is around you"),nl,
-    write("investigate - you will try to find out about thing you are standing next to"), nl,
-    write("describe - you will try decribe surroundings best you can"), nl,
-    write("inspect - you will try find more details about the place you are in"), nl,
-    write("take(Item)"),nl,
-    write("drop(Item)"),nl,
-    write("inventory - will list ontents of your inventory"),nl,
-    write("enter_code(lock, code) - enters a code to a lock"),nl,
+    write("Instructions"), nl,
+    write("-------------------------------------------------------------"), nl,
+    write("look.\t\tfind out what is around you"),nl,
+    write("go(Place).\tgo to a place") ,nl,
+    write("examine(Thing).\tfind more details about the specified thing or place"), nl,
+    write("examine.\tfind out more about the current place"), nl,
+    write("take(Item).\ttake specified item"),nl,
+    write("drop(Item).\tdrop specified item on the ground"),nl,
+    write("inventory.\tlist contents of your inventory"),nl,
+    write("h.\t\tlist these instructions again"),nl,
     nl.
 
 start :- 
