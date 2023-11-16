@@ -1,5 +1,8 @@
 :- dynamic path/2.
 
+
+path(main_room, dispaly_case).
+
 %%%%% MAIN ROOM
 path(main_room, desk).
 % path(desk, top_drawer).
@@ -12,12 +15,13 @@ path(main_room, painting).
 path(main_room, window).
 path(window, nest).
 path(window, outside).
-path(window, thermometer).
+% path(window, thermometer).
 path(main_room, fire_place).
 path(main_room, chair).
-path(chair, vent_cover).
+% path(chair, vent_cover).
 path(vent_cover, vent).
 path(chair, vent).
+
 
 %%%%% OFFICE
 path(office, coffee_table).
@@ -37,6 +41,7 @@ path(page_3, half_torn_page_4). %open after examining page_3
 path(corridor, key_case). %has exit key
 path(key_case, pad_10_digit).
 path(corridor, dispaly_case). %has UV lamp
+path(corridor, main_room_entrance).
 
 %%%%%zone changes
 path(vent, office). %go to office

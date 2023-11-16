@@ -1,4 +1,9 @@
-:- ensure_loaded('../map/paths').
+:- ensure_loaded([
+    '../map/paths',
+    '../rules/moving',
+    '../rules/inventory'
+]).
+% :- discontiguous path/2.
 
 %%%main_room
 desctiption(main_room) :-
@@ -16,7 +21,7 @@ desctiption(painting) :-
     It is beatifull, at least it was... before someone dameged it").
 desctiption(torn_corner) :-
     write("    It's a torn corner of a painting. 
-    Fabric is deattached from glded wooden frame.")
+    Fabric is deattached from glded wooden frame.").
 desctiption(chair) :-
     write("    Old chair lined with red fabric. 
     Looks comfy apart of clay mud wiped all over it...").
@@ -32,7 +37,7 @@ desctiption(bed) :-
     assert(item_at(pillow,bed)).
 desctiption(sit_on_bed) :-
     write("    The bed is sqeeqing and the blanket is itchy.
-    But it feels good to rest for a second. ".)
+    But it feels good to rest for a second.").
 desctiption(window) :-
     write("    Dirty window looking out over moody forest. 
     Thermometer is hanging on the other side.
@@ -129,7 +134,9 @@ desctiption(main_room_entrance) :-
     write("     I'm on the other side of that heavy door. I can unlock it now and go back to main room
     ---PATH UNLOCKED---"),
     assert(path(corridor, main_room)),
-    retract(path(main_room, heavy_door)).
+    retract(path(main_room, heavy_door)),
+    go(corridor),
+    retract(path(corridor,main_room_entrance)).
 
 desctiption(exit_door) :-
     write("    It's my way out. I just need a key to open it.").
