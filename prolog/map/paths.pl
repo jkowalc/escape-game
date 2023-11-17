@@ -25,6 +25,7 @@ path(main_room, wooden_box).
 path(office, coffee_table).
 % path(office, attic_entrance).
 path(office, cupboard).
+path(office, computer).
 % path(cupboard, left_compartment).
 % path(cupboard, midle_compartment).
 % path(cupboard, right_compartment).%has journal

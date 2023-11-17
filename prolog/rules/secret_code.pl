@@ -11,17 +11,17 @@ enter_code(Lock, _) :-
 
 enter_code(Lock, Code) :-
     current_pos(CurrentPlace),
-    item_at(Lock, CurrentPlace),
+    (item_at(Lock, CurrentPlace); pickable_item_at(Lock, CurrentPlace); current_pos(CurrentPlace)),
     check_code(Lock, Code),!, nl.
 
 enter_code(Lock, _) :-
     current_pos(CurrentPlace),
-    item_at(Lock, CurrentPlace),
+    (item_at(Lock, CurrentPlace); pickable_item_at(Lock, CurrentPlace); current_pos(CurrentPlace)),
     write("Wrong code!"),
     !, nl.
 
 enter_code(Lock, _) :-
-    item_at(Lock, _),
+    (item_at(Lock, _); pickable_item_at(Lock, _); current_pos(_)),
     write("You are not nearby the lock!"),
     !, nl.
 

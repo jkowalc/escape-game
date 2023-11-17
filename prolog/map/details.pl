@@ -73,22 +73,22 @@ examination(coffee_table) :-
     assert(pickable_item_at(corridor_key, coffee_table)),nl.
 
 examination(computer) :-
-    withoutHardDrive(computer),
+    %withoutHardDrive(computer),
     write("    It's turned off and will stay that way... I can see that few parts were ripped out of it's case. 
     I won't boot without a HARD DRIVE"),!,nl.
 
 examination(computer) :-
-    turnedOff(computer),
+    %turnedOff(computer),
     write("    It's turned off but you are hopeful it'll turn on now, but the on button is too small for my fingers.
     You need to use something to press it.
     ---NEW PATH---"),!,nl.
 
 examination(computer) :-
-    blockedWithPassword(computer),
+    %blockedWithPassword(computer),
     write("    The computer is on, but there's a code promt, what's the code?"),nl.
 
 examination(computer) :-
-    lock_opened(computer),
+    %lock_opened(computer),
     write("    You managed to log in!
     On the screen there are 4 numbers - "),
     write(computerCode).
@@ -151,7 +151,3 @@ examination(_) :-
 examination(_) :-
     write("    There is nothing usefull to be found..."),nl.
 
-
-turnedOff(computer).
-withoutHardDrive(computer).
-blockedWithPassword(computer).
