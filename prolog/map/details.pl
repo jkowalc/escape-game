@@ -68,12 +68,31 @@ examination(office) :-
     ---PATH UNLOCKED---"),
     assert(path(office, attic_entrance)),nl.
 examination(coffee_table) :-
-    write("    I found a CORRIDOR KEY taped underneeth the table.
+    write("    I found a CORRIDOR KEY taped underneath the table.
     ---ITEM FOUND---"),
     assert(pickable_item_at(corridor_key, coffee_table)),nl.
+
 examination(computer) :-
+    withoutHardDrive(computer),
     write("    It's turned off and will stay that way... I can see that few parts were ripped out of it's case. 
-    I won't boot without a HARD DRIVE"),nl.
+    I won't boot without a HARD DRIVE"),!,nl.
+
+examination(computer) :-
+    turnedOff(computer),
+    write("    It's turned off but you are hopeful it'll turn on now, but the on button is too small for my fingers.
+    You need to use something to press it.
+    ---NEW PATH---"),!,nl.
+
+examination(computer) :-
+    blockedWithPassword(computer),
+    write("    The computer is on, but there's a code promt, what's the code?"),nl.
+
+examination(computer) :-
+    lock_opened(computer),
+    write("    You managed to log in!
+    On the screen there are 4 numbers - "),
+    write(computerCode).
+
 examination(left_compartment) :-
     write("    User manual about assembling PC's. May be usefull"),
     assert(pickable_item_at(assembly_manual, cupboard)),nl.
@@ -131,3 +150,8 @@ examination(_) :-
 
 examination(_) :-
     write("    There is nothing usefull to be found..."),nl.
+
+
+turnedOff(computer).
+withoutHardDrive(computer).
+blockedWithPassword(computer).

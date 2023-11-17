@@ -12,7 +12,16 @@
 %    !, nl.
 %
 
+trueCode(computer, 4321).
 trueCode(color_code, yellowRedGreenBlue).
+
+doWhenOpenedLock(computer) :-
+    lock_opened(computer),
+    retract(blockedWithPassword(computer)),
+    write("You logged in!"),
+    !,nl.
+
+
 
 doWhenOpenedLock(color_code) :-
     lock_opened(color_code),
