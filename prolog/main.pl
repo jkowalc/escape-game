@@ -15,14 +15,13 @@ clear_all :-
 clear_all.
 
 starting_conditions :-
-    assert(current_pos(office)),
+    assert(current_pos(main_room)),
     assert(turnedOff(computer)),
     assert(withoutHardDrive(computer)),
     assert(blockedWithPassword(computer)),
-    %assert(handcuffed),
-    %assert(alarm_rings),
-    assert(holding(open_handcuffs)),
-    assert(holding(feather)).
+    assert(handcuffed),
+    assert(alarm_rings),
+    assert(holding(handcuffs)),
 
 
 h :- 
