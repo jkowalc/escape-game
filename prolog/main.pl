@@ -26,6 +26,7 @@ instructions :-
     write("-------------------------------------------------------------"), nl,
     write("look.\t\tfind out what is around you"), nl,
     write("go(Place).\tgo to a place"), nl,
+    write("describe.\twill remind you what you see on first glance"), nl,
     write("examine(Thing).\tfind more details about the specified thing or place"), nl,
     write("examine.\tfind out more about the current place"), nl,
     write("take(Item).\ttake specified item"), nl,
