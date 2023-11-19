@@ -1,4 +1,8 @@
-:- ensure_loaded(['../map/paths', "codes"]).
+:- ensure_loaded([
+    '../map/paths', 
+    "codes",
+    'items'
+]).
 
 %%%%Rooms
 examination(main_room) :-
@@ -17,14 +21,12 @@ examination(desk) :-
     assert(subplace(desk, mid_drawer)),
     assert(subplace(desk, bottom_drawer)),nl.
 examination(bottom_drawer) :-
-    write("    There is a small bite of cheese. It won't fill my stomach but may come in handy later.
-    ---ITEM FOUND---"),
-    assert(pickable_item_at(cheese, desk)),nl. % TODO place cheese here
+    write("    There is a small bite of cheese. It won't fill my stomach but may come in handy later."), nl,
+    spawn_item(cheese, desk).
 examination(fire_place) :-
     write("    Fire place wasnt used in a long time but thera are still some chared but sturdy pices of wood.
-    LONG STICK always can come in handy.
-    ---ITEM FOUND---"), % TODO place item here
-    assert(pickable_item_at(long_stick, fire_place)),nl. % TODO place cheese here
+    LONG STICK always can come in handy."), nl,
+    spawn_item(long_stick, fire_place).
 examination(painting) :-
     write("    It's very dameged. Oh! The TORN CORNER of the painting is peeling back from the frame!
     ---NEW PATH UNLOCKED---"),
@@ -41,7 +43,7 @@ examination(vent_cover) :-
     write("    It seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool..."),nl.
 examination(wooden_box) :-
     write("     This wooden box looks pretty rough, although it might be impossible to open it by force. But there is some kind of mechanism"),nl,
-    assert(item_at(color_code, wooden_box)).
+    spawn_item(color_code, wooden_box).
 examination(color_code) :-
     write("     Quite bizzare contraption. There are 4 button which all are different color - red, green, blue and yellow.
     Maybe I have to press them in some order?"),nl,
@@ -49,9 +51,8 @@ examination(color_code) :-
 examination(heavy_door) :-
     write("    I can't open them! They must be locked from the outside..."),nl.
 examination(sit_on_bed) :-
-    write("    Hello little buddy. I've found a TEDDY BEAR hidden under the GREEN duvet
-    ---ITEM FOUND---"), 
-    assert(pickable_item_at(teddy_bear, sit_on_bed)),nl. 
+    write("    Hello little buddy. I've found a TEDDY BEAR hidden under the GREEN duvet"), nl, 
+    spawn_item(teddy_bear, sit_on_bed).
 examination(bed) :-
     write("    There's a bed with disgustingly YELLOW legs. Your eyes are pulled to two CRIMSON blood-like pillows.
     However quilt seems to be quite different, it calmes you down adn reminds of life outside."),nl.
@@ -69,9 +70,8 @@ examination(office) :-
     ---PATH UNLOCKED---"),
     assert(path(office, attic_entrance)),nl.
 examination(coffee_table) :-
-    write("    I found a CORRIDOR KEY taped underneath the table.
-    ---ITEM FOUND---"),
-    assert(pickable_item_at(corridor_key, coffee_table)),nl.
+    write("    I found a CORRIDOR KEY taped underneath the table."), nl,
+    spawn_item(corridor_key, coffee_table).
 
 examination(computer) :-
     %withoutHardDrive(computer),
@@ -95,8 +95,8 @@ examination(computer) :-
     write(computerCode).
 
 examination(left_compartment) :-
-    write("    User manual about assembling PC's. May be usefull"),
-    assert(pickable_item_at(assembly_manual, cupboard)),nl.
+    write("    User manual about assembling PC's. May be usefull"), nl,
+    spawn_item(assembly_manual, cupboard).
 examination(right_compartment) :-
     write("    Old journal covered with leather burried in useless junk at the botom of the compartment.
         ---NEW PATH UNLOCKED---"),

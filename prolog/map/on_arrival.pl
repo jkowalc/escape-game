@@ -34,9 +34,11 @@ on_arrival(heavy_door) :-
     Nail marks and scratches don't make me feel good about it..."),nl.
 on_arrival(bed) :-
     write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
-    I guess I can take a sit for a while to think...
-    ---ITEM FOUND---"),
-    assert(pickable_item_at(pillow,bed)),nl.
+    I guess I can take a sit for a while to think..."), nl,
+    spawn_item(pillow, bed),
+    fail.
+on_arrival(bed) :-
+    !, nl.
 on_arrival(sit_on_bed) :-
     write("    The bed is sqeeqing and the blanket is itchy.
     But it feels good to rest for a second."),nl.
@@ -46,9 +48,11 @@ on_arrival(window) :-
     On a window still sits a RAVEN in his NEST.
     I don't feel like opening a window with him (or her) on the other side."),nl.
 on_arrival(nest) :-
-    write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest.
-    ---ITEM FOUND---"),
-    assert(pickable_item_at(screwdriver_bit, nest)),nl.
+    write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest."), nl,
+    spawn_item(screwdriver_bit, nest),
+    fail.
+on_arrival(nest) :-
+    !, nl.
 
 %%%%%%%%%%%%%%%%%%%%%%%%office
 on_arrival(office) :-
@@ -81,9 +85,10 @@ on_arrival(corridor) :-
     write("    Long corrior with paint flaking off the walls due to dense and hiumid air around.
     It`s connecting the office with the main room where I was trapped before... "),nl.
 on_arrival(display_case) :-
-    write("    Glass display case, there is a UV flashlight inside
-    ---ITEM UNLOCKED---"),
-    assert(pickable_item_at(uv_flashlight,display_case)),nl.
+    write("    Glass display case, there is a UV flashlight inside"), nl,
+    spawn_item(uv_flashlight,display_case), fail.
+on_arrival(display_case) :-
+    !, nl.
 on_arrival(key_case) :-
     write("    Locked key box. Big beautifull key is stored inside. 
     It has to be opened by inputing a code on a keypad"),nl.
@@ -106,8 +111,3 @@ on_arrival(exit_door) :-
 
 on_arrival(_) :-
     write("     I can't see anything!").
-
-describe :- 
-    current_pos(CurrentPlace),
-    on_arrival(CurrentPlace),
-    !, nl.

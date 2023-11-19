@@ -27,8 +27,25 @@ look :-
     current_pos(CurrentPlace),
     write('Possible destinations: \n'),
     (path(CurrentPlace, Place); path(Place, CurrentPlace)),
-    write("---"), write(Place), write(" \n"), 
+    write("--- "), write(Place), write(" \n"), 
+    fail.
+
+look :- 
+    current_pos(CurrentPlace),
+    \+ pickable_item_at(_, CurrentPlace),
+    !. 
+
+look :-
+    current_pos(CurrentPlace),
+    write('There are items in this location: '),
+    pickable_item_at(Item, CurrentPlace),
+    write(Item), write(' '),
     fail.
 
 look :-
     !.
+
+describe :- 
+    current_pos(CurrentPlace),
+    on_arrival(CurrentPlace),
+    !, nl.
