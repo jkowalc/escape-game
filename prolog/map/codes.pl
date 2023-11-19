@@ -1,5 +1,7 @@
 :- dynamic lock_opened/1.
-
+:- ensure_loaded([
+    'items'
+]).
 %%%%% example how to use
 % trueCode(myLock, 1).
 % item_at(myLock, main_room).
@@ -11,9 +13,10 @@
 %    write("I've got an gigaKubica item!"),
 %    !, nl.
 %
+
 trueCode(vault, 85023).
-trueCode(computer, 4321).
-trueCode(color_code, whispers_of_the_abyss).
+trueCode(computer, whispers_of_the_abyss).
+trueCode(color_code, yellow_red_green_blue).
 trueCode(pad_10_digit, 21037).
 
 doWhenOpenedLock(vault) :-
@@ -25,6 +28,8 @@ doWhenOpenedLock(pad_10_digit) :-
     lock_opened(pad_10_digit),
     write("     I opened the key case!"),nl,
     spawn_item(exit_key, key_case),!,nl.
+
+
 
 doWhenOpenedLock(computer) :-
     lock_opened(computer),

@@ -25,6 +25,7 @@ enter_code(Lock, _) :-
     write("You are not nearby the lock!"),
     !, nl.
 
+
 enter_code(_, _) :-
     write("Lock doesn't exist!"),
     !, nl.

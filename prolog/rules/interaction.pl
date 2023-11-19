@@ -15,21 +15,21 @@ examine(Thing) :-
    examination(Thing),
    !, nl.
 
-list_examine :-
-   current_pos(CurrentPlace),
-   \+ subplace(CurrentPlace, _),
-   write('You can examine: '), write(CurrentPlace),
-   !, nl.
+% list_examine :-
+%    current_pos(CurrentPlace),
+%    \+ subplace(CurrentPlace, _),
+%    write('You can examine: '), write(CurrentPlace),
+%    !, nl.
 
-list_examine :-
-   current_pos(CurrentPlace),
-   write('You can examine: '), write(CurrentPlace), write(' '),
-   subplace(CurrentPlace, Place),
-   write(Place), write(' '),
-   fail.
+% list_examine :-
+%    current_pos(CurrentPlace),
+%    write('You can examine: '), write(CurrentPlace), write(' '),
+%    subplace(CurrentPlace, Place),
+%    write(Place), write(' '),
+%    fail.
 
-list_examine :-
-   !, nl.
+% list_examine :-
+%    !, nl.
 
 examine :- 
    current_pos(CurrentPlace),
