@@ -1,7 +1,9 @@
 :- ensure_loaded([
     '../map/paths',
     '../rules/moving',
-    '../rules/inventory'
+    '../rules/inventory',
+    'subplaces',
+    'details'
 ]).
 % :- discontiguous path/2.
 

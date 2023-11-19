@@ -1,7 +1,8 @@
 :- dynamic current_pos/1.
 :- ensure_loaded([
     '../map/paths',
-    '../map/on_arrival'
+    '../map/on_arrival',
+    '../map/details'
 ]).
 
 :- dynamic handcuffed/0.
