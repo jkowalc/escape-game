@@ -63,7 +63,7 @@ examination(raven) :-
     write("    RAVEN doesn't seem to be scared by me at all. /*He just vibin*/
     Maybe if I had something to push him away I could acces his nest.
     Thermometer shows that there is 40 degrees below 0, it must be broken. Right?"),nl.
-examine(nest) :-
+examination(nest) :-
     write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest.
     ---ITEM FOUND---"),
     assert(pickable_item_at(screwdriver_bit, nest)),nl.

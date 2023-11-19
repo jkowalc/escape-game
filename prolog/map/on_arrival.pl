@@ -28,7 +28,7 @@ on_arrival(chair) :-
 on_arrival(vent) :-
     write("    There is a RAT in here!
     ---NEW PLACE UNLOCKED---"),nl,
-    assert(subplace(bent, rat)).
+    assert(subplace(vent, rat)).
 on_arrival(heavy_door) :-
     write("    Big heavy door closed shut.
     Nail marks and scratches don't make me feel good about it..."),nl.

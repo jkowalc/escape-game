@@ -43,7 +43,7 @@ path(corridor, display_case). %has UV lamp
 path(corridor, main_room_entrance).
 
 %%%%%zone changes
-path(vent, office). %go to office
+% path(vent, office). %go to office
 path(main_room, heavy_door).
 % path(heavy_door, corridor). %will be closed at the begining
 path(office, corridor_door).
