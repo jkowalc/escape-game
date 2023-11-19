@@ -26,15 +26,33 @@ go(_) :-
 
 look :-
     current_pos(CurrentPlace),
-    write('Possible destinations: '), nl,
+    look_destinations(CurrentPlace),
+    look_interesting_places(CurrentPlace),
+    look_items(CurrentPlace).
+
+look_destinations(CurrentPlace) :-
     findall(Place, path(CurrentPlace, Place), Places),
-    print_list(Places),
-    write("There are interesting places aroud you: "),nl,
+    (   Places = [] 
+    ->  true
+    ;   write('Possible destinations: '), nl,
+        print_list(Places)
+    ).
+
+look_interesting_places(CurrentPlace) :-
     findall(Subplace, subplace(CurrentPlace, Subplace), Subplaces),
-    print_list(Subplaces),
-    write("There are items aroudn you: "), nl,
+    (   Subplaces = []
+    ->  true
+    ;   write("There are interesting places around you: "), nl,
+        print_list(Subplaces)
+    ).
+
+look_items(CurrentPlace) :-
     findall(Item, item_at(Item, CurrentPlace), Items),
-    print_list(Items).
+    (   Items = []
+    ->  true
+    ;   write("There are items around you: "), nl,
+        print_list(Items)
+    ).
 
 print_list([]):- nl.
 
