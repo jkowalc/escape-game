@@ -13,7 +13,7 @@
 %
 
 trueCode(computer, 4321).
-trueCode(color_code, yellowRedGreenBlue).
+trueCode(color_code, whispers_of_the_abyss).
 
 doWhenOpenedLock(computer) :-
     lock_opened(computer),
