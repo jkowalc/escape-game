@@ -15,3 +15,4 @@ subplace(corridor, exit_door).
 subplace(office, attic_entrance).
 subplace(office, corridor_door).
 subplace(bed, sit_on_bed).
+subplace(wooden_box, color_code).
