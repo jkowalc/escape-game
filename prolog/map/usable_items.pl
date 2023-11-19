@@ -12,8 +12,7 @@ on_use(uv_flashlight, _) :-
     write("    I cannot see anything new."),nl,!.
 
 on_use(long_stick, raven) :-
-    write("     I've succesfully pushed the RAVEN avay. Not only it's now away from his nest, but also he left something behind.
-    ---NEW ITEM---"),
+    write("     I've succesfully pushed the RAVEN avay. Not only it's now away from his nest, but also he left something behind."),nl,
     retract(subplace(window, raven)),
     spawn_subplace(window, nest),
     spawn_item(feather, window),
@@ -30,7 +29,7 @@ on_use(screwdriver, vent_cover) :-
     ---PATH UNLOCKED---"), nl,
     retract(subplace(chair,vent_cover)),
     assert(path(chair, vent)), 
-    look,!.
+    look,!,nl.
 
 on_use(hard_drive, computer):-
     holding(assembly_manual),
@@ -71,6 +70,13 @@ on_use(open_handcuffs, attic_entrance) :-
     I still cannot go there, but something has fallen out of it.
     "),nl,
     spawn_item(hard_drive, office),!,nl.
+
+on_use(corridor_key, corridor_door) :-
+    write("     I managed to open the door leading to the corridor
+    ---PATH UNLOCKED---"),nl,
+    retract(subplace(office, corridor_door)),
+    assert(path(office, corridor)),!,nl.
+
 
     
 on_use(_, _) :-

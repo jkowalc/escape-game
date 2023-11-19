@@ -9,7 +9,7 @@ use(Item, Subplace) :-
     holding(Item),
     current_pos(CurrentPlace),
     subplace(CurrentPlace, Subplace),
-    on_use(Item, Subplace).
+    on_use(Item, Subplace), !, nl.
 
 use(small_key) :-
     holding(small_key),

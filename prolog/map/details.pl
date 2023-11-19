@@ -169,7 +169,7 @@ examination(computer) :-
 examination(computer) :-
     lock_opened(computer),
     write("    I managed to log in!
-    On the screen there are 4 numbers - "),
+    On the screen there are 5 numbers - "),
     trueCode(vault, X),
     write(X),!,nl.
 
@@ -227,11 +227,10 @@ examination(attic_entrance) :-
 
 examination(baricated_door) :-
     write("     I'm on the other side of that heavy door. It's blocked with rumble. I can unlock it now and go back to main room
-    ---PATH UNLOCKED---"),
+    ---PATH UNLOCKED---"),nl,
     assert(path(corridor, main_room)),
     retract(subplace(main_room, heavy_door)),
-    retract(subplace(corridor,baricated_door)),
-    look.
+    retract(subplace(corridor,baricated_door)).
 
 examination(_) :-
     write("    There is nothing usefull to be found..."),nl.
