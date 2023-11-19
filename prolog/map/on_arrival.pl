@@ -20,8 +20,8 @@ on_arrival(desk) :-
     write("    There's the alarm. I have to examine the desk, maybe I can disable the alarm."),!,nl.
 on_arrival(desk) :-
     write("    An old desk covered with dust. 
-    The chair was mooved to the other end of a room, so I can't sit here..."),nl.
-on_arrival(fire_place) :-
+    The chair was moved to the other end of a room, so I can't sit here..."),nl.
+on_arrival(fireplace) :-
     write("    It's and big antique fireplace.
     I wish it was lit so I could warm myself up. 
     Unfortunetly without matches even the half bured CANDLE sitting on top will be no use for me..."),nl.

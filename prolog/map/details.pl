@@ -95,10 +95,10 @@ examination(bottom_drawer) :-
 examination(top_drawer) :-
     write("    There is a small key. It might fit to something I have right now."),nl,
     spawn_item(small_key, desk),nl,!.
-examination(fire_place) :-
+examination(fireplace) :-
     write("    Fire place wasnt used in a long time but thera are still some chared but sturdy pices of wood.
     LONG STICK always can come in handy."), nl,
-    spawn_item(long_stick, fire_place).
+    spawn_item(long_stick, fireplace).
 examination(painting) :-
     write("    It's very dameged. Oh! The TORN CORNER of the painting is peeling back from the frame!
     ---NEW PATH UNLOCKED---"),
