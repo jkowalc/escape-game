@@ -6,23 +6,21 @@
 
 :- dynamic blockedWithPassword/1, turnedOff/1, withoutHardDrive/1, alarm_rings/0.  
 
-%%%%Rooms
-examination(main_room) :-
-    write("    Hmmmm... Whoever lived here must have left long ago... 
-    I feel a cool breeze coming from a vent located under the celing."),nl,!.
 
 % examination(corridor) :-
 %     write("    Long corrior with paint flaking off the walls due to dense and hiumid air around.
 %     It`s connecting the office with the main room where I was trapped before... "),nl.
 
 %%%main_room
+examination(main_room) :-
+    write("    Hmmmm... Whoever lived here must have left long ago... 
+    I feel a cool breeze coming from a vent located under the celing."),nl,!.
 examination(desk) :-
     alarm_rings,
     retract(alarm_rings),
     write("     I decided to hit the clock as hard as I could. It worked! The clock shattered to pieces.
     Now there is silence in the room. I can examine the desk once more. Maybe I can find here something else."),
     !,nl.
-
 examination(desk) :-
     write("    There are few drawers under the desk. I can try to open them.
     ---NEW PLACES UNLOCKED---"),
@@ -34,7 +32,7 @@ examination(bottom_drawer) :-
     spawn_item(cheese, desk),nl,!.
 examination(top_drawer) :-
     write("    There is a small key. It might fit to something I have right now."),nl,
-    spawn_item(litte_key, desk),nl,!.
+    spawn_item(small_key, desk),nl,!.
 examination(fire_place) :-
     write("    Fire place wasnt used in a long time but thera are still some chared but sturdy pices of wood.
     LONG STICK always can come in handy."), nl,
@@ -46,6 +44,9 @@ examination(painting) :-
 examination(torn_corner) :-
     write("    After pulling the canvas back I realised that there is a message scratched into painting backing.
     It says:\"I have 4 legs, two heads, huge slender body and little friend.\""),nl.
+examination(heavy_door) :-
+    write("    Big heavy door closed shut.
+    Nail marks and scratches don't make me feel good about it..."),nl.
 examination(chair) :-
     write("    Mud smeared on top looks like a foot print... Why someone was standing on top of it?
     Oh! I can move it underneeth the vent I've seen before.

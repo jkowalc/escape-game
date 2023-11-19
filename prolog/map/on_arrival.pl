@@ -38,9 +38,6 @@ on_arrival(vent) :-
     write("    There is a RAT in here!
     ---NEW PLACE UNLOCKED---"),nl,
     assert(subplace(vent, rat)).
-on_arrival(heavy_door) :-
-    write("    Big heavy door closed shut.
-    Nail marks and scratches don't make me feel good about it..."),nl.
 on_arrival(bed) :-
     write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
     I guess I can take a sit for a while to think..."), nl,
@@ -99,13 +96,12 @@ on_arrival(key_case) :-
 on_arrival(pad_10_digit) :-
     write("    10 digit keypad that will open key case when the code is right. There are 5 empty spots where code will apperar.
         [_ _ _ _ _]"),nl.
-on_arrival(main_room_entrance) :-
-    write("     I'm on the other side of that heavy door. I can unlock it now and go back to main room
+on_arrival(baricated_door) :-
+    write("     I'm on the other side of that heavy door. It's blocked with rumble. I can unlock it now and go back to main room
     ---PATH UNLOCKED---"),
     assert(path(corridor, main_room)),
-    retract(path(main_room, heavy_door)),
-    move(corridor),
-    retract(path(corridor,main_room_entrance)),
+    retract(subplace(main_room, heavy_door)),
+    retract(subplace(corridor,baricated_door)),
     look.
 
 on_arrival(exit_door) :-

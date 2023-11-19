@@ -45,7 +45,7 @@ on_use(computer, feather) :-
     assert(turnedOff(computer)),
     !, nl.
 
-on_use(handcuffs, litte_key) :-
+on_use(handcuffs, small_key) :-
     write("I managed to open these handcuffs, they may be useful later, so I'll keep them."),nl,
     assert(holding(open_handcuffs)),
     retract(holding(litte_key)),

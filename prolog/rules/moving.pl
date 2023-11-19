@@ -6,11 +6,11 @@
 
 :- dynamic handcuffed/0.
 
-move(Place) :- %used for forced movemnet of player.
-    current_pos(CurrentPlace),
-    retract(current_pos(CurrentPlace)),
-    assert(current_pos(Place)),
-    nl.
+% move(Place) :- %used for forced movemnet of player.
+%     current_pos(CurrentPlace),
+%     retract(current_pos(CurrentPlace)),
+%     assert(current_pos(Place)),
+%     nl.
 
 go(desk):-
     current_pos(CurrentPlace),
