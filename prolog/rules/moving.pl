@@ -25,9 +25,9 @@ go(_) :-
 
 look :- 
     current_pos(CurrentPlace),
-    write('Possible destinations: '),
+    write('Possible destinations: \n'),
     (path(CurrentPlace, Place); path(Place, CurrentPlace)),
-    write(Place), write(" "), 
+    write("---"), write(Place), write(" \n"), 
     fail.
 
 look :-
