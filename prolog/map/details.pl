@@ -232,6 +232,15 @@ examination(page_4) :-
 examination(attic_entrance) :-
     write("    Trapdoor has a T shaped handle. I barely cannot reach it. I may be able to hook something on it to pull it open"),nl.
 
+
+examination(baricated_door) :-
+    write("     I'm on the other side of that heavy door. It's blocked with rumble. I can unlock it now and go back to main room
+    ---PATH UNLOCKED---"),
+    assert(path(corridor, main_room)),
+    retract(subplace(main_room, heavy_door)),
+    retract(subplace(corridor,baricated_door)),
+    look.
+
 examination(_) :-
     write("    There is nothing usefull to be found..."),nl.
 
