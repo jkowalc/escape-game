@@ -37,8 +37,15 @@ drop(_) :-
     write("You aren't holding it!"),
     nl.
 
+inventory :-
+    \+ holding(_),
+    write("Your inventory is empty"),
+    !, nl.
 inventory :- 
     write("Your inventory: "),
     holding(Item),
     write(Item), write(" "),
-    !.
+    fail.
+
+inventory :-
+    !, nl.
