@@ -15,13 +15,15 @@ clear_all :-
 clear_all.
 
 starting_conditions :-
-    assert(current_pos(main_room)),
+    assert(current_pos(office)),
     assert(turnedOff(computer)),
     assert(withoutHardDrive(computer)),
     assert(blockedWithPassword(computer)),
-    assert(handcuffed),
-    assert(alarm_rings),
-    assert(holding(handcuffs)).
+    %assert(handcuffed),
+    %assert(alarm_rings),
+    assert(holding(open_handcuffs)),
+    assert(holding(feather)).
+
 
 h :- 
     instructions,
@@ -41,6 +43,7 @@ instructions :-
     write("use(Item)\tuse the item"), nl,
     write("combine.\tcombine all possible items in your inventory"), nl,
     write("combine(Item, OtherItem).\tcombine the two items"), nl,
+    write("enter_code(lock, code). enter a code or password to a lock"),nl,
     write("h.\t\tlist these instructions again"),nl,
     nl.
 

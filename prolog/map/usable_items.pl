@@ -3,6 +3,13 @@
     '../rules/moving'
 ]).
 
+on_use(uv_flashlight, Place) :-
+    lightable_by_uv(Place),
+    examine(Place),nl,!.
+
+on_use(uv_flashlight, _) :-
+    write("    I cannot see anything new."),nl,!.
+
 on_use(long_stick, nest) :-
     write("     I've succesfully pushed the RAVEN avay. Not only it's now away from his nest, but also he left something behind.
     ---NEW ITEM---"),
@@ -24,33 +31,46 @@ on_use(screwdriver, vent_cover) :-
     assert(path(chair, vent)), 
     look,!.
 
-on_use(computer, hard_drive):-
+on_use(hard_drive, computer):-
     holding(assembly_manual),
-    write("I managed to insert the hard drive to the computer,
+    write("     I managed to insert the hard drive to the computer,
     It should be working now!"),
     retract(withoutHardDrive(computer)),!,nl.
 
-on_use(computer, hard_drive) :-
-    write("I don't know how to insert the hard drive to the computer.
+on_use(hard_drive, computer) :-
+    write("     I don't know how to insert the hard drive to the computer.
     If only there was any manual..."), !, nl.
 
-on_use(computer, feather) :-
+on_use(feather, computer) :-
     turnedOff(computer),
-    write("I managed to turn ON the computer!"),
+    write("     I managed to turn ON the computer!"),
     retract(turnedOff(computer)),
     !, nl.
 
-on_use(computer, feather) :-
-    write("I managed to turn OFF the computer!"),
+on_use(feather, computer) :-
+    write("     I managed to turn OFF the computer!"),
     assert(turnedOff(computer)),
     !, nl.
 
-on_use(handcuffs, small_key) :-
-    write("I managed to open these handcuffs, they may be useful later, so I'll keep them."),nl,
+on_use(small_key, handcuffs) :-
+    write("     I managed to open these handcuffs, they may be useful later, so I'll keep them."),nl,
     assert(holding(open_handcuffs)),
     retract(holding(litte_key)),
     retract(handcuffed),
     retract(holding(handcuffs)),nl,!.
 
+on_use(exit_key, exit_door) :-
+    write("     I see light! Freedom is mine!"),
+    retract(holding(exit_key)),
+    assert(path(corridor, the_end)),
+    !,nl.
+
+on_use(open_handcuffs, attic_entrance) :-
+    write("     I managed to open the entrance to attic!
+    I still cannot go there, but something has fallen out of it.
+    "),nl,
+    spawn_item(hard_drive, office),!,nl.
+
+    
 on_use(_, _) :-
-    write("You can't use that here."), nl.
+    write("     You can't use that here."), nl.

@@ -6,10 +6,61 @@
 
 :- dynamic blockedWithPassword/1, turnedOff/1, withoutHardDrive/1, alarm_rings/0.  
 
+%%%uv light
+lightable_by_uv(painting).
+lightable_by_uv(bed).
+lightable_by_uv(computer).
+lightable_by_uv(desk).
+lightable_by_uv(fire_place).
+lightable_by_uv(window).
 
-% examination(corridor) :-
-%     write("    Long corrior with paint flaking off the walls due to dense and hiumid air around.
-%     It`s connecting the office with the main room where I was trapped before... "),nl.
+examination(painting) :-
+    holding(uv_flashlight),
+    write("     I can see some words written in UV ink.
+    \"after I wake up  I always eat my cheese, then breath in some fresh air. Later I play some computer games, after that I heat myself up.\""),nl,!.
+
+examination(bed) :-
+    holding(uv_flashlight),
+    write("     I can see something is written here in UV ink - number 2"),nl,!.
+
+examination(desk) :-
+    holding(uv_flashlight),
+    write("     I can see something is written here in UV ink - number 1"),nl,!.
+
+examination(window) :-
+    holding(uv_flashlight),
+    write("     I can see something is written here - number 0"),nl,!.
+
+examination(computer) :-
+    holding(uv_flashlight),
+    turnedOff(computer),
+    write("     I can see something is written here - number 3"),nl,!.
+
+examination(computer) :-
+    holding(uv_flashlight),
+    write("     I can see something is written here - but I cannot read it. I need to turnoff the computer."),nl,!.
+
+examination(fire_place) :-
+    holding(uv_flashlight),
+    write("     I can see something is written here - number 7"),nl,!.
+
+%%%corridor
+examination(corridor) :-
+    write("    Long corridor with paint flaking off the walls due to dense and humid air around.
+     It's connecting the office with the main room where I was trapped before... "),nl.
+
+examination(pad_10_digit) :-
+    write("    10 digit keypad that will open key case when the code is right. There are 5 empty spots where code will apperar.
+        [_ _ _ _ _]"),nl.
+
+examination(display_case) :-
+    write("    Inside I can see an weird flashlight, it might help me. I should start using it on some objects"),nl,
+    spawn_item(uv_flashlight, display_case),nl,!.
+
+examination(key_case) :-
+    write("    It's a key case! It has 10 digit padcase. May it contain the key to the exit?"),nl,
+    assert(subplace(pad_10_digit, key_case)),nl,!.  % TODO: CHANGE
+
 
 %%%main_room
 examination(main_room) :-
@@ -100,8 +151,11 @@ examination(office) :-
     ---PATH UNLOCKED---"),
     assert(path(office, attic_entrance)),nl.
 examination(coffee_table) :-
-    write("    I found a CORRIDOR KEY taped underneath the table."), nl,
-    spawn_item(corridor_key, coffee_table).
+    write("    Entire table is used by a huge vault"), nl,
+    assert(subplace(coffee_table, vault)).
+
+examination(vault) :-
+    write("     There is a padlock to enter the code, I wonder what's the code?"),!,nl.
 
 examination(computer) :-
     withoutHardDrive(computer),
@@ -116,13 +170,14 @@ examination(computer) :-
 
 examination(computer) :-
     blockedWithPassword(computer),
-    write("    The computer is on, but there's a code promt, what's the code?"),nl.
+    write("    The computer is on, but there's a password prompt, what can it be?"),!,nl.
 
 examination(computer) :-
     lock_opened(computer),
     write("    I managed to log in!
     On the screen there are 4 numbers - "),
-    write(computerCode).
+    trueCode(vault, X),
+    write(X),!,nl.
 
 examination(left_compartment) :-
     write("    User manual about assembling PC's. May be usefull"), nl,
@@ -175,7 +230,7 @@ examination(page_4) :-
     It guards the forbidden knowledge, a digital key to the eldritch realms that pulse beneath the surface of our reality"),nl.
 
 examination(attic_entrance) :-
-    write("    Trapdoor has a T shaped handle. I may be able to hook something on it to pull it open"),nl.
+    write("    Trapdoor has a T shaped handle. I barely cannot reach it. I may be able to hook something on it to pull it open"),nl.
 
 examination(_) :-
     write("    There is nothing usefull to be found..."),nl.

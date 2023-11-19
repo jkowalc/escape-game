@@ -38,9 +38,10 @@ path(office, computer).
 
 %%%%%corridor
 path(corridor, key_case). %has exit key
-path(key_case, pad_10_digit).
+% path(key_case, pad_10_digit).
 path(corridor, display_case). %has UV lamp
 path(corridor, main_room_entrance).
+% path(corridor, exit_door). %subpath
 
 %%%%%zone changes
 % path(vent, office). %go to office

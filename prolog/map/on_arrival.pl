@@ -86,16 +86,13 @@ on_arrival(corridor) :-
     write("    Long corrior with paint flaking off the walls due to dense and hiumid air around.
     It`s connecting the office with the main room where I was trapped before... "),nl.
 on_arrival(display_case) :-
-    write("    Glass display case, there is a UV flashlight inside"), nl,
-    spawn_item(uv_flashlight,display_case), fail.
+    write("    Glass display case, there is something inside"), nl,!.
+    %spawn_item(uv_flashlight,display_case), fail.
 on_arrival(display_case) :-
     !, nl.
 on_arrival(key_case) :-
     write("    Locked key box. Big beautifull key is stored inside. 
     It has to be opened by inputing a code on a keypad"),nl.
-on_arrival(pad_10_digit) :-
-    write("    10 digit keypad that will open key case when the code is right. There are 5 empty spots where code will apperar.
-        [_ _ _ _ _]"),nl.
 on_arrival(baricated_door) :-
     write("     I'm on the other side of that heavy door. It's blocked with rumble. I can unlock it now and go back to main room
     ---PATH UNLOCKED---"),
@@ -105,8 +102,11 @@ on_arrival(baricated_door) :-
     look.
 
 on_arrival(exit_door) :-
-    write("    It's my way out. I just need a key to open it."),nl.
+    write("    It's my way out. I just need a key to open it."),!,nl.
 
+on_arrival(the_end) :-
+    write("     CONGRATULATIONS YOU COMPLETED THE GAME!"),nl,
+    retract(path(corridor, the_end)),!,nl.
 
 
 on_arrival(_) :-
