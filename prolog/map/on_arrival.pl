@@ -68,6 +68,10 @@ on_arrival(cupboard) :-
     assert(subplace(cupboard, middle_compartment)),
     assert(subplace(cupboard, right_compartment)),nl.%has journal.
 
+on_arrival(journal) :-
+    write("    I opened an old journal I've found. It's dusty but I still want to find out more about it."),nl. %examine for more info
+
+
 on_arrival(office_safe) :-
     write("    Small but sturdy. Too havy to lift. 
     It opens by unlocking a turning code mechanism"),nl.
@@ -97,6 +101,8 @@ on_arrival(main_room_entrance) :-
 
 on_arrival(exit_door) :-
     write("    It's my way out. I just need a key to open it."),nl.
+
+
 
 on_arrival(_) :-
     write("     I can't see anything!").
