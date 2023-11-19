@@ -100,7 +100,7 @@ examination(fireplace) :-
     LONG STICK always can come in handy."), nl,
     spawn_item(long_stick, fireplace).
 examination(painting) :-
-    write("    It's very dameged. Oh! The TORN CORNER of the painting is peeling back from the frame!
+    write("    It's very damaged. Oh! The TORN CORNER of the painting is peeling back from the frame!
     ---NEW PATH UNLOCKED---"),
     assert(subplace(painting, torn_corner)),nl.
 examination(torn_corner) :-

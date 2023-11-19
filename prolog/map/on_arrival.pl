@@ -26,8 +26,8 @@ on_arrival(fireplace) :-
     I wish it was lit so I could warm myself up. 
     Unfortunetly without matches even the half bured CANDLE sitting on top will be no use for me..."),nl.
 on_arrival(painting) :-
-    write("    It's a mastepice I've seen in history books.
-    It is beatifull, at least it was... before someone dameged it"),nl.
+    write("    It's a mastepice. I've seen it in history books.
+    It is beatifull, at least it was... before someone damaged it"),nl.
 on_arrival(torn_corner) :-
     write("    It's a torn corner of a painting. 
     Fabric is deattached from glded wooden frame."),nl.
