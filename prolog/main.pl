@@ -21,7 +21,7 @@ starting_conditions :-
     assert(blockedWithPassword(computer)),
     assert(handcuffed),
     assert(alarm_rings),
-    assert(holding(handcuffs)),
+    assert(holding(handcuffs)).
 
 
 h :- 
