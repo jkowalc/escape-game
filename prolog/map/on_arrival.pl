@@ -49,11 +49,6 @@ on_arrival(window) :-
     I don't feel like opening a window with him (or her) on the other side.
     ---SUBPLACE UNLOCKED---"),nl,
     assert(subplace(window, raven)).
-examine(nest) :-
-    write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest.
-    ---ITEM FOUND---"),
-    assert(pickable_item_at(screwdriver_bit, nest)),nl.
-
 %%%%%%%%%%%%%%%%%%%%%%%%office
 on_arrival(office) :-
     write("    I'm standing in a middle of poorly lit, destroyed office room.
