@@ -46,13 +46,13 @@ on_arrival(window) :-
     write("    Dirty window looking out over moody forest. 
     Thermometer is hanging on the other side.
     On a window still sits a RAVEN in his NEST.
-    I don't feel like opening a window with him (or her) on the other side."),nl.
-on_arrival(nest) :-
-    write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest."), nl,
-    spawn_item(screwdriver_bit, nest),
-    fail.
-on_arrival(nest) :-
-    !, nl.
+    I don't feel like opening a window with him (or her) on the other side.
+    ---SUBPLACE UNLOCKED---"),nl,
+    assert(subplace(window, raven)).
+examine(nest) :-
+    write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest.
+    ---ITEM FOUND---"),
+    assert(pickable_item_at(screwdriver_bit, nest)),nl.
 
 %%%%%%%%%%%%%%%%%%%%%%%%office
 on_arrival(office) :-
