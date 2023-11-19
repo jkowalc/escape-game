@@ -40,7 +40,6 @@ instructions :-
     write("drop(Item).\tdrop specified item on the ground"), nl,
     write("inventory.\tlist contents of your inventory"), nl,
     write("use(Item)\tuse the item"), nl,
-    write("combine.\tcombine all possible items in your inventory"), nl,
     write("combine(Item, OtherItem).\tcombine the two items"), nl,
     write("enter_code(lock, code). enter a code or password to a lock"),nl,
     write("h.\t\tlist these instructions again"),nl,
