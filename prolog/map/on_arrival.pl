@@ -6,9 +6,18 @@
 % :- discontiguous path/2.
 
 %%%main_room
+on_arrival(main_room):-
+    alarm_rings,
+    write("    I'm in a small dark room. I'm handcuffed! I don't remeber anything. Surroundig is dirty and the room is very cold...
+    An alarm clock is ringing very loudly and is exploading my head. I have to go to the desk and examine it.
+    Maybe I can disable the alarm."),!,nl.
+
 on_arrival(main_room) :-
     write("    I'm in a small dark room. It' full of creepy energy all around...
     Surroundig is dirty and the room is very cold..."),nl.
+on_arrival(desk) :-
+    alarm_rings,
+    write("    There's the alarm. I have to examine the desk, maybe I can disable the alarm."),!,nl.
 on_arrival(desk) :-
     write("    An old desk covered with dust. 
     The chair was mooved to the other end of a room, so I can't sit here..."),nl.

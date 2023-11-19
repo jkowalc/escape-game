@@ -4,10 +4,12 @@
     'items'
 ]).
 
+:- dynamic blockedWithPassword/1, turnedOff/1, withoutHardDrive/1, alarm_rings/0.  
+
 %%%%Rooms
 examination(main_room) :-
     write("    Hmmmm... Whoever lived here must have left long ago... 
-    I feel a cool breeze coming from a vent located under the celing."),nl.
+    I feel a cool breeze coming from a vent located under the celing."),nl,!.
 
 % examination(corridor) :-
 %     write("    Long corrior with paint flaking off the walls due to dense and hiumid air around.
@@ -15,14 +17,24 @@ examination(main_room) :-
 
 %%%main_room
 examination(desk) :-
+    alarm_rings,
+    retract(alarm_rings),
+    write("     I decided to hit the clock as hard as I could. It worked! The clock shattered to pieces.
+    Now there is silence in the room. I can examine the desk once more. Maybe I can find here something else."),
+    !,nl.
+
+examination(desk) :-
     write("    There are few drawers under the desk. I can try to open them.
     ---NEW PLACES UNLOCKED---"),
     assert(subplace(desk, top_drawer)),
     assert(subplace(desk, mid_drawer)),
-    assert(subplace(desk, bottom_drawer)),nl.
+    assert(subplace(desk, bottom_drawer)),nl,!.
 examination(bottom_drawer) :-
     write("    There is a small bite of cheese. It won't fill my stomach but may come in handy later."), nl,
-    spawn_item(cheese, desk).
+    spawn_item(cheese, desk),nl,!.
+examination(top_drawer) :-
+    write("    There is a small key. It might fit to something I have right now."),nl,
+    spawn_item(litte_key, desk),nl,!.
 examination(fire_place) :-
     write("    Fire place wasnt used in a long time but thera are still some chared but sturdy pices of wood.
     LONG STICK always can come in handy."), nl,
@@ -80,22 +92,22 @@ examination(coffee_table) :-
     spawn_item(corridor_key, coffee_table).
 
 examination(computer) :-
-    %withoutHardDrive(computer),
+    withoutHardDrive(computer),
     write("    It's turned off and will stay that way... I can see that few parts were ripped out of it's case. 
     I won't boot without a HARD DRIVE"),!,nl.
 
 examination(computer) :-
-    %turnedOff(computer),
+    turnedOff(computer),
     write("    It's turned off but I hope it'll turn on now, but the on button is too small for my fingers.
-    You need to use something to press it.
+    I need to use something to press it.
     ---NEW PATH---"),!,nl.
 
 examination(computer) :-
-    %blockedWithPassword(computer),
+    blockedWithPassword(computer),
     write("    The computer is on, but there's a code promt, what's the code?"),nl.
 
 examination(computer) :-
-    %lock_opened(computer),
+    lock_opened(computer),
     write("    I managed to log in!
     On the screen there are 4 numbers - "),
     write(computerCode).
