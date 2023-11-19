@@ -42,9 +42,9 @@ inventory :-
     write("Your inventory is empty"),
     !, nl.
 inventory :- 
-    write("Your inventory: "),
+    write("Your inventory: "),nl,
     holding(Item),
-    write(Item), write(" "),
+    write("---"), write(Item), write(" "),nl,
     fail.
 
 inventory :-

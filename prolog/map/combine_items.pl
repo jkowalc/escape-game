@@ -3,7 +3,7 @@ make_screwdriver :-
     retract(holding(screwdriver_handle)),
     retract(holding(screwdriver_bit)),
     assert(holding(screwdriver)),
-    write("     You created a screwdriver!").
+    write("     You created a screwdriver!"),!,nl.
 
 on_combine(screwdriver_handle, screwdriver_bit) :-
     make_screwdriver.
