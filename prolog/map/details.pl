@@ -84,7 +84,7 @@ examination(desk) :-
     Now there is silence in the room. I can examine the desk once more. Maybe I can find here something else."),
     !,nl.
 examination(desk) :-
-    write("    There are few drawers under the desk. I can try to open them."),
+    write("    There are few drawers under the desk. I can try to open them."),nl,
     spawn_subplace(desk, top_drawer),
     spawn_subplace(desk, mid_drawer),
     spawn_subplace(desk, bottom_drawer),nl,!.
