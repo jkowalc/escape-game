@@ -44,10 +44,9 @@ on_arrival(bed) :-
     spawn_item(pillow, bed),
     fail.
 on_arrival(bed) :-
-    !, nl.
-on_arrival(sit_on_bed) :-
     write("    The bed is sqeeqing and the blanket is itchy.
-    But it feels good to rest for a second."),nl.
+    But it feels good to rest for a second."),
+    !, nl.
 on_arrival(window) :-
     write("    Dirty window looking out over moody forest. 
     Thermometer is hanging on the other side.
