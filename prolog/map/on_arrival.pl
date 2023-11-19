@@ -100,7 +100,6 @@ on_arrival(baricated_door) :-
     retract(subplace(main_room, heavy_door)),
     retract(subplace(corridor,baricated_door)),
     look.
-
 on_arrival(exit_door) :-
     write("    It's my way out. I just need a key to open it."),!,nl.
 
