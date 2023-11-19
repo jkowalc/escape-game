@@ -16,8 +16,8 @@ path(window, outside).
 path(main_room, fire_place).
 path(main_room, chair).
 % path(chair, vent_cover).
-path(vent_cover, vent).
-path(chair, vent).
+% path(vent_cover, vent).
+% path(chair, vent).
 path(main_room, wooden_box).
 
 
@@ -43,7 +43,7 @@ path(corridor, display_case). %has UV lamp
 path(corridor, main_room_entrance).
 
 %%%%%zone changes
-path(vent, office). %go to office
+% path(vent, office). %go to office
 path(main_room, heavy_door).
 % path(heavy_door, corridor). %will be closed at the begining
 path(office, corridor_door).

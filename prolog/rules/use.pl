@@ -4,6 +4,13 @@
     'moving'
 ]).
 
+use(Item, Subplace) :-
+    holding(Item),
+    current_pos(CurrentPlace),
+    subplace(CurrentPlace, Subplace),
+    on_use(Item, Subplace).
+
+
 use(Item) :-
     holding(Item),
     current_pos(CurrentPlace),
