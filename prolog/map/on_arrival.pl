@@ -63,7 +63,7 @@ on_arrival(attic_entrance) :-
 on_arrival(cupboard) :-
     write("    Wide cupboard. It's rotting away abaut to fall appart.
     It has 3 compartments. I'should check if there is something usefull in there.
-    ---PATH UNLOCKED---"),
+    ---SUBPLACES UNLOCKED---"),
     assert(subplace(cupboard, left_compartment)),
     assert(subplace(cupboard, middle_compartment)),
     assert(subplace(cupboard, right_compartment)),nl.%has journal.

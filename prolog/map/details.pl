@@ -11,7 +11,7 @@ examination(main_room) :-
 %%%main_room
 examination(desk) :-
     write("    There are few drawers under the desk. I can try to open them.
-    ---NEW PATH UNLOCKED---"),
+    ---NEW SUB PLACES UNLOCKED---"),
     assert(subplace(desk, top_drawer)),
     assert(subplace(desk, mid_drawer)),
     assert(subplace(desk, bottom_drawer)),nl.
