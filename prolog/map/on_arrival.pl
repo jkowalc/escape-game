@@ -37,7 +37,7 @@ on_arrival(chair) :-
 on_arrival(vent) :-
     write("    There is a RAT in here!
     ---NEW PLACE UNLOCKED---"),nl,
-    assert(subplace(vent, rat)).
+    spawn_subplace(vent, rat).
 on_arrival(bed) :-
     write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
     I guess I can take a sit for a while to think..."), nl,
@@ -53,7 +53,7 @@ on_arrival(window) :-
     On a window still sits a RAVEN in his NEST.
     I don't feel like opening a window with him (or her) on the other side.
     ---NEW PLACE UNLOCKED---"),nl,
-    assert(subplace(window, raven)).
+    spawn_subplace(window, raven).
 %%%%%%%%%%%%%%%%%%%%%%%%office
 on_arrival(office) :-
     write("    I'm standing in a middle of poorly lit, destroyed office room.
@@ -66,11 +66,10 @@ on_arrival(attic_entrance) :-
     write("    Old trapdoor. I can't reach it in any way possible..."),nl.
 on_arrival(cupboard) :-
     write("    Wide cupboard. It's rotting away abaut to fall appart.
-    It has 3 compartments. I'should check if there is something usefull in there.
-    ---NEW PLACES UNLOCKED---"),
-    assert(subplace(cupboard, left_compartment)),
-    assert(subplace(cupboard, middle_compartment)),
-    assert(subplace(cupboard, right_compartment)),nl.%has journal.
+    It has 3 compartments. I'should check if there is something usefull in there."),
+    spawn_subplace(cupboard, left_compartment),
+    spawn_subplace(cupboard, middle_compartment),
+    spawn_subplace(cupboard, right_compartment),nl.%has journal.
 
 on_arrival(journal) :-
     write("    I opened an old journal I've found. It's dusty but I still want to find out more about it."),nl. %examine for more info
