@@ -13,7 +13,7 @@ lightable_by_uv(painting).
 lightable_by_uv(bed).
 lightable_by_uv(computer).
 lightable_by_uv(desk).
-lightable_by_uv(fire_place).
+lightable_by_uv(fireplace).
 lightable_by_uv(window).
 
 examination(painting) :-
@@ -42,7 +42,7 @@ examination(computer) :-
     holding(uv_flashlight),
     write("     I can see something is written here - but I cannot read it. I need to turnoff the computer."),nl,!.
 
-examination(fire_place) :-
+examination(fireplace) :-
     holding(uv_flashlight),
     write("     I can see something is written here - number 7"),nl,!.
 
@@ -78,7 +78,7 @@ examination(desk) :-
     assert(path(main_room, window)),
     assert(path(window, nest)),
     assert(path(window, outside)),
-    assert(path(main_room, fire_place)),
+    assert(path(main_room, fireplace)),
     assert(path(main_room, chair)),
     assert(path(main_room, wooden_box)),
 
