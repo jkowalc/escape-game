@@ -25,10 +25,10 @@ on_arrival(torn_corner) :-
 on_arrival(chair) :-
     write("    Old chair lined with red fabric. 
     Looks comfy apart of clay mud wiped all over it..."),nl.
-on_arrival(vent_cover) :-
-    write("    This vent cover looks big enouth for me to go inside..."),nl.
 on_arrival(vent) :-
-    write("    There is a mice in here!"),nl.
+    write("    There is a RAT in here!
+    ---NEW PLACE UNLOCKED---"),nl,
+    assert(subplace(bent, rat)).
 on_arrival(heavy_door) :-
     write("    Big heavy door closed shut.
     Nail marks and scratches don't make me feel good about it..."),nl.
@@ -47,7 +47,7 @@ on_arrival(window) :-
     Thermometer is hanging on the other side.
     On a window still sits a RAVEN in his NEST.
     I don't feel like opening a window with him (or her) on the other side.
-    ---SUBPLACE UNLOCKED---"),nl,
+    ---NEW PLACE UNLOCKED---"),nl,
     assert(subplace(window, raven)).
 %%%%%%%%%%%%%%%%%%%%%%%%office
 on_arrival(office) :-
@@ -62,7 +62,7 @@ on_arrival(attic_entrance) :-
 on_arrival(cupboard) :-
     write("    Wide cupboard. It's rotting away abaut to fall appart.
     It has 3 compartments. I'should check if there is something usefull in there.
-    ---SUBPLACES UNLOCKED---"),
+    ---NEW PLACES UNLOCKED---"),
     assert(subplace(cupboard, left_compartment)),
     assert(subplace(cupboard, middle_compartment)),
     assert(subplace(cupboard, right_compartment)),nl.%has journal.

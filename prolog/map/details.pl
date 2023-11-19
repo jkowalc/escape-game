@@ -16,7 +16,7 @@ examination(main_room) :-
 %%%main_room
 examination(desk) :-
     write("    There are few drawers under the desk. I can try to open them.
-    ---NEW SUB PLACES UNLOCKED---"),
+    ---NEW PLACES UNLOCKED---"),
     assert(subplace(desk, top_drawer)),
     assert(subplace(desk, mid_drawer)),
     assert(subplace(desk, bottom_drawer)),nl.
@@ -36,11 +36,12 @@ examination(torn_corner) :-
     It says:\"I have 4 legs, two heads, huge slender body and little friend.\""),nl.
 examination(chair) :-
     write("    Mud smeared on top looks like a foot print... Why someone was standing on top of it?
-    Oh! I can move it underneeth the vent I've seen before
-    ---NEW PATH UNLOCKED---"),
-    assert(path(chair, vent_cover)),nl.
+    Oh! I can move it underneeth the vent I've seen before.
+    ---NEW PLACE UNLOCKED---"),nl,
+    assert(subplace(chair, vent_cover)).
 examination(vent_cover) :-
-    write("    It seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool..."),nl.
+    write("    This vent cover looks big enouth for me to go inside... 
+    It seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool..."),nl.
 examination(wooden_box) :-
     write("     This wooden box looks pretty rough, although it might be impossible to open it by force. But there is some kind of mechanism"),nl,
     spawn_item(color_code, wooden_box).
@@ -109,7 +110,7 @@ examination(right_compartment) :-
 examination(journal) :-
     write("    Leather is worn and pages turned yellow over time.
     You can see that only first three pages are filled.
-    ---NEW SUBPLACES UNLOCKED---"),
+    ---NEW PLACES UNLOCKED---"),
     assert(subplace(journal, page_1)),
     assert(subplace(journal, page_2)),
     assert(subplace(journal, page_3)),nl.

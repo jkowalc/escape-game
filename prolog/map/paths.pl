@@ -16,8 +16,8 @@ path(window, outside).
 path(main_room, fire_place).
 path(main_room, chair).
 % path(chair, vent_cover).
-path(vent_cover, vent).
-path(chair, vent).
+% path(vent_cover, vent).
+% path(chair, vent).
 path(main_room, wooden_box).
 
 
