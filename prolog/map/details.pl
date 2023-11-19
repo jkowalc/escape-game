@@ -4,7 +4,7 @@
     'items'
 ]).
 
-:- dynamic blockedWithPassword/1, turnedOff/1, withoutHardDrive/1.  
+:- dynamic blockedWithPassword/1, turnedOff/1, withoutHardDrive/1, alarm_rings/0.  
 
 %%%%Rooms
 examination(main_room) :-

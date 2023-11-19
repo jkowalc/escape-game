@@ -4,15 +4,16 @@
     '../map/subplaces'
 ]).
 
-use(litte_key) :-
-    holding(litte_key),
-    on_use(handcuffs, litte_key),nl,!.
 
 use(Item, Subplace) :-
     holding(Item),
     current_pos(CurrentPlace),
     subplace(CurrentPlace, Subplace),
     on_use(Item, Subplace).
+
+use(litte_key) :-
+    holding(litte_key),
+    on_use(handcuffs, litte_key),nl,!.
 
 use(Item) :-
     holding(Item),
