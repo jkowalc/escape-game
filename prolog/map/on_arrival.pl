@@ -106,8 +106,3 @@ on_arrival(exit_door) :-
 
 on_arrival(_) :-
     write("     I can't see anything!").
-
-describe :- 
-    current_pos(CurrentPlace),
-    on_arrival(CurrentPlace),
-    !, nl.
