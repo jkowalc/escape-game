@@ -49,7 +49,7 @@ look :-
     look_items(CurrentPlace).
 
 look_destinations(CurrentPlace) :-
-    findall(Place, path(CurrentPlace, Place), Places),
+    findall(Place, (path(CurrentPlace, Place); path(Place, CurrentPlace)), Places),
     (   Places = [] 
     ->  true
     ;   write('Possible destinations: '), nl,
@@ -65,7 +65,7 @@ look_interesting_places(CurrentPlace) :-
     ).
 
 look_items(CurrentPlace) :-
-    findall(Item, item_at(Item, CurrentPlace), Items),
+    findall(Item, pickable_item_at(Item, CurrentPlace), Items),
     (   Items = []
     ->  true
     ;   write("There are items around you: "), nl,
