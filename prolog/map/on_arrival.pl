@@ -107,4 +107,4 @@ on_arrival(the_end) :-
 
 
 on_arrival(_) :-
-    write("     I can't see anything!").
+    write("     I can't see anything!"),nl.
