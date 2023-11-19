@@ -33,4 +33,4 @@ list_examine :-
 
 examine :- 
    current_pos(CurrentPlace),
-   examine(CurrentPlace).
+   examine(CurrentPlace),!, nl.

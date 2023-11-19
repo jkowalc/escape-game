@@ -19,6 +19,7 @@ examination(main_room) :-
 examination(desk) :-
     alarm_rings,
     retract(alarm_rings),
+    assert(path(main_room, heavy_door)),
     assert(path(main_room, bed)),
     assert(path(bed, sit_on_bed)),
     assert(path(main_room, painting)),

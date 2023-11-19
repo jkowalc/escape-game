@@ -44,7 +44,7 @@ path(corridor, main_room_entrance).
 
 %%%%%zone changes
 % path(vent, office). %go to office
-path(main_room, heavy_door).
+% path(main_room, heavy_door). ulocked after disabling alarm
 % path(heavy_door, corridor). %will be closed at the begining
 path(office, corridor_door).
 path(corridor_door, corridor).
