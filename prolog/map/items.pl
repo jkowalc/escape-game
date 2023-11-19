@@ -6,4 +6,4 @@ spawn_item(Item, Place) :-
     \+ item_spawned(Item),
     assert(pickable_item_at(Item, Place)),
     assert(item_spawned(Item)),
-    write('---NEW ITEM---').
+    write('---NEW ITEM---'),nl.

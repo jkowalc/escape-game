@@ -84,25 +84,23 @@ examination(desk) :-
     Now there is silence in the room. I can examine the desk once more. Maybe I can find here something else."),
     !,nl.
 examination(desk) :-
-    write("    There are few drawers under the desk. I can try to open them.
-    ---NEW PLACES UNLOCKED---"),
-    assert(subplace(desk, top_drawer)),
-    assert(subplace(desk, mid_drawer)),
-    assert(subplace(desk, bottom_drawer)),nl,!.
+    write("    There are few drawers under the desk. I can try to open them."),
+    spawn_subplace(desk, top_drawer),
+    spawn_subplace(desk, mid_drawer),
+    spawn_subplace(desk, bottom_drawer),nl,!.
 examination(bottom_drawer) :-
     write("    There is a small bite of cheese. It won't fill my stomach but may come in handy later."), nl,
     spawn_item(cheese, desk),nl,!.
 examination(top_drawer) :-
     write("    There is a small key. It might fit to something I have right now."),nl,
     spawn_item(small_key, desk),nl,!.
-examination(fire_place) :-
+examination(fireplace) :-
     write("    Fire place wasnt used in a long time but thera are still some chared but sturdy pices of wood.
     LONG STICK always can come in handy."), nl,
-    spawn_item(long_stick, fire_place).
+    spawn_item(long_stick, fireplace).
 examination(painting) :-
-    write("    It's very dameged. Oh! The TORN CORNER of the painting is peeling back from the frame!
-    ---NEW PATH UNLOCKED---"),
-    assert(subplace(painting, torn_corner)),nl.
+    write("    It's very damaged. Oh! The TORN CORNER of the painting is peeling back from the frame!"),
+    spawn_subplace(painting, torn_corner),nl.
 examination(torn_corner) :-
     write("    After pulling the canvas back I realised that there is a message scratched into painting backing.
     It says:\"I have 4 legs, two heads, huge slender body and little friend.\""),nl.
@@ -111,19 +109,17 @@ examination(heavy_door) :-
     Nail marks and scratches don't make me feel good about it..."),nl.
 examination(chair) :-
     write("    Mud smeared on top looks like a foot print... Why someone was standing on top of it?
-    Oh! I can move it underneeth the vent I've seen before.
-    ---NEW PLACE UNLOCKED---"),nl,
-    assert(subplace(chair, vent_cover)).
+    Oh! I can move it underneeth the vent I've seen before."),nl,
+    spawn_subplace(chair, vent_cover).
 examination(vent_cover) :-
     write("    This vent cover looks big enouth for me to go inside... 
     It seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool..."),nl.
 examination(wooden_box) :-
-    write("     This wooden box looks pretty rough, although it might be impossible to open it by force. But there is some kind of mechanism"),nl,
-    spawn_item(color_code, wooden_box).
+    write("     This wooden box looks pretty rough, although it might be impossible to open it by force. But there is some kind of mechanism"),nl.
 examination(color_code) :-
     write("     Quite bizzare contraption. There are 4 button which all are different color - red, green, blue and yellow.
     Maybe I have to press them in some order?"),nl,
-    write("     To enter code use do like so - enter_code(blueYellowGreenRed)"),nl.
+    write("     To enter code use - eg.: enter_code(blue_yellow_green_red)"),nl.
 examination(heavy_door) :-
     write("    I can't open them! They must be locked from the outside..."),nl.
 examination(sit_on_bed) :-
@@ -131,7 +127,7 @@ examination(sit_on_bed) :-
     spawn_item(teddy_bear, sit_on_bed).
 examination(bed) :-
     write("    There's a bed with disgustingly YELLOW legs. Your eyes are pulled to two CRIMSON blood-like pillows.
-    However quilt seems to be quite different, it calmes you down adn reminds of life outside."),nl.
+    However quilt seems to be quite different, it calms you down and reminds of life outside."),nl.
 examination(teddy_bear) :-
     write("    It's lifeless button eyes in pair with his dyed-out BLUE body create dull entirety, which dampens you down"),nl.
 examination(raven) :-
@@ -139,9 +135,8 @@ examination(raven) :-
     Maybe if I had something to push him away I could acces his nest.
     Thermometer shows that there is 40 degrees below 0, it must be broken. Right?"),nl.
 examination(nest) :-
-    write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest.
-    ---ITEM FOUND---"),
-    assert(pickable_item_at(screwdriver_bit, nest)),nl.
+    write("    Now with the bird gone I can see silver SCREWDRIVER BIT burried in the nest."),
+    spawn_item(screwdriver_bit, window),nl.
 
 
 %%%%%%%%%%%%%%office
@@ -165,8 +160,7 @@ examination(computer) :-
 examination(computer) :-
     turnedOff(computer),
     write("    It's turned off but I hope it'll turn on now, but the on button is too small for my fingers.
-    I need to use something to press it.
-    ---NEW PATH---"),!,nl.
+    I need to use something to press it."),!,nl.
 
 examination(computer) :-
     blockedWithPassword(computer),
@@ -188,11 +182,10 @@ examination(right_compartment) :-
     assert(path(cupboard, journal)),nl. %%journal work as in minecraft
 examination(journal) :-
     write("    Leather is worn and pages turned yellow over time.
-    You can see that only first three pages are filled.
-    ---NEW PLACES UNLOCKED---"),
-    assert(subplace(journal, page_1)),
-    assert(subplace(journal, page_2)),
-    assert(subplace(journal, page_3)),nl.
+    You can see that only first three pages are filled."),
+    spawn_subplace(journal, page_1),
+    spawn_subplace(journal, page_2),
+    spawn_subplace(journal, page_3),nl.
 
 
 %%%%journal
@@ -221,9 +214,8 @@ examination(page_3) :-
     a madman condemned to dance upon the razor's edge between the realms of the living and the damned.
     This journal, my only confidante in `this descent into madness,
     bears witness to the unraveling of a mind consumed by the..."),nl,
-    write("    /It's not finished, upon futher inspection you found a torn out page placed back at the end of a journal/
-    ---PATH UNLOCKED---"),
-    assert(subplace(journal, page_4)),nl.
+    write("    /It's not finished, upon futher inspection you found a torn out page placed back at the end of a journal/"),
+    spawn_subplace(journal, page_4),nl.
 examination(page_4) :-
     write("     darkness that lurks in the hidden recesses of the soul.
     Within the desolate corridors of my tortured mind, a cryptic mantra emerges: 'whispers_of_the_abyss'.
@@ -231,6 +223,15 @@ examination(page_4) :-
 
 examination(attic_entrance) :-
     write("    Trapdoor has a T shaped handle. I barely cannot reach it. I may be able to hook something on it to pull it open"),nl.
+
+
+examination(baricated_door) :-
+    write("     I'm on the other side of that heavy door. It's blocked with rumble. I can unlock it now and go back to main room
+    ---PATH UNLOCKED---"),
+    assert(path(corridor, main_room)),
+    retract(subplace(main_room, heavy_door)),
+    retract(subplace(corridor,baricated_door)),
+    look.
 
 examination(_) :-
     write("    There is nothing usefull to be found..."),nl.

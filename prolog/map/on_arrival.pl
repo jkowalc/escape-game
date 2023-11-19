@@ -20,14 +20,14 @@ on_arrival(desk) :-
     write("    There's the alarm. I have to examine the desk, maybe I can disable the alarm."),!,nl.
 on_arrival(desk) :-
     write("    An old desk covered with dust. 
-    The chair was mooved to the other end of a room, so I can't sit here..."),nl.
-on_arrival(fire_place) :-
+    The chair was moved to the other end of a room, so I can't sit here..."),nl.
+on_arrival(fireplace) :-
     write("    It's and big antique fireplace.
     I wish it was lit so I could warm myself up. 
     Unfortunetly without matches even the half bured CANDLE sitting on top will be no use for me..."),nl.
 on_arrival(painting) :-
-    write("    It's a mastepice I've seen in history books.
-    It is beatifull, at least it was... before someone dameged it"),nl.
+    write("    It's a mastepice. I've seen it in history books.
+    It is beatifull, at least it was... before someone damaged it"),nl.
 on_arrival(torn_corner) :-
     write("    It's a torn corner of a painting. 
     Fabric is deattached from glded wooden frame."),nl.
@@ -37,24 +37,23 @@ on_arrival(chair) :-
 on_arrival(vent) :-
     write("    There is a RAT in here!
     ---NEW PLACE UNLOCKED---"),nl,
-    assert(subplace(vent, rat)).
+    spawn_subplace(vent, rat).
 on_arrival(bed) :-
     write("    In diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.
     I guess I can take a sit for a while to think..."), nl,
     spawn_item(pillow, bed),
     fail.
 on_arrival(bed) :-
-    !, nl.
-on_arrival(sit_on_bed) :-
     write("    The bed is sqeeqing and the blanket is itchy.
-    But it feels good to rest for a second."),nl.
+    But it feels good to rest for a second."),
+    !, nl.
 on_arrival(window) :-
     write("    Dirty window looking out over moody forest. 
     Thermometer is hanging on the other side.
     On a window still sits a RAVEN in his NEST.
     I don't feel like opening a window with him (or her) on the other side.
     ---NEW PLACE UNLOCKED---"),nl,
-    assert(subplace(window, raven)).
+    spawn_subplace(window, raven).
 %%%%%%%%%%%%%%%%%%%%%%%%office
 on_arrival(office) :-
     write("    I'm standing in a middle of poorly lit, destroyed office room.
@@ -67,11 +66,10 @@ on_arrival(attic_entrance) :-
     write("    Old trapdoor. I can't reach it in any way possible..."),nl.
 on_arrival(cupboard) :-
     write("    Wide cupboard. It's rotting away abaut to fall appart.
-    It has 3 compartments. I'should check if there is something usefull in there.
-    ---NEW PLACES UNLOCKED---"),
-    assert(subplace(cupboard, left_compartment)),
-    assert(subplace(cupboard, middle_compartment)),
-    assert(subplace(cupboard, right_compartment)),nl.%has journal.
+    It has 3 compartments. I'should check if there is something usefull in there."),
+    spawn_subplace(cupboard, left_compartment),
+    spawn_subplace(cupboard, middle_compartment),
+    spawn_subplace(cupboard, right_compartment),nl.%has journal.
 
 on_arrival(journal) :-
     write("    I opened an old journal I've found. It's dusty but I still want to find out more about it."),nl. %examine for more info
@@ -100,7 +98,6 @@ on_arrival(baricated_door) :-
     retract(subplace(main_room, heavy_door)),
     retract(subplace(corridor,baricated_door)),
     look.
-
 on_arrival(exit_door) :-
     write("    It's my way out. I just need a key to open it."),!,nl.
 
@@ -110,4 +107,4 @@ on_arrival(the_end) :-
 
 
 on_arrival(_) :-
-    write("     I can't see anything!").
+    write("     I can't see anything!"),nl.

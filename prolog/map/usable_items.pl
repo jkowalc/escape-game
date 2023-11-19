@@ -1,6 +1,7 @@
 :- ensure_loaded([
     'items',
-    '../rules/moving'
+    '../rules/moving',
+    '../rules/interaction'
 ]).
 
 on_use(uv_flashlight, Place) :-
@@ -10,12 +11,12 @@ on_use(uv_flashlight, Place) :-
 on_use(uv_flashlight, _) :-
     write("    I cannot see anything new."),nl,!.
 
-on_use(long_stick, nest) :-
+on_use(long_stick, raven) :-
     write("     I've succesfully pushed the RAVEN avay. Not only it's now away from his nest, but also he left something behind.
     ---NEW ITEM---"),
     retract(subplace(window, raven)),
-    assert(subplace(window, nest)),
-    assert(pickable_item_at(feather, window)),
+    spawn_subplace(window, nest),
+    spawn_item(feather, window),
     % assert(pickable_item_at(screwdriver_bit, nest)),%done in examine nest
     !,nl.
 

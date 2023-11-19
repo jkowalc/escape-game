@@ -47,8 +47,8 @@ path(corridor, main_room_entrance).
 % path(vent, office). %go to office
 % path(main_room, heavy_door). unlocked after disabling alarm
 % path(heavy_door, corridor). %will be closed at the begining
-path(office, corridor_door).
-path(corridor_door, corridor).
+
+% path(corridor_door, corridor).
 
 % path(place, otherplace).
 % path()
