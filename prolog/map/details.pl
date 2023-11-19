@@ -116,11 +116,11 @@ examination(vent_cover) :-
     It seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool..."),nl.
 examination(wooden_box) :-
     write("     This wooden box looks pretty rough, although it might be impossible to open it by force. But there is some kind of mechanism"),nl,
-    spawn_item(color_code, wooden_box).
+    spawn_subplace(wooden_box, color_code).
 examination(color_code) :-
     write("     Quite bizzare contraption. There are 4 button which all are different color - red, green, blue and yellow.
     Maybe I have to press them in some order?"),nl,
-    write("     To enter code use do like so - enter_code(blueYellowGreenRed)"),nl.
+    write("     To enter code use - eg.: enter_code(blue_yellow_green_red)"),nl.
 examination(heavy_door) :-
     write("    I can't open them! They must be locked from the outside..."),nl.
 examination(sit_on_bed) :-
