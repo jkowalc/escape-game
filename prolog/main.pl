@@ -15,7 +15,13 @@ clear_all :-
 clear_all.
 
 starting_conditions :-
-    assert(current_pos(main_room)).
+    assert(current_pos(main_room)),
+    assert(turnedOff(computer)),
+    assert(withoutHardDrive(computer)),
+    assert(blockedWithPassword(computer)),
+    assert(handcuffed),
+    assert(alarm_rings),
+    assert(holding(handcuffs)).
 
 h :- 
     instructions,
@@ -43,4 +49,6 @@ start :-
     clear_all,
     instructions,
     starting_conditions,
+    current_pos(X),
+    on_arrival(X),
     !.
