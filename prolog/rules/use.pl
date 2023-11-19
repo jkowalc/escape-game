@@ -11,9 +11,9 @@ use(Item, Subplace) :-
     subplace(CurrentPlace, Subplace),
     on_use(Item, Subplace).
 
-use(litte_key) :-
-    holding(litte_key),
-    on_use(handcuffs, litte_key),nl,!.
+use(small_key) :-
+    holding(small_key),
+    on_use(handcuffs, small_key),nl,!.
 
 use(Item) :-
     holding(Item),

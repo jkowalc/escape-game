@@ -40,7 +40,7 @@ instructions :-
     write("inventory.\tlist contents of your inventory"), nl,
     write("use(Item)\tuse the item"), nl,
     write("combine.\tcombine all possible items in your inventory"), nl,
-    write("combine(Item, OtherItem)\tcombine the two items"), nl,
+    write("combine(Item, OtherItem).\tcombine the two items"), nl,
     write("h.\t\tlist these instructions again"),nl,
     nl.
 
