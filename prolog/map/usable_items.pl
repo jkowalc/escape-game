@@ -1,5 +1,6 @@
 :- ensure_loaded([
-    'items'
+    'items',
+    '../rules/moving'
 ]).
 
 on_use(long_stick, nest) :-

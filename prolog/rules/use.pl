@@ -1,7 +1,7 @@
 :- ensure_loaded([
     '../map/usable_items',
     'inventory',
-    'moving'
+    '../map/subplaces'
 ]).
 
 use(Item, Subplace) :-
@@ -10,8 +10,7 @@ use(Item, Subplace) :-
     subplace(CurrentPlace, Subplace),
     on_use(Item, Subplace).
 
-
 use(Item) :-
     holding(Item),
     current_pos(CurrentPlace),
-    on_use(CurrentPlace, Item).
+    on_use(Item, CurrentPlace).
