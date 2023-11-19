@@ -1,7 +1,9 @@
 :- ensure_loaded([
     '../map/paths', 
     "codes",
-    'items'
+    'items',
+    '../rules/inventory',
+    'subplaces'
 ]).
 
 :- dynamic blockedWithPassword/1, turnedOff/1, withoutHardDrive/1, alarm_rings/0.  
