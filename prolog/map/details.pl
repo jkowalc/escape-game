@@ -131,7 +131,7 @@ examination(sit_on_bed) :-
     spawn_item(teddy_bear, sit_on_bed).
 examination(bed) :-
     write("    There's a bed with disgustingly YELLOW legs. Your eyes are pulled to two CRIMSON blood-like pillows.
-    However quilt seems to be quite different, it calmes you down adn reminds of life outside."),nl.
+    However quilt seems to be quite different, it calms you down and reminds of life outside."),nl.
 examination(teddy_bear) :-
     write("    It's lifeless button eyes in pair with his dyed-out BLUE body create dull entirety, which dampens you down"),nl.
 examination(raven) :-
