@@ -19,6 +19,16 @@ examination(main_room) :-
 examination(desk) :-
     alarm_rings,
     retract(alarm_rings),
+    assert(path(main_room, bed)),
+    assert(path(bed, sit_on_bed)),
+    assert(path(main_room, painting)),
+    assert(path(main_room, window)),
+    assert(path(window, nest)),
+    assert(path(window, outside)),
+    assert(path(main_room, fire_place)),
+    assert(path(main_room, chair)),
+    assert(path(main_room, wooden_box)),
+
     write("     I decided to hit the clock as hard as I could. It worked! The clock shattered to pieces.
     Now there is silence in the room. I can examine the desk once more. Maybe I can find here something else."),
     !,nl.

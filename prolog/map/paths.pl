@@ -5,20 +5,20 @@ path(main_room, desk).
 % path(desk, top_drawer).
 % path(desk, mid_drawer).
 % path(desk, bottom_drawer).
-path(main_room, bed).
-path(bed, sit_on_bed).
-path(main_room, painting).
-% path(painting, torn_corner).
-path(main_room, window).
-path(window, nest).
-path(window, outside).
-% path(window, thermometer).
-path(main_room, fire_place).
-path(main_room, chair).
-% path(chair, vent_cover).
-% path(vent_cover, vent).
-% path(chair, vent).
-path(main_room, wooden_box).
+% path(main_room, bed). paths are created after alarm is disabled
+% path(bed, sit_on_bed). paths are created after alarm is disabled
+% path(main_room, painting). paths are created after alarm is disabled
+% % path(painting, torn_corner). paths are created after alarm is disabled
+% path(main_room, window). paths are created after alarm is disabled
+% path(window, nest). paths are created after alarm is disabled
+% path(window, outside). paths are created after alarm is disabled
+% % path(window, thermometer). paths are created after alarm is disabled
+% path(main_room, fire_place). paths are created after alarm is disabled
+% path(main_room, chair). paths are created after alarm is disabled
+% % path(chair, vent_cover). paths are created after alarm is disabled
+% % path(vent_cover, vent). paths are created after alarm is disabled
+% % path(chair, vent). paths are created after alarm is disabled
+% path(main_room, wooden_box). paths are created after alarm is disabled
 
 
 %%%%% OFFICE

@@ -12,20 +12,14 @@ move(Place) :- %used for forced movemnet of player.
     assert(current_pos(Place)),
     nl.
 
-go(desk):-
-    current_pos(CurrentPlace),
-    (path(CurrentPlace, desk); path(desk, CurrentPlace)),
-    retract(current_pos(CurrentPlace)),
-    assert(current_pos(desk)),
-    on_arrival(desk),
-    look,
-    !, nl.
-
-go(_) :-
-    alarm_rings,
-    write("    The sound of the alarm clock is so disturbing that I can't go there.
-    I have to go to the desk to disable it!"),nl,nl,
-    write("    Failed to go there!"),!,nl.
+% go(desk):-
+%     current_pos(CurrentPlace),
+%     (path(CurrentPlace, desk); path(desk, CurrentPlace)),
+%     retract(current_pos(CurrentPlace)),
+%     assert(current_pos(desk)),
+%     on_arrival(desk),
+%     look,
+%     !, nl.
 
 
 go(Place) :- 
@@ -36,6 +30,12 @@ go(Place) :-
     on_arrival(Place),
     look,
     !, nl.
+
+go(_) :-
+    alarm_rings,
+    write("    The sound of the alarm clock is so disturbing that I can't go there.
+    I have to go to the desk to disable it!"),nl,nl,
+    write("    Failed to go there!"),!,nl.
 
 go(_) :-
     write('You can\'t go there'),
