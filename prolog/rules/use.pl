@@ -13,7 +13,7 @@ use(Item, Subplace) :-
 
 use(small_key) :-
     holding(small_key),
-    on_use(handcuffs, small_key),nl,!.
+    on_use(small_key, handcuffs),nl,!.
 
 use(Item) :-
     holding(Item),
