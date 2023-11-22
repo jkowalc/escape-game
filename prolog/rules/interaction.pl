@@ -15,6 +15,17 @@ examine(Thing) :-
    examination(Thing),
    !, nl.
 
+examine(Thing) :-
+   holding(Thing),
+   examination(Thing),
+   !, nl.
+
+examine(Thing) :-
+   current_pos(CurrentPlace),
+   pickable_item_at(Thing, CurrentPlace),
+   examination(Thing),
+   !, nl.
+
 % list_examine :-
 %    current_pos(CurrentPlace),
 %    \+ subplace(CurrentPlace, _),
