@@ -13,7 +13,7 @@ data GameState = GameState
 
 path :: Place -> Place -> Bool
 path place otherplace 
-    |place == MainRoom && isIn otherplace [Desk] = True        
+    |(place == MainRoom && isIn otherplace [Desk]) || (otherplace == MainRoom && isIn place [Desk]) = True         
     |otherwise = False 
 
 isIn p [] = False
