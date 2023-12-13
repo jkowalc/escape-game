@@ -3,13 +3,23 @@ import System.IO
 data Item = TeddyBear | SmallKey | Cheese
     deriving (Show, Eq)
 
-data Place = MainRoom | TornCorner | Nest
+data Place = MainRoom| Desk | TornCorner | Nest
     deriving (Show, Eq)
 
 data GameState = GameState
     { inventory :: [Item]
     , currentPlace :: Place
     } deriving (Show)
+
+path :: Place -> Place -> Bool
+path place otherplace 
+    |place == MainRoom && isIn otherplace [Desk] = True        
+    |otherwise = False 
+
+isIn p [] = False
+isIn p (x:xs)
+    | p==x=True
+    | otherwise = isIn p xs
 
 -- Initial game state
 initialState :: GameState
@@ -38,8 +48,13 @@ handleCommand state command =
             return state
 
         Go destination -> do
-            putStrLn $ "Going to " ++ show destination
-            return $ state { currentPlace = destination }
+            if path (currentPlace state) destination
+                then do 
+                    putStrLn $ "Going to " ++ show destination
+                    return $ state { currentPlace = destination }
+                else do
+                     putStrLn $ "No valid path from " ++ show (currentPlace state) ++ " to " ++ show destination
+                     return state
 
         Examine -> do
             putStrLn "Looking around..."
@@ -158,6 +173,7 @@ instance Read Item where
 
 instance Read Place where
     readsPrec _ "MainRoom"  = [(MainRoom, "")]
+    readsPrec _ "Desk"      = [(Desk, "")]
     readsPrec _ "TornCorner"= [(TornCorner, "")]
     readsPrec _ "Nest"      = [(Nest, "")]
     readsPrec _ _           = []

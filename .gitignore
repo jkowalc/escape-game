@@ -1,3 +1,4 @@
 *.o
 *.hi
 haskell/escape
+haskell/escape.exe
