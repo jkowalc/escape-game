@@ -1,9 +1,12 @@
 import System.IO
 
-data Item = TeddyBear | SmallKey | Cheese
+data Item = TeddyBear | SmallKey | Cheese |ScrewdriverBit|ScredriverHandle|Screwdriver
     deriving (Show, Eq)
 
-data Place = MainRoom| Desk | TornCorner | Nest
+data Place = MainRoom| Desk | Window| Chair | WoodenBox|Painting |Vent|OldDoor|Fireplace| Office|Computer|CoffeTable
+    deriving (Show, Eq)
+
+data SubPlace = TopDrawer|MidleDrawer|BottomDrawer|Nest|TornCorner|VentCover
     deriving (Show, Eq)
 
 data GameState = GameState
@@ -13,7 +16,7 @@ data GameState = GameState
 
 path :: Place -> Place -> Bool
 path place otherplace 
-    |(place == MainRoom && isIn otherplace [Desk]) || (otherplace == MainRoom && isIn place [Desk]) = True         
+    |place == MainRoom && isIn otherplace [Desk, Window,Fireplace, Chair, OldDoor, WoodenBox,Painting]= True         
     |otherwise = False 
 
 isIn p [] = False
