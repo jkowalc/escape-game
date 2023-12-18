@@ -28,7 +28,23 @@ executable escape-game
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
-    -- other-modules:
+    other-modules: Core.Command
+                   Core.CommandHandler
+                   Core.CommandParser
+                   MapEventHandler.OnArrival
+                   MapEventHandler.OnCombine
+                   MapEventHandler.OnEnterCode
+                   MapEventHandler.OnExamine
+                   MapEventHandler.OnUse
+                   Object.Item
+                   Object.Place
+                   Relation.Inventory
+                   Relation.ItemAt
+                   Relation.Path
+                   Relation.Subplace
+                   State.GameState
+                   State.Util
+                   Util.IO
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
