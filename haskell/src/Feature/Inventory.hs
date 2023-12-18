@@ -1,0 +1,1 @@
+module Relation.Inventory where
