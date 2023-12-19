@@ -8,7 +8,7 @@ data Place = MainRoom
     | Fireplace
     | Painting
     | TornCorner
-    | Char
+    | Chair
     | Vent
     | Bed
     | SitOnBed
@@ -43,7 +43,7 @@ instance Read Place where
     readsPrec _ "fireplace" = [(Fireplace, "")]
     readsPrec _ "painting" = [(Painting, "")]
     readsPrec _ "torn corner" = [(TornCorner, "")]
-    readsPrec _ "char" = [(Char, "")]
+    readsPrec _ "char" = [(Chair, "")]
     readsPrec _ "vent" = [(Vent, "")]
     readsPrec _ "bed" = [(Bed, "")]
     readsPrec _ "sit on bed" = [(SitOnBed, "")]
