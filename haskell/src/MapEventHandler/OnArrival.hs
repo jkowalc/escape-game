@@ -92,9 +92,7 @@ onArrival AtticEntrance state = do
 onArrival Cupboard state = do
     putStrLn "\tWide cupboard. It's rotting away abaut to fall appart.\n\
     \\tIt has 3 compartments. I'should check if there is something usefull in there."
-    state1 <- spawnSubplace Cupboard LeftCompartment state
-    state2 <- spawnSubplace Cupboard MiddleCompartment state1
-    spawnSubplace Cupboard RightCompartment state2
+    return state
 
 onArrival Journal state = do
     putStrLn "\tI opened an old journal I've found. It's dusty but I still want to find out more about it."
