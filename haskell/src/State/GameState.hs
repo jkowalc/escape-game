@@ -18,7 +18,7 @@ data GameState = GameState
 initialState :: GameState
 initialState = GameState
     { inventory = [
-        Handcuffs, Screwdriver, SmallKey, CorridorKey
+        Handcuffs, Screwdriver, SmallKey
     ]
     , currentPlace = CoffeTable
     , paths = [

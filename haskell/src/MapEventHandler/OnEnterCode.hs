@@ -61,9 +61,15 @@ onOpenLock state 1 = do
     return state1
 
 onOpenLock state 2 = do
-    putStrLn "vault code TODO"
-    return state
+    putStrLn "Logged into computer!\
+    \vault code: TODO"
+    let state1 = despawnSubplace ComputerPassword Computer state
+    return state1
 onOpenLock state 3 = do
+    putStrLn "opened ColorCode"
+    let state1 = despawnSubplace WoodenBox ColorCode state
+    spawnItem ScrewdriverHandle WoodenBox state1
+onOpenLock state 4 = do
     putStrLn "opened ColorCode"
     let state1 = despawnSubplace WoodenBox ColorCode state
     spawnItem ScrewdriverHandle WoodenBox state1
