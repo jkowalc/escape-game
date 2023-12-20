@@ -46,6 +46,7 @@ executable escape-game
                    Feature.Moving
                    Feature.Look
                    Feature.Use
+                   Feature.Combine
                    State.GameState
                    State.Util
                    Util.IO

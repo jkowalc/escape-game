@@ -9,6 +9,7 @@ import Feature.Examine (examinePlace, examineItem)
 import Feature.Moving (go)
 import Feature.Look (printPossibilities)
 import Feature.Use (useOnPlace, useOnItem)
+import Feature.Combine (combine)
 
 handleCommand :: Command -> GameState -> IO GameState
 
@@ -50,6 +51,9 @@ handleCommand (UseOnPlace item place) state = do
 
 handleCommand (UseOnItem item1 item2) state = do
     useOnItem item1 item2 state
+
+handleCommand (Combine item1 item2) state = do
+    combine item1 item2 state
 
 handleCommand Help state = do
     printHelp

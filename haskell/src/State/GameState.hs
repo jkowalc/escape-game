@@ -1,6 +1,6 @@
 module State.GameState where
 
-import Object.Item (Item (Handcuffs))
+import Object.Item (Item (Handcuffs, ScrewdriverBit, ScrewdriverHandle))
 import Object.Place (Place (..))
 import qualified Data.Map as Map
 
@@ -16,7 +16,9 @@ data GameState = GameState
 initialState :: GameState
 initialState = GameState
     { inventory = [
-        Handcuffs
+        Handcuffs,
+        ScrewdriverBit,
+        ScrewdriverHandle
     ]
     , currentPlace = MainRoom
     , paths = [
