@@ -75,6 +75,7 @@ instance Read Place where
     readsPrec _ "corridor door" = [(CorridorDoor, "")]
     readsPrec _ "attic entrance" = [(AtticEntrance, "")]
     readsPrec _ "coffe table" = [(CoffeTable, "")]
+    readsPrec _ "vault" = [(Vault, "")]
     readsPrec _ "computer" = [(Computer, "")]
     readsPrec _ "cupboard" = [(Cupboard, "")]
     readsPrec _ "left compartment" = [(LeftCompartment, "")]
