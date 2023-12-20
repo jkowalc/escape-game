@@ -1,6 +1,7 @@
 module Object.Place where
 
 data Place = MainRoom
+    | MainRoomEntrance
     | HeavyDoor
     | WoodenBox
     | ColorCode
@@ -30,7 +31,7 @@ data Place = MainRoom
     | KeyCase
     | Pad10Digit
     | TheEnd
-    deriving (Show, Eq)
+    deriving (Show, Eq, Ord)
 
 
 -- if user shouldn't be able to enter any of these places, remove them from readsPrec
