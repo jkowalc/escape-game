@@ -6,7 +6,8 @@ import State.GameState (GameState(..), currentPlace)
 import Control.Exception (handle)
 import Feature.Inventory (dropItem, takeItem, printInventory)
 import Feature.Examine (examinePlace, examineItem)
-import Feature.Moving (go, printPossibilities)
+import Feature.Moving (go)
+import Feature.Look (printPossibilities)
 
 handleCommand :: Command -> GameState -> IO GameState
 

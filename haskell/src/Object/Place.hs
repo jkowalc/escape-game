@@ -14,6 +14,7 @@ data Place = MainRoom
     | TornCorner
     | Chair
     | Vent
+    | Rat
     | VentCover
     | Bed
     | SitOnBed
