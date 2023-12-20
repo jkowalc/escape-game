@@ -6,6 +6,7 @@ import State.GameState (GameState(..), currentPlace)
 import Control.Exception (handle)
 import Feature.Inventory (dropItem, takeItem)
 import Feature.Examine (examinePlace, examineItem)
+import Feature.Moving (go)
 
 handleCommand :: Command -> GameState -> IO GameState
 
@@ -18,8 +19,7 @@ handleCommand Quit state = do
     return state
 
 handleCommand (Go place) state = do
-    printLines ["You are going to " ++ show place ++ "."]
-    return $ state { currentPlace = place }  -- Update currentPlace in the state
+    go place state
 
 handleCommand Examine state = do
     examinePlace (currentPlace state) state
