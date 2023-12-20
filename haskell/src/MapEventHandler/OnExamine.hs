@@ -1,15 +1,16 @@
 module MapEventHandler.OnExamine where
 import Object.Place (Place (..))
 import Object.Item (Item (..))
-import State.GameState (GameState (alarmRings))
+import State.GameState (GameState (..), computerOn, hardDriveIn)
 import Feature.Path (spawnPath)
 import Feature.Subplace (spawnSubplace, despawnSubplace)
 import Feature.Inventory (isInInventory)
 import Feature.ItemAt (spawnItem)
+import Object.Lock (LockState(lockPassword), isOpen)
 
 onExaminePlace :: Place -> GameState -> IO GameState
 
-onExaminePlace Corridor state = do 
+onExaminePlace Corridor state = do
     putStrLn "\tLong corridor with paint flaking off the walls due to dense and humid air around.\n\
     \\tIt's connecting the office with the main room where I was trapped before... "
     return state
@@ -29,7 +30,7 @@ onExaminePlace KeyCase state = do
 
 --MainRoom
 
-onExaminePlace MainRoom state = do 
+onExaminePlace MainRoom state = do
     putStrLn "\tHmmmm... Whoever lived here must have left long ago... \n\
     \\tI feel a cool breeze coming from a vent located under the celing."
     return state
@@ -49,7 +50,7 @@ onExaminePlace Desk state
         state10 <- spawnPath (MainRoom, Chair) state9
         spawnPath (MainRoom, WoodenBox) state10
     | isInInventory UVFlashlight state = do
-        putStrLn "\tI can see something is written here in UV ink - number 1"
+        putStrLn ("\tI can see something is written here in UV ink - number" ++ [(lockPassword (lockStates (state) !! 0)) !! 1])
         return state
     | otherwise = do
         putStrLn "\tThere are few drawers under the desk. I can try to open them."
@@ -59,30 +60,30 @@ onExaminePlace Desk state
 
 onExaminePlace Window state =
     if isInInventory UVFlashlight state then do
-        putStrLn "\tI can see something is written here in UV ink - number 0"
+        putStrLn ("\tI can see something is written here in UV ink - number" ++ [(lockPassword (lockStates (state) !! 0)) !! 3])
         return state
     else do
         putStrLn "I can't examine it"
         return state
 
-onExaminePlace BottomDrawer state = do 
+onExaminePlace BottomDrawer state = do
     putStrLn "\tThere is a small bite of cheese. It won't fill my stomach but may come in handy later."
     spawnItem Cheese Desk state
 
-onExaminePlace TopDrawer state = do 
+onExaminePlace TopDrawer state = do
     putStrLn "\tThere is a small key. It might fit to something I have right now."
     spawnItem SmallKey Desk state
 
 onExaminePlace Fireplace state = do
     if isInInventory UVFlashlight state then do
-        putStrLn "\tI can see something is written here - number 7"
+        putStrLn ("\tI can see something is written here - number " ++ [(lockPassword (lockStates (state) !! 0)) !! 4])
         return state
     else do
         putStrLn "\tFire place wasn't used in a long time but there are still some chared but sturdy pices of wood.\n\
         \\tLONG STICK always can come in handy."
         spawnItem LongStick Fireplace state
 
-onExaminePlace Painting state = 
+onExaminePlace Painting state =
     if isInInventory UVFlashlight state then do
         putStrLn "     I can see some words written in UV ink.\n\
         \t\"after I wake up  I always eat my cheese, then breath in some fresh air. Later I play some computer games, after that I heat myself up.\""
@@ -91,27 +92,27 @@ onExaminePlace Painting state =
         putStrLn "\tIt's very damaged. Oh! The TORN CORNER of the painting is peeling back from the frame!"
         spawnSubplace Painting TornCorner state
 
-onExaminePlace TornCorner state = do 
+onExaminePlace TornCorner state = do
     putStrLn "\tAfter pulling the canvas back I realised that there is a message scratched into painting backing.\n\
     \\tIt says:\"I have 4 legs, two heads, huge slender body and little friend.\""
     return state
 
-onExaminePlace HeavyDoor state = do 
+onExaminePlace HeavyDoor state = do
     putStrLn "\tBig heavy door closed shut.\n\
     \\tNail marks and scratches don't make me feel good about it..."
     return state
 
-onExaminePlace Chair state = do 
+onExaminePlace Chair state = do
     putStrLn "\tMud smeared on top looks like a foot print... Why someone was standing on top of it?\n\
     \\tOh! I can move it underneeth the vent I've seen before."
     spawnSubplace Chair VentCover state
 
-onExaminePlace VentCover state = do 
+onExaminePlace VentCover state = do
     putStrLn "\tThis vent cover looks big enouth for me to go inside... \n\
     \\tIt seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool..."
     return state
 
-onExaminePlace WoodenBox state = do 
+onExaminePlace WoodenBox state = do
     putStrLn "\tThis wooden box looks pretty rough, although it might be impossible to open it by force. But there is some kind of mechanism"
     return state
 
@@ -121,20 +122,20 @@ onExaminePlace ColorCode state = do
     putStrLn "To enter code use - eg.: enter blue yellow green red into color code"
     return state
 
-onExaminePlace SitOntoBed state = do 
+onExaminePlace SitOntoBed state = do
     putStrLn "\tHello little buddy. I've found a TEDDY BEAR hidden under the GREEN duvet"
     spawnItem TeddyBear SitOntoBed state
 
 onExaminePlace Bed state = do
     if isInInventory UVFlashlight state then do
-        putStrLn "\tI can see something is written here in UV ink - number 2"
+        putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (lockStates state !! 0) !! 0])
         return state
     else do
         putStrLn "\tThere's a bed with disgustingly YELLOW legs. Your eyes are pulled to two CRIMSON blood-like pillows\n\
         \\t owever quilt seems to be quite different, it calms you down and reminds of life outside"
         return state
 
-onExaminePlace Raven state = do 
+onExaminePlace Raven state = do
     putStrLn "\tRAVEN doesn't seem to be scared by me at all. /*He just vibin*/\n\
     \\tMaybe if I had something to push him away I could acces his nest.\n\
     \\tThermometer shows that there is 40 degrees below 0, it must be broken. Right?"
@@ -145,12 +146,12 @@ onExaminePlace Nest state = do
     spawnItem ScrewdriverBit Window state
 
 --Office
-onExaminePlace Office state = do 
+onExaminePlace Office state = do
     putStrLn "\tMan this place is devastated. Walls with holes punched into them, blinds ripped off the window.\n\
     \\tI can see an trapdoor under the ceeling. I can't reach it..."
     spawnPath (Office, AtticEntrance) state
 
-onExaminePlace CoffeTable state = do 
+onExaminePlace CoffeTable state = do
     putStrLn "\tEntire table is used by a huge vault"
     spawnSubplace CoffeTable Vault state
 
@@ -159,8 +160,25 @@ onExaminePlace Vault state = do
     return state
 
 onExaminePlace Computer state = do
-    putStrLn "\tIt's a computer" -- TODO
-    return state
+    if isInInventory UVFlashlight state then do
+        if computerOn (computerState state) then
+            putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (lockStates state !! 0) !! 2])
+        else
+             putStrLn "\tI can see something is written here - but I cannot read it. I need to turnoff the computer. "
+        return state
+    else do
+        if hardDriveIn (computerState state) then do
+            if computerOn (computerState state) then do
+                if isOpen (lockStates state !! 2) then do
+                    let newState = spawnSubplace Computer ComputerPassword state
+                    putStrLn "\tThe computer is on, but there's a password prompt, what can it be?"
+                else
+                    putStrLn ("\tI managed to log in!\n\tOn the screen there are 5 numbers - " ++ lockPassword (lockStates state !! 1))
+            else
+                putStrLn "\tIt's turned off but I hope it'll turn on now, but the on button is too small for my fingers.\n\tI need to use something to press it"
+        else
+            putStrLn "\tIt's turned off and will stay that way... I can see that few parts were ripped out of it's case.\n\tI won't boot without a HARD DRIVE"
+        return state
 
 onExaminePlace LeftCompartment state = do
     putStrLn "\tUser manual about assembling PC's. May be usefull"
@@ -213,10 +231,9 @@ onExaminePlace Page3 state = do
 
 onExaminePlace Page4 state = do
     putStrLn "\tdarkness that lurks in the hidden recesses of the soul.\n\
-    \\tWithin the desolate corridors of my tortured mind, a cryptic mantra emerges: 'whispers_of_the_abyss'.\n\
+    \\tWithin the desolate corridors of my tortured mind, a cryptic mantra emerges: 'whispers of the abyss'.\n\
     \\tIt guards the forbidden knowledge, a digital key to the eldritch realms that pulse beneath the surface of our reality"
     return state
-
 onExaminePlace AtticEntrance state = do
     putStrLn "\tTrapdoor has a T shaped handle. I barely cannot reach it. I may be able to hook something on it to pull it open"
     return state
@@ -226,14 +243,14 @@ onExaminePlace BarricadedDoor state = do
     state1 <- spawnPath (Corridor, MainRoom) state
     return $ despawnSubplace Corridor BarricadedDoor $ despawnSubplace MainRoom HeavyDoor state1
 
-onExaminePlace _ state = do 
+onExaminePlace _ state = do
     putStrLn "I can't examine it"  -- Default case when none of the patterns match
     return state
 
 onExamineItem :: Item -> GameState -> IO GameState
-onExamineItem TeddyBear state = do 
+onExamineItem TeddyBear state = do
     putStrLn "It's lifeless button eyes in pair with his dyed-out BLUE body create dull entirety, which dampens you down"
     return state
-onExamineItem _ state = do 
+onExamineItem _ state = do
     putStrLn "I can't examine it"  -- Default case when none of the patterns match
     return state
