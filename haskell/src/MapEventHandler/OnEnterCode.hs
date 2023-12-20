@@ -10,9 +10,9 @@ import Object.Lock (LockState(..), lockNames)
 import State.GameState (GameState (lockStates, currentPlace, inventory, GameState))
 import Core.Command (Command(Inventory))
 import Feature.Path (pathExists)
-import Feature.Subplace (possibleSubplaces)
+import Feature.Subplace
+    ( possibleSubplaces, spawnSubplace, despawnSubplace )
 import Feature.ItemAt (spawnItem)
-import Feature.Subplace (spawnSubplace, despawnSubplace)
 
 enterCode :: GameState -> String -> String -> IO GameState
 enterCode gs user_code lockName = do
@@ -44,8 +44,6 @@ enterCode gs user_code lockName = do
                 return gs
 
 
---lockNames = ["Pad10Digit", "Vault", "ComputerPassword", "ColorCode"]
-
 
 onOpenLock:: GameState -> Int -> IO GameState
 onOpenLock state 0 = do
@@ -63,7 +61,7 @@ onOpenLock state 1 = do
 onOpenLock state 2 = do
     putStrLn "Logged into computer!\n\
     \VAULT CODE: "
-    printLines[lockPassword (lockStates state !! 1)]
+    printLines [lockPassword (lockStates state !! 1)]
     return state
 onOpenLock state 3 = do
     putStrLn "opened ColorCode"
@@ -76,7 +74,7 @@ onOpenLock state 4 = do
 onOpenLock state _ = do
     putStrLn "opened other"
     return state
-    
+
 
 
 changeLockState :: GameState -> Int -> Bool -> GameState

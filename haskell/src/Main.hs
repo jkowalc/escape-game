@@ -17,12 +17,13 @@ gameLoop state = do
     hFlush stdout
     userInput <- getLine
 
-    print (tokenize (words userInput)) -- For debugging. Remove later.
-    print (tokenize (words userInput)) -- For debugging. Remove later.
+    -- print (tokenize (words userInput)) -- For debugging. Remove later.
+    -- print (tokenize (words userInput)) -- For debugging. Remove later.
+
     -- Parse user input into a command
     let command = parseCommand userInput
 
-    print command -- For debugging. Remove later.
+    -- print command -- For debugging. Remove later.
 
     case command of
       InvalidLiteralCommand -> do putStrLn "Invalid literal in command. Type \"help\" for help."
@@ -39,5 +40,5 @@ main = do
     onArrival (currentPlace initialState) initialState
     gen <- newStdGen
     let (randomNumber, newGen) = randomR (10000, 99999) gen :: (Int, StdGen)
-    putStrLn $ "Random number: " ++ show randomNumber
+    -- putStrLn $ "Random number: " ++ show randomNumber
     gameLoop (setRandomPasswords initialState randomNumber)
