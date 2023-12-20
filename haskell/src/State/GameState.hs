@@ -20,7 +20,7 @@ initialState = GameState
     { inventory = [
         Handcuffs, Screwdriver, SmallKey, CorridorKey
     ]
-    , currentPlace = Office
+    , currentPlace = CoffeTable
     , paths = [
         (MainRoom, Desk),
         (Office, CoffeTable),
