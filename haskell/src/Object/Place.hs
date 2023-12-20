@@ -1,7 +1,6 @@
 module Object.Place where
 
 data Place = MainRoom
-    | MainRoomEntrance
     | HeavyDoor
     | WoodenBox
     | ColorCode
@@ -36,7 +35,7 @@ data Place = MainRoom
     | Page1
     | Page2
     | Page3
-    | Page4
+    | TornOutPage
     | OfficeSafe
     | Corridor
     | Vault
@@ -65,6 +64,7 @@ instance Read Place where
     readsPrec _ "chair" = [(Chair, "")]
     readsPrec _ "vent" = [(Vent, "")]
     readsPrec _ "vent cover" = [(VentCover, "")]
+    readsPrec _ "rat" = [(Rat, "")]
     readsPrec _ "bed" = [(Bed, "")]
     readsPrec _ "sit onto bed" = [(SitOntoBed, "")]
     readsPrec _ "window" = [(Window, "")]
@@ -86,7 +86,7 @@ instance Read Place where
     readsPrec _ "page 1" = [(Page1, "")]
     readsPrec _ "page 2" = [(Page2, "")]
     readsPrec _ "page 3" = [(Page3, "")]
-    readsPrec _ "page 4" = [(Page4, "")]
+    readsPrec _ "torn out page" = [(TornOutPage, "")]
     readsPrec _ "office safe" = [(OfficeSafe, "")]
     readsPrec _ "corridor" = [(Corridor, "")]
     readsPrec _ "exit door" = [(ExitDoor, "")]

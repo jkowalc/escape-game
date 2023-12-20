@@ -22,7 +22,7 @@ onExaminePlace Pad10Digit state = do
 
 onExaminePlace DisplayCase state = do
     putStrLn "\tInside I can see an weird flashlight, it might help me. I should start using it on some objects"
-    spawnItem UVFlashlight DisplayCase state
+    spawnItem UVFlashlight Corridor state
 
 onExaminePlace KeyCase state = do
     putStrLn "\tIt's a key case! It has 10 digit padcase. May it contain the key to the exit?"
@@ -85,8 +85,8 @@ onExaminePlace Fireplace state = do
 
 onExaminePlace Painting state =
     if isInInventory UVFlashlight state then do
-        putStrLn "     I can see some words written in UV ink.\n\
-        \t\"after I wake up  I always eat my cheese, then breath in some fresh air. Later I play some computer games, after that I heat myself up.\""
+        putStrLn "\tI can see some words written in UV ink.\n\
+        \\tafter I wake up  I always eat my cheese, then breath in some fresh air. Later I play some computer games, after that I heat myself up."
         return state
     else do
         putStrLn "\tIt's very damaged. Oh! The TORN CORNER of the painting is peeling back from the frame!"
@@ -149,7 +149,7 @@ onExaminePlace Nest state = do
 onExaminePlace Office state = do
     putStrLn "\tMan this place is devastated. Walls with holes punched into them, blinds ripped off the window.\n\
     \\tI can see an trapdoor under the ceeling. I can't reach it..."
-    spawnPath (Office, AtticEntrance) state
+    spawnSubplace Office AtticEntrance state
 
 onExaminePlace CoffeTable state = do
     putStrLn "\tEntire table is used by a huge vault"
@@ -180,6 +180,10 @@ onExaminePlace Computer state = do
             putStrLn "\tIt's turned off and will stay that way... I can see that few parts were ripped out of it's case.\n\tI won't boot without a HARD DRIVE"
         return state
 
+onExaminePlace ComputerPassword state = do
+    putStrLn "\tI can type in a password..." -- TODO
+    return state
+
 onExaminePlace LeftCompartment state = do
     putStrLn "\tUser manual about assembling PC's. May be usefull"
     spawnItem AssemblyManual Cupboard state
@@ -191,10 +195,9 @@ onExaminePlace RightCompartment state = do
 onExaminePlace Journal state = do
     putStrLn "\tLeather is worn and pages turned yellow over time.\n\
     \\tYou can see that only first three pages are filled."
-    spawnSubplace Journal Page1 state
-    spawnSubplace Journal Page2 state
-    spawnSubplace Journal Page3 state
-    return state
+    state1 <- spawnSubplace Journal Page3 state
+    state2 <- spawnSubplace Journal Page2 state1
+    spawnSubplace Journal Page1 state2
 
 -- journal
 
@@ -226,16 +229,19 @@ onExaminePlace Page3 state = do
     \\ta madman condemned to dance upon the razor's edge between the realms of the living and the damned.\n\
     \\tThis journal, my only confidante in `this descent into madness,\n\
     \\tbears witness to the unraveling of a mind consumed by the..."
-    spawnSubplace Journal Page4 state
-    return state
+    spawnSubplace Journal TornOutPage state
 
-onExaminePlace Page4 state = do
+onExaminePlace TornOutPage state = do
     putStrLn "\tdarkness that lurks in the hidden recesses of the soul.\n\
     \\tWithin the desolate corridors of my tortured mind, a cryptic mantra emerges: 'whispers of the abyss'.\n\
     \\tIt guards the forbidden knowledge, a digital key to the eldritch realms that pulse beneath the surface of our reality"
     return state
 onExaminePlace AtticEntrance state = do
     putStrLn "\tTrapdoor has a T shaped handle. I barely cannot reach it. I may be able to hook something on it to pull it open"
+    return state
+
+onExaminePlace CorridorDoor state = do
+    putStrLn "\tLocked... I can see a key hole, it may fix the problem"
     return state
 
 onExaminePlace BarricadedDoor state = do

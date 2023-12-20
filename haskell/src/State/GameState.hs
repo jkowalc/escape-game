@@ -1,6 +1,6 @@
 module State.GameState where
 
-import Object.Item (Item (Handcuffs, ScrewdriverBit, ScrewdriverHandle))
+import Object.Item (Item (..))
 import Object.Place (Place (..))
 import qualified Data.Map as Map
 import Object.Lock (LockState (LockState))
@@ -25,27 +25,25 @@ data GameState = GameState
 initialState :: GameState
 initialState = GameState
     { inventory = [
-        Handcuffs,
-        ScrewdriverBit,
-        ScrewdriverHandle
+        Handcuffs, Screwdriver, SmallKey
     ]
-    , currentPlace = MainRoom
+    , currentPlace = CoffeTable
     , paths = [
         (MainRoom, Desk),
         (Office, CoffeTable),
         (Office, Cupboard),
         (Office, Computer),
-        (Corridor, KeyCase),
-        (Corridor, DisplayCase),
-        (Corridor, MainRoomEntrance)
+        (Corridor, KeyCase)
         ]
     , unlockedSubplaces = Map.fromList [
         (MainRoom, [HeavyDoor]),
-        (Corridor, [BarricadedDoor, ExitDoor]),
+        (Corridor, [BarricadedDoor, ExitDoor, DisplayCase]),
         (KeyCase, [Pad10Digit]),
-        (Office, [AtticEntrance, CorridorDoor]),
+        (Office, [CorridorDoor]),
         (Bed, [SitOntoBed]),
-        (WoodenBox, [ColorCode])
+        (WoodenBox, [ColorCode]),
+        (Cupboard, [LeftCompartment, MiddleCompartment, RightCompartment]),
+        (Computer, [ComputerPassword])
         ]
     , spawnedItems = Map.empty
     , alarmRings = True
