@@ -6,15 +6,20 @@ data Place = MainRoom
     | WoodenBox
     | ColorCode
     | Desk
+    | TopDrawer
+    | MiddleDrawer
+    | BottomDrawer
     | Fireplace
     | Painting
     | TornCorner
     | Chair
     | Vent
+    | VentCover
     | Bed
     | SitOnBed
     | Window
     | Nest
+    | Raven
     | Outside
     | Office
     | CorridorDoor
@@ -22,9 +27,17 @@ data Place = MainRoom
     | CoffeTable
     | Computer
     | Cupboard
+    | LeftCompartment
+    | MiddleCompartment
+    | RightCompartment
     | Journal
+    | Page1
+    | Page2
+    | Page3
+    | Page4
     | OfficeSafe
     | Corridor
+    | Vault
     | ExitDoor
     | BarricadedDoor
     | DisplayCase
@@ -46,10 +59,12 @@ instance Read Place where
     readsPrec _ "torn corner" = [(TornCorner, "")]
     readsPrec _ "chair" = [(Chair, "")]
     readsPrec _ "vent" = [(Vent, "")]
+    readsPrec _ "vent cover" = [(VentCover, "")]
     readsPrec _ "bed" = [(Bed, "")]
     readsPrec _ "sit on bed" = [(SitOnBed, "")]
     readsPrec _ "window" = [(Window, "")]
     readsPrec _ "nest" = [(Nest, "")]
+    readsPrec _ "raven" = [(Raven, "")]
     readsPrec _ "outside" = [(Outside, "")]
     readsPrec _ "office" = [(Office, "")]
     readsPrec _ "corridor door" = [(CorridorDoor, "")]
@@ -57,7 +72,14 @@ instance Read Place where
     readsPrec _ "coffe table" = [(CoffeTable, "")]
     readsPrec _ "computer" = [(Computer, "")]
     readsPrec _ "cupboard" = [(Cupboard, "")]
+    readsPrec _ "left compartment" = [(LeftCompartment, "")]
+    readsPrec _ "middle compartment" = [(MiddleCompartment, "")]
+    readsPrec _ "right compartment" = [(RightCompartment, "")]
     readsPrec _ "journal" = [(Journal, "")]
+    readsPrec _ "page 1" = [(Page1, "")]
+    readsPrec _ "page 2" = [(Page2, "")]
+    readsPrec _ "page 3" = [(Page3, "")]
+    readsPrec _ "page 4" = [(Page4, "")]
     readsPrec _ "office safe" = [(OfficeSafe, "")]
     readsPrec _ "corridor" = [(Corridor, "")]
     readsPrec _ "exit door" = [(ExitDoor, "")]

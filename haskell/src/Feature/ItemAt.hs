@@ -26,11 +26,11 @@ removeItemFromPlace item place state =
         then state
         else state { spawnedItems = Map.adjust (filter (/= item)) place (spawnedItems state) }
 
-spawnItem :: Item -> GameState -> IO GameState
-spawnItem item state = 
+spawnItem :: Item -> Place -> GameState -> IO GameState
+spawnItem item place state = 
     if itemExists item state
         then return state
         else do
             putStrLn "You have discovered a new item!"
-            return state { spawnedItems = Map.insertWith (++) (currentPlace state) [item] (spawnedItems state) }
+            return state { spawnedItems = Map.insertWith (++) place [item] (spawnedItems state) }
 
