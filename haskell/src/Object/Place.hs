@@ -27,6 +27,7 @@ data Place = MainRoom
     | AtticEntrance
     | CoffeTable
     | Computer
+    | ComputerPassword
     | Cupboard
     | LeftCompartment
     | MiddleCompartment
@@ -75,6 +76,7 @@ instance Read Place where
     readsPrec _ "attic entrance" = [(AtticEntrance, "")]
     readsPrec _ "coffe table" = [(CoffeTable, "")]
     readsPrec _ "computer" = [(Computer, "")]
+    readsPrec _ "computer password" = [(ComputerPassword, "")]
     readsPrec _ "cupboard" = [(Cupboard, "")]
     readsPrec _ "left compartment" = [(LeftCompartment, "")]
     readsPrec _ "middle compartment" = [(MiddleCompartment, "")]

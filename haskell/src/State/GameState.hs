@@ -43,8 +43,8 @@ initialState = GameState
     , spawnedItems = Map.empty
     , alarmRings = True
     , lockStates = 
-    [LockState "10PadDigit" False "Placeholder",
-    LockState "Vault" False "Placeholder",
-    LockState "Computer" False "Placeholder",
-    LockState "ColorCode" False "Placeholder"]
+    [LockState Pad10Digit False "Placeholder",
+    LockState Vault False "Placeholder",
+    LockState Computer False "Placeholder",
+    LockState ColorCode False "Placeholder"]
     }

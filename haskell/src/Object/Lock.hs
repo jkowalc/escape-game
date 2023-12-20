@@ -1,10 +1,11 @@
 module Object.Lock where
+import Object.Place (Place)
 
 data LockState = LockState
     {   
-        name :: String
+        subPlace :: Place
         ,isOpen :: Bool
         ,lockPassword :: String
     }
 lockNames :: [String]
-lockNames = ["10PadDigit", "Vault", "Computer", "ColorCode"]
+lockNames = ["Pad10Digit", "Vault", "ComputerPassword", "ColorCode"]
