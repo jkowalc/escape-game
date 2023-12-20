@@ -1,7 +1,6 @@
 module Object.Place where
 
 data Place = MainRoom
-    | MainRoomEntrance
     | HeavyDoor
     | WoodenBox
     | ColorCode

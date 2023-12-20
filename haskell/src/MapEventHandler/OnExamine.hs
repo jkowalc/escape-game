@@ -21,7 +21,7 @@ onExaminePlace Pad10Digit state = do
 
 onExaminePlace DisplayCase state = do
     putStrLn "\tInside I can see an weird flashlight, it might help me. I should start using it on some objects"
-    spawnItem UVFlashlight DisplayCase state
+    spawnItem UVFlashlight Corridor state
 
 onExaminePlace KeyCase state = do
     putStrLn "\tIt's a key case! It has 10 digit padcase. May it contain the key to the exit?"
@@ -84,8 +84,8 @@ onExaminePlace Fireplace state = do
 
 onExaminePlace Painting state = 
     if isInInventory UVFlashlight state then do
-        putStrLn "     I can see some words written in UV ink.\n\
-        \t\"after I wake up  I always eat my cheese, then breath in some fresh air. Later I play some computer games, after that I heat myself up.\""
+        putStrLn "\tI can see some words written in UV ink.\n\
+        \\tafter I wake up  I always eat my cheese, then breath in some fresh air. Later I play some computer games, after that I heat myself up."
         return state
     else do
         putStrLn "\tIt's very damaged. Oh! The TORN CORNER of the painting is peeling back from the frame!"
@@ -220,7 +220,7 @@ onExaminePlace AtticEntrance state = do
     return state
 
 onExaminePlace CorridorDoor state = do
-    putStrLn "\tLocked... I can see key hole, it may fix the problem"
+    putStrLn "\tLocked... I can see a key hole, it may fix the problem"
     return state
 
 onExaminePlace BarricadedDoor state = do
