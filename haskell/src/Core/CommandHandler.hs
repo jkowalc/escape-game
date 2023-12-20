@@ -5,6 +5,7 @@ import Util.IO (printLines)
 import State.GameState (GameState(..), currentPlace)
 import Control.Exception (handle)
 import MapEventHandler.OnExamine (examine)
+import MapEventHandler.OnEnterCode (enterCode)
 
 handleCommand :: Command -> GameState -> IO GameState
 
@@ -23,7 +24,14 @@ handleCommand (Go place) state = do
 handleCommand Examine state = do
     examine (currentPlace state)
     return state
+    
+handleCommand (EnterCode userCode lock) state = do
+    enterCode state userCode (show lock)
 
 handleCommand Help state = do
     printHelp
+    return state
+
+handleCommand _ state = do
+    printLines ["Unknown command!"]
     return state
