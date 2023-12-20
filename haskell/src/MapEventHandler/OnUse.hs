@@ -75,14 +75,18 @@ onUsePlace HardDrive Computer state = do
 
 onUsePlace Feather Computer state = do
     putStrLn "Using Feather on computer"
-    if computerOn (computerState state) then
-        putStrLn "I turned off the computer!"
-        else putStrLn "I turned on the computer!"
-    let newCS = ComputerState{
-        computerOn = not (computerOn (computerState state)),
-        hardDriveIn = hardDriveIn (computerState state)
-    }
-    return state{computerState = newCS}
+    if hardDriveIn (computerState state) then do
+        if computerOn (computerState state) then
+            putStrLn "I turned off the computer!"
+            else putStrLn "I turned on the computer!"
+        let newCS = ComputerState{
+            computerOn = not (computerOn (computerState state)),
+            hardDriveIn = hardDriveIn (computerState state)
+        }
+        return state{computerState = newCS}
+    else do
+        putStrLn "I have to fix the computer to turn it on!"
+        return state
 
 onUsePlace ExitKey ExitDoor state = do
     putStrLn "I see light! Freedom is mine!"
