@@ -50,7 +50,7 @@ onExaminePlace Desk state
         state10 <- spawnPath (MainRoom, Chair) state9
         spawnPath (MainRoom, WoodenBox) state10
     | isInInventory UVFlashlight state = do
-        putStrLn ("\tI can see something is written here in UV ink - number" ++ [(lockPassword (lockStates (state) !! 0)) !! 1])
+        putStrLn ("\tI can see something is written here in UV ink - number " ++ [(lockPassword (lockStates (state) !! 0)) !! 1])
         return state
     | otherwise = do
         putStrLn "\tThere are few drawers under the desk. I can try to open them."
@@ -60,7 +60,7 @@ onExaminePlace Desk state
 
 onExaminePlace Window state =
     if isInInventory UVFlashlight state then do
-        putStrLn ("\tI can see something is written here in UV ink - number" ++ [(lockPassword (lockStates (state) !! 0)) !! 3])
+        putStrLn ("\tI can see something is written here in UV ink - number " ++ [(lockPassword (lockStates (state) !! 0)) !! 2])
         return state
     else do
         putStrLn "I can't examine it"
@@ -162,7 +162,7 @@ onExaminePlace Vault state = do
 onExaminePlace Computer state = do
     if isInInventory UVFlashlight state then do
         if computerOn (computerState state) then
-            putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (lockStates state !! 0) !! 2])
+            putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (lockStates state !! 0) !! 3])
         else
              putStrLn "\tI can see something is written here - but I cannot read it. I need to turnoff the computer. "
         return state
