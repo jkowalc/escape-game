@@ -1,6 +1,6 @@
 module State.GameState where
 
-import Object.Item (Item)
+import Object.Item (Item (Handcuffs))
 import Object.Place (Place (..))
 import qualified Data.Map as Map
 
@@ -10,11 +10,14 @@ data GameState = GameState
     , paths :: [(Place, Place)]
     , unlockedSubplaces :: Map.Map Place [Place]
     , spawnedItems :: Map.Map Place [Item]
+    , alarmRings :: Bool
     } deriving (Show)
 
 initialState :: GameState
 initialState = GameState
-    { inventory = []
+    { inventory = [
+        Handcuffs
+    ]
     , currentPlace = MainRoom
     , paths = [
         (MainRoom, Desk),
@@ -23,7 +26,6 @@ initialState = GameState
         (Office, Computer),
         (Corridor, KeyCase),
         (Corridor, DisplayCase),
-        (Corridor, MainRoom),
         (Corridor, MainRoomEntrance)
         ]
     , unlockedSubplaces = Map.fromList [
@@ -35,4 +37,5 @@ initialState = GameState
         (WoodenBox, [ColorCode])
         ]
     , spawnedItems = Map.empty
+    , alarmRings = True
     }

@@ -1,10 +1,20 @@
 module Feature.Inventory where
 import Object.Item (Item)
-import State.GameState (GameState (inventory, currentPlace))
+import State.GameState (GameState (inventory, currentPlace, GameState))
 import Feature.ItemAt (removeItemFromPlace, addItemToPlace, itemAtPlace)
+import Util.IO (printLines, formatThing)
 
 isInInventory :: Item -> GameState -> Bool
 isInInventory item state = item `elem` inventory state
+
+printInventory :: GameState -> IO ()
+printInventory state = do
+    let items = inventory state
+    if null items
+        then putStrLn "You have no items!"
+        else do
+            putStrLn "You have the following items:"
+            printLines (map formatThing items)
 
 removeItemFromInventory :: Item -> GameState -> GameState
 removeItemFromInventory item state = 

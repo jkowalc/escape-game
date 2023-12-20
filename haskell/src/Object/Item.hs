@@ -10,6 +10,7 @@ data Item = UVFlashlight
     | SmallKey
     | ExitKey
     | OpenHandcuffs
+    | Handcuffs
     | CorridorKey
     | ScrewdriverHandle
     | ScrewdriverBit

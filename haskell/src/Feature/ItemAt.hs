@@ -11,6 +11,9 @@ itemAtPlace item place state = item `elem` Map.findWithDefault [] place (spawned
 itemExists :: Item -> GameState -> Bool
 itemExists item state = item `elem` Map.foldr (++) [] (spawnedItems state) || item `elem` inventory state
 
+itemsAtPlace :: Place -> GameState -> [Item]
+itemsAtPlace place state = Map.findWithDefault [] place (spawnedItems state)
+
 addItemToPlace :: Item -> Place -> GameState -> GameState
 addItemToPlace item place state = 
     if itemAtPlace item place state

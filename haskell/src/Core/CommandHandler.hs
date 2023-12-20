@@ -4,14 +4,14 @@ import Core.Command (Command(..), printHelp)
 import Util.IO (printLines)
 import State.GameState (GameState(..), currentPlace)
 import Control.Exception (handle)
-import Feature.Inventory (dropItem, takeItem)
+import Feature.Inventory (dropItem, takeItem, printInventory)
 import Feature.Examine (examinePlace, examineItem)
-import Feature.Moving (go)
+import Feature.Moving (go, printPossibilities)
 
 handleCommand :: Command -> GameState -> IO GameState
 
 handleCommand Look state = do
-    printLines ["You are looking around."]
+    printPossibilities state
     return state
 
 handleCommand Quit state = do
@@ -35,6 +35,10 @@ handleCommand (Take item) state = do
 
 handleCommand (Drop item) state =
     dropItem item state
+
+handleCommand Inventory state = do
+    printInventory state
+    return state
 
 handleCommand Help state = do
     printHelp

@@ -5,7 +5,7 @@ import Object.Place (Place)
 import Object.Item (Item)
 
 keywordList :: [String]
-keywordList = ["look", "go", "examine", "take", "use", "combine", "enter", "help", "quit"]
+keywordList = ["look", "go", "examine", "take", "use", "combine", "enter", "help", "quit", "inventory", "drop", "on", "with", "into"]
 
 data Token = Keyword String
     | Literal String
