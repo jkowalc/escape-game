@@ -25,9 +25,9 @@ data GameState = GameState
 initialState :: GameState
 initialState = GameState
     { inventory = [
-        Handcuffs
+        Handcuffs, UVFlashlight, CorridorKey
     ]
-    , currentPlace = MainRoom
+    , currentPlace = Office
     , paths = [
         (MainRoom, Desk),
         (Office, CoffeTable),

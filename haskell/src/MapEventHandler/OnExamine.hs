@@ -159,7 +159,7 @@ onExaminePlace Vault state = do
 
 onExaminePlace Computer state = do
     if isInInventory UVFlashlight state then do
-        if computerOn (computerState state) then
+        if not(computerOn (computerState state)) then
             putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (lockStates state !! 0) !! 3])
         else
              putStrLn "\tI can see something is written here - but I cannot read it. I need to turnoff the computer. "
@@ -167,7 +167,7 @@ onExaminePlace Computer state = do
     else do
         if hardDriveIn (computerState state) then do
             if computerOn (computerState state) then do
-                if not isOpen (lockStates state !! 2) then do
+                if not (isOpen (lockStates state !! 2)) then do
                     let newState = spawnSubplace Computer ComputerPassword state
                     putStrLn "\tThe computer is on, but there's a password prompt, what can it be?"
                 else
