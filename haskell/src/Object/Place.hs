@@ -43,7 +43,7 @@ instance Read Place where
     readsPrec _ "fireplace" = [(Fireplace, "")]
     readsPrec _ "painting" = [(Painting, "")]
     readsPrec _ "torn corner" = [(TornCorner, "")]
-    readsPrec _ "char" = [(Chair, "")]
+    readsPrec _ "chair" = [(Chair, "")]
     readsPrec _ "vent" = [(Vent, "")]
     readsPrec _ "bed" = [(Bed, "")]
     readsPrec _ "sit on bed" = [(SitOnBed, "")]
