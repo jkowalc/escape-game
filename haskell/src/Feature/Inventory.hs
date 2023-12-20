@@ -1,1 +1,1 @@
-module Relation.Inventory where
+module Feature.Inventory where

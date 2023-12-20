@@ -38,16 +38,16 @@ executable escape-game
                    MapEventHandler.OnUse
                    Object.Item
                    Object.Place
-                   Relation.Inventory
-                   Relation.ItemAt
-                   Relation.Path
-                   Relation.Subplace
+                   Feature.Inventory
+                   Feature.ItemAt
+                   Feature.Path
+                   Feature.Subplace
                    State.GameState
                    State.Util
                    Util.IO
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.17.2.0
+    build-depends:    base >=4.13.0.0
     hs-source-dirs:   src
     default-language: Haskell2010
