@@ -61,10 +61,10 @@ onOpenLock state 1 = do
     return state1
 
 onOpenLock state 2 = do
-    putStrLn "Logged into computer!\
-    \vault code: TODO"
-    let state1 = despawnSubplace ComputerPassword Computer state
-    return state1
+    putStrLn "Logged into computer!\n\
+    \VAULT CODE: "
+    printLines[lockPassword (lockStates state !! 1)]
+    return state
 onOpenLock state 3 = do
     putStrLn "opened ColorCode"
     let state1 = despawnSubplace WoodenBox ColorCode state

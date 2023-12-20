@@ -35,13 +35,14 @@ initialState = GameState
         (Office, [CorridorDoor]),
         (Bed, [SitOntoBed]),
         (WoodenBox, [ColorCode]),
-        (Cupboard, [LeftCompartment, MiddleCompartment, RightCompartment])
+        (Cupboard, [LeftCompartment, MiddleCompartment, RightCompartment]),
+        (Computer, [ComputerPassword])
         ]
     , spawnedItems = Map.empty
     , alarmRings = True
     , lockStates = 
     [LockState Pad10Digit False "Placeholder",
     LockState Vault False "Placeholder",
-    LockState Computer False "Placeholder",
+    LockState ComputerPassword False "Placeholder",
     LockState ColorCode False "Placeholder"]
     }

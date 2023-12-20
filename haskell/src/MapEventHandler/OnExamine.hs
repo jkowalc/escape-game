@@ -162,6 +162,10 @@ onExaminePlace Computer state = do
     putStrLn "\tIt's a computer" -- TODO
     return state
 
+onExaminePlace ComputerPassword state = do
+    putStrLn "\tI can type in a password..." -- TODO
+    return state
+
 onExaminePlace LeftCompartment state = do
     putStrLn "\tUser manual about assembling PC's. May be usefull"
     spawnItem AssemblyManual Cupboard state
