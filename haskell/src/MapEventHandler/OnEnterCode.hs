@@ -1,50 +1,53 @@
+{-# LANGUAGE BlockArguments #-}
 module MapEventHandler.OnEnterCode where
 import Data.Bool
 import Data.List (elemIndex)
+import Data.Maybe (fromMaybe)
+import Util.IO (printLines)
+import Object.Place (Place)
+import Object.Lock (LockState(..), lockNames)
+import State.GameState (GameState (lockStates, currentPlace, inventory, GameState))
+import Core.Command (Command(Inventory))
 
-data LockState = LockState
-    {   
-        isOpen :: Bool
-        lockPassword :: String
-    }
-let LockNames = [10PadDigit, Vault, Computer, ColorCode]
-
-EnterCode :: GameState -> String -> String -> IO GameState
-
-EnterCode gs(inv, cp, lS) lockName user_code = 
-    let LockIndex = elemIndex lockName lS
-    case LockIndex of
-        Nothing -> printLines ""
+enterCode :: GameState -> String -> String -> IO GameState
+enterCode gs lockName user_code = do
+    let cp = currentPlace gs
+    let lS = lockStates gs
+    let maybeLockIndex = elemIndex lockName lockNames
+    case maybeLockIndex of
+        Nothing -> do
+                printLines ["It's not a lock!"]
+                return gs
         _ -> do
-            if CheckIfReachable gs lockName == True then do
-                if user_code == (lockPassword lS !! LockIndex) then do
-                    lS = 
-                
-        
-    else
+            let lockIndex = fromMaybe (-1) maybeLockIndex
+            if checkIfReachable gs lockName then do
+                if not (isOpen (lS !! lockIndex))then do
+                    if user_code == lockPassword(lS !! lockIndex) then do
+                        printLines ["You managed to open the lock!"]
+                        let newGameState = changeLockState gs lockIndex True
+                        return newGameState
+                    else do
+                        printLines ["Wrong password!"]
+                        return gs
+                else do
+                    printLines ["Lock is already open!"]
+                    return gs
+            else do
+                printLines ["Cannot reach the lock!"]
+                return gs
 
-EnterCode gs(inv, cp, lS) Vault user_code = do
-    pass
-
-EnterCode gs(inv, cp, lS) Computer user_code = do
-    pass
-
-EnterCode gs(inv, cp, lS) ColorCode user_code = do
-    pass    
-
-ChangeLockState :: GameState -> Integer -> Bool -> GameState
-ChangeLockState gs(inv, cp , lS) LockIndex newValue = do 
-    let newLockState = LockState newValue lockPassword (lS !! LockIndex)
-    let newlockStates = take index lS ++ newLockState ++ drop (index + 1) lS
-    GameState inv cp newlockStates
+changeLockState :: GameState -> Int -> Bool -> GameState
+changeLockState gs lockIndex newValue = do
+    let cp = currentPlace gs
+    let inv = inventory gs
+    let lS = lockStates gs
+    let newLockState = LockState 
+            { name = name (lS !! lockIndex),
+            isOpen = newValue,
+            lockPassword = lockPassword(lS !! lockIndex)}
+    let newlockStates = take lockIndex lS ++ [newLockState] ++ drop (lockIndex + 1) lS
+    GameState {inventory = inv, currentPlace = cp, lockStates = newlockStates}
 
 
-CheckIfReachable :: GameState -> String -> Bool
-CheckIfReachable gs(inv, cp, lS) thingToReach = True
-
-NameIsALock :: String -> Bool
-NameIsALock ln = lockName elem LockNames
-
-CheckIfCorrectCode :: GameState -> String -> String -> Bool
-CheckIfCorrectCode gs(inv, cp, ls) lockName userCode = do
-    let Lock
+checkIfReachable :: GameState -> String -> Bool
+checkIfReachable gs thingToReach = True
