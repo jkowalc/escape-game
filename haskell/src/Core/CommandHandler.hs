@@ -8,6 +8,7 @@ import Feature.Inventory (dropItem, takeItem, printInventory)
 import Feature.Examine (examinePlace, examineItem)
 import Feature.Moving (go)
 import Feature.Look (printPossibilities)
+import Feature.Use (useOnPlace, useOnItem)
 
 handleCommand :: Command -> GameState -> IO GameState
 
@@ -40,6 +41,15 @@ handleCommand (Drop item) state =
 handleCommand Inventory state = do
     printInventory state
     return state
+
+handleCommand (Use item) state = do
+    useOnPlace item (currentPlace state) state
+
+handleCommand (UseOnPlace item place) state = do
+    useOnPlace item place state
+
+handleCommand (UseOnItem item1 item2) state = do
+    useOnItem item1 item2 state
 
 handleCommand Help state = do
     printHelp

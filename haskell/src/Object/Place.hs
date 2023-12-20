@@ -17,7 +17,7 @@ data Place = MainRoom
     | Rat
     | VentCover
     | Bed
-    | SitOnBed
+    | SitOntoBed
     | Window
     | Nest
     | Raven
@@ -55,6 +55,9 @@ instance Read Place where
     readsPrec _ "wooden box" = [(WoodenBox, "")]
     readsPrec _ "color code" = [(ColorCode, "")]
     readsPrec _ "desk" = [(Desk, "")]
+    readsPrec _ "top drawer" = [(TopDrawer, "")]
+    readsPrec _ "middle drawer" = [(MiddleDrawer, "")]
+    readsPrec _ "bottom drawer" = [(BottomDrawer, "")]
     readsPrec _ "fireplace" = [(Fireplace, "")]
     readsPrec _ "painting" = [(Painting, "")]
     readsPrec _ "torn corner" = [(TornCorner, "")]
@@ -62,7 +65,7 @@ instance Read Place where
     readsPrec _ "vent" = [(Vent, "")]
     readsPrec _ "vent cover" = [(VentCover, "")]
     readsPrec _ "bed" = [(Bed, "")]
-    readsPrec _ "sit on bed" = [(SitOnBed, "")]
+    readsPrec _ "sit onto bed" = [(SitOntoBed, "")]
     readsPrec _ "window" = [(Window, "")]
     readsPrec _ "nest" = [(Nest, "")]
     readsPrec _ "raven" = [(Raven, "")]

@@ -33,7 +33,7 @@ initialState = GameState
         (Corridor, [BarricadedDoor, ExitDoor]),
         (KeyCase, [Pad10Digit]),
         (Office, [AtticEntrance, CorridorDoor]),
-        (Bed, [SitOnBed]),
+        (Bed, [SitOntoBed]),
         (WoodenBox, [ColorCode])
         ]
     , spawnedItems = Map.empty

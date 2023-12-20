@@ -17,7 +17,7 @@ helpCommandList = [
     "take <item>              - Take an item",
     "drop <item>              - Drop an item",
     "use <item>               - Use an item",
-    "use <item> on <place>    - Use an item on a place",
+    "use <item> on <place>    - Use an item on a place or item",
     "combine <item1> with <item2> - Combine two items",
     "enter <code> into <place>- Enter a code or password to a lock",
     "inventory                - List contents of your inventory",
@@ -33,7 +33,8 @@ data Command = Look
     | Take Item
     | Drop Item
     | Use Item
-    | UseOn Item Place
+    | UseOnPlace Item Place
+    | UseOnItem Item Item
     | Combine Item Item
     | EnterCode String Place
     | Inventory

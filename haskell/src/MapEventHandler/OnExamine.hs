@@ -40,7 +40,7 @@ onExaminePlace Desk state
         \\tNow there is silence in the room. I can examine the desk once more. Maybe I can find here something else."
         state2 <- spawnPath (MainRoom, HeavyDoor) state { alarmRings = False }
         state3 <- spawnPath (MainRoom, Bed) state2
-        state4 <- spawnPath (Bed, SitOnBed) state3
+        state4 <- spawnPath (Bed, SitOntoBed) state3
         state5 <- spawnPath (MainRoom, Painting) state4
         state6 <- spawnPath (MainRoom, Window) state5
         state7 <- spawnPath (Window, Nest) state6
@@ -121,9 +121,9 @@ onExaminePlace ColorCode state = do
     putStrLn "To enter code use - eg.: enter blue yellow green red into color code"
     return state
 
-onExaminePlace SitOnBed state = do 
+onExaminePlace SitOntoBed state = do 
     putStrLn "\tHello little buddy. I've found a TEDDY BEAR hidden under the GREEN duvet"
-    spawnItem TeddyBear SitOnBed state
+    spawnItem TeddyBear SitOntoBed state
 
 onExaminePlace Bed state = do
     if isInInventory UVFlashlight state then do
