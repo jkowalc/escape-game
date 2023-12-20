@@ -58,7 +58,7 @@ setRandomPasswords :: GameState -> Int -> GameState
 setRandomPasswords gs seed = do
     let vaultPassword = show seed
     let reverseSeed = 109999 - seed
-    let digit0 = (reverseSeed - reverseSeed `mod` 1000) `div` 10000 
+    let digit0 = (reverseSeed - reverseSeed `mod` 10000) `div` 10000 
     let digit1 = (reverseSeed `mod` 10000 - reverseSeed `mod` 1000) `div` 1000
     let digit2 = (reverseSeed `mod` 1000 - reverseSeed `mod` 100) `div` 100
     let digit3 = (reverseSeed `mod` 100 - reverseSeed `mod` 10) `div` 10
