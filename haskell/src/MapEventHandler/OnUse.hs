@@ -6,7 +6,7 @@ import State.GameState (GameState (computerState), ComputerState(..))
 import Feature.Examine (examinePlace)
 import Feature.Subplace (despawnSubplace, spawnSubplace)
 import Feature.Look (printPossibilities)
-import Feature.Inventory (removeItemFromInventory, addItemToInventory)
+import Feature.Inventory (removeItemFromInventory, addItemToInventory, isInInventory)
 import Feature.Path (spawnPath)
 import Feature.ItemAt (spawnItem)
 
@@ -61,24 +61,28 @@ onUsePlace Screwdriver VentCover state = do
 
 onUsePlace HardDrive Computer state = do
     putStrLn "Using HardDrive on computer" -- TODO
-    let newCS = ComputerState{
-        computerOn = computerOn (computerState state),
-        hardDriveIn = not (hardDriveIn (computerState state))
-    }
-    let takeAwayHardDrive = removeItemFromInventory HardDrive state{computerState = newCS}
-    return takeAwayHardDrive
+    if isInInventory AssemblyManual state then do
+        putStrLn "I managed to assebly computer using the manual!"
+        let newCS = ComputerState{
+            computerOn = computerOn (computerState state),
+            hardDriveIn = not (hardDriveIn (computerState state))
+        }
+        let takeAwayHardDrive = removeItemFromInventory HardDrive state{computerState = newCS}
+        return (removeItemFromInventory AssemblyManual takeAwayHardDrive)
+    else do
+        putStrLn "I don't know how to insert the hard drive to the computer.\n\tIf only there was any manual..."
+        return state
 
 onUsePlace Feather Computer state = do
     putStrLn "Using Feather on computer"
     if computerOn (computerState state) then
         putStrLn "I turned off the computer!"
         else putStrLn "I turned on the computer!"
-     -- TODO
     let newCS = ComputerState{
         computerOn = not (computerOn (computerState state)),
         hardDriveIn = hardDriveIn (computerState state)
     }
-    return state
+    return state{computerState = newCS}
 
 onUsePlace ExitKey ExitDoor state = do
     putStrLn "I see light! Freedom is mine!"
