@@ -2,7 +2,7 @@ module MapEventHandler.OnUse where
 
 import Object.Place (Place (..))
 import Object.Item (Item (..))
-import State.GameState (GameState)
+import State.GameState (GameState (computerState), ComputerState(..))
 import Feature.Examine (examinePlace)
 import Feature.Subplace (despawnSubplace, spawnSubplace)
 import Feature.Look (printPossibilities)
@@ -61,10 +61,23 @@ onUsePlace Screwdriver VentCover state = do
 
 onUsePlace HardDrive Computer state = do
     putStrLn "Using HardDrive on computer" -- TODO
-    return state
+    let newCS = ComputerState{
+        computerOn = computerOn (computerState state),
+        hardDriveIn = not (hardDriveIn (computerState state))
+    }
+    let takeAwayHardDrive = removeItemFromInventory HardDrive state{computerState = newCS}
+    return takeAwayHardDrive
 
 onUsePlace Feather Computer state = do
-    putStrLn "Using Feather on computer" -- TODO
+    putStrLn "Using Feather on computer"
+    if computerOn (computerState state) then
+        putStrLn "I turned off the computer!"
+        else putStrLn "I turned on the computer!"
+     -- TODO
+    let newCS = ComputerState{
+        computerOn = not (computerOn (computerState state)),
+        hardDriveIn = hardDriveIn (computerState state)
+    }
     return state
 
 onUsePlace ExitKey ExitDoor state = do
@@ -85,7 +98,6 @@ onUsePlace CorridorKey CorridorDoor state = do
 onUsePlace _ _ state = do
     putStrLn "You can't use that here!"
     return state
-
 onUseItem :: Item -> Item -> GameState -> IO GameState
 
 onUseItem SmallKey Handcuffs state = do
