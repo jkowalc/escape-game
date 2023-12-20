@@ -4,13 +4,19 @@ import Core.Command (Command(..), printHelp)
 import Util.IO (printLines)
 import State.GameState (GameState(..), currentPlace)
 import Control.Exception (handle)
+import Feature.Inventory (dropItem, takeItem, printInventory)
+import Feature.Examine (examinePlace, examineItem)
+import Feature.Moving (go)
+import Feature.Look (printPossibilities)
+import Feature.Use (useOnPlace, useOnItem)
+import Feature.Combine (combine)
 import MapEventHandler.OnExamine (examine)
 import MapEventHandler.OnEnterCode (enterCode)
 
 handleCommand :: Command -> GameState -> IO GameState
 
 handleCommand Look state = do
-    printLines ["You are looking around."]
+    printPossibilities state
     return state
 
 handleCommand Quit state = do
@@ -18,15 +24,41 @@ handleCommand Quit state = do
     return state
 
 handleCommand (Go place) state = do
-    printLines ["You are going to " ++ show place ++ "."]
-    return $ state { currentPlace = place }  -- Update currentPlace in the state
+    go place state
 
 handleCommand Examine state = do
-    examine (currentPlace state)
+    examinePlace (currentPlace state) state
+
+handleCommand (ExamineItem item) state = do
+    examineItem item state
+
+handleCommand (ExaminePlace place) state = do
+    examinePlace place state
+
+handleCommand (Take item) state = do
+    takeItem item state
+
+handleCommand (Drop item) state =
+    dropItem item state
+
+handleCommand Inventory state = do
+    printInventory state
     return state
     
 handleCommand (EnterCode userCode lock) state = do
     enterCode state userCode (show lock)
+
+handleCommand (Use item) state = do
+    useOnPlace item (currentPlace state) state
+
+handleCommand (UseOnPlace item place) state = do
+    useOnPlace item place state
+
+handleCommand (UseOnItem item1 item2) state = do
+    useOnItem item1 item2 state
+
+handleCommand (Combine item1 item2) state = do
+    combine item1 item2 state
 
 handleCommand Help state = do
     printHelp

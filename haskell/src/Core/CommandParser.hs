@@ -5,7 +5,7 @@ import Object.Place (Place)
 import Object.Item (Item)
 
 keywordList :: [String]
-keywordList = ["look", "go", "examine", "take", "use", "combine", "enter", "help", "quit"]
+keywordList = ["look", "go", "examine", "take", "use", "combine", "enter", "help", "quit", "inventory", "drop", "on", "with", "into"]
 
 data Token = Keyword String
     | Literal String
@@ -41,7 +41,18 @@ parseExamineThing (Literal thingStr) =
       -- try reading the thing as an item
       case reads thingStr :: [(Item, String)] of
         [(item, "")] -> ExamineItem item
-        _ -> error "Invalid literal. Type \"help\" for help"  -- Display help for invalid commands
+        _ -> InvalidLiteralCommand  -- Display help for invalid command
+
+parseUseOnThing :: Item -> Token -> Command
+parseUseOnThing firstItem (Literal thingStr) = 
+  -- try reading the thing as a place
+  case reads thingStr :: [(Place, String)] of
+    [(place, "")] -> UseOnPlace firstItem place
+    _ -> 
+      -- try reading the thing as an item
+      case reads thingStr :: [(Item, String)] of
+        [(item, "")] -> UseOnItem firstItem item
+        _ -> InvalidLiteralCommand  -- Display help for invalid command
 
 parseCommand :: String -> Command
 parseCommand input = case tokenize (words input) of
@@ -60,9 +71,9 @@ parseCommand input = case tokenize (words input) of
     [Keyword "use", Literal itemStr] -> if null (reads itemStr :: [(Item, String)])
       then InvalidLiteralCommand
       else Use (read itemStr)
-    [Keyword "use", Literal itemStr, Keyword "on", Literal placeStr] -> if null (reads itemStr :: [(Item, String)]) || null (reads placeStr :: [(Place, String)])
+    [Keyword "use", Literal itemStr, Keyword "on", Literal thingStr] -> if null (reads itemStr :: [(Item, String)])
       then InvalidLiteralCommand
-      else UseOn (read itemStr) (read placeStr)
+      else parseUseOnThing (read itemStr) (Literal thingStr)
     [Keyword "combine", Literal item1Str, Keyword "with", Literal item2Str] -> if null (reads item1Str :: [(Item, String)]) || null (reads item2Str :: [(Item, String)])
       then InvalidLiteralCommand
       else Combine (read item1Str) (read item2Str)

@@ -10,6 +10,7 @@ data Item = UVFlashlight
     | SmallKey
     | ExitKey
     | OpenHandcuffs
+    | Handcuffs
     | CorridorKey
     | ScrewdriverHandle
     | ScrewdriverBit
@@ -28,6 +29,7 @@ instance Read Item where
     readsPrec _ "hard drive" = [(HardDrive, "")]
     readsPrec _ "feather" = [(Feather, "")]
     readsPrec _ "small key" = [(SmallKey, "")]
+    readsPrec _ "handcuffs" = [(Handcuffs, "")]
     readsPrec _ "exit key" = [(ExitKey, "")]
     readsPrec _ "open handcuffs" = [(OpenHandcuffs, "")]
     readsPrec _ "corridor key" = [(CorridorKey, "")]

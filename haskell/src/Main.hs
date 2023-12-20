@@ -1,11 +1,12 @@
 module Main where
 
-import State.GameState (GameState, initialState)
+import State.GameState (GameState (currentPlace), initialState)
 import System.IO (hFlush, stdout)
 import Core.CommandHandler (handleCommand)
 import Core.CommandParser (parseCommand, tokenize)
 import Core.Command (Command (Quit, InvalidLiteralCommand), helpCommandList, printHelp)
 import Util.IO (printLines)
+import MapEventHandler.OnArrival (onArrival)
 
 -- Game loop
 gameLoop :: GameState -> IO ()
@@ -32,4 +33,5 @@ main :: IO ()
 main = do
     putStrLn "Welcome to the game!"
     printHelp
+    onArrival (currentPlace initialState) initialState
     gameLoop initialState
