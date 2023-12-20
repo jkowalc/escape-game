@@ -1,70 +1,74 @@
 module MapEventHandler.OnExamine where
-import Object.Place
-
+import Object.Place (Place (..))
+import Object.Item (Item)
 import State.GameState (GameState)
 
-onExamine :: Place -> GameState -> IO GameState
+onExaminePlace :: Place -> GameState -> IO GameState
 
-onExamine MainRoom state = do 
+onExaminePlace MainRoom state = do 
     putStrLn "Hmmmm... Whoever lived here must have left long ago... \
 \I feel a cool breeze coming from a vent located under the celing."
     return state
 
-onExamine Desk state = do 
+onExaminePlace Desk state = do 
     putStrLn "There are few drawers under the desk. I can try to open them."
     return state
 --     spawn_subplace(desk, top_drawer), / TODO
 --     spawn_subplace(desk, mid_drawer),
 --     spawn_subplace(desk, bottom_drawer),nl,!.
--- onExamine BottomDrawer = do putStrLn "There is a small bite of cheese. It won't fill my stomach but may come in handy later."
+-- onExaminePlace BottomDrawer = do putStrLn "There is a small bite of cheese. It won't fill my stomach but may come in handy later."
 -- --     spawn_item(cheese, desk)"
--- onExamine TopDrawer = do putStrLn "There is a small key. It might fit to something I have right now."
+-- onExaminePlace TopDrawer = do putStrLn "There is a small key. It might fit to something I have right now."
 -- --     spawn_item(small_key, desk),nl,!.
-onExamine Fireplace state = do 
+onExaminePlace Fireplace state = do 
     putStrLn "Fire place wasnt used in a long time but thera are still some chared but sturdy pices of wood.\
 \LONG STICK always can come in handy."
     return state
 --     spawn_item(long_stick, fireplace).
-onExamine Painting state = do 
+onExaminePlace Painting state = do 
     putStrLn "It's very damaged. Oh! The TORN CORNER of the painting is peeling back from the frame!"
     return state
 --     spawn_subplace(painting, torn_corner),nl.
-onExamine TornCorner state = do 
+onExaminePlace TornCorner state = do 
     putStrLn "After pulling the canvas back I realised that there is a message scratched into painting backing.\
 \It says:\"I have 4 legs, two heads, huge slender body and little friend.\""
     return state
 
-onExamine HeavyDoor state = do 
+onExaminePlace HeavyDoor state = do 
     putStrLn "Big heavy door closed shut.\
 \Nail marks and scratches don't make me feel good about it..."
     return state
 
-onExamine Chair state = do 
+onExaminePlace Chair state = do 
     putStrLn "Mud smeared on top looks like a foot print... Why someone was standing on top of it?\
 \Oh! I can move it underneeth the vent I've seen before."
     return state
 --     spawn_subplace(chair, vent_cover).
-onExamine WoodenBox state = do 
+onExaminePlace WoodenBox state = do 
     putStrLn "This wooden box looks pretty rough, although it might be impossible to open it by force. But there is some kind of mechanism"
     return state
 
-onExamine Bed state = do 
+onExaminePlace Bed state = do 
     putStrLn "There's a bed with disgustingly YELLOW legs. Your eyes are pulled to two CRIMSON blood-like pillows.\
 \ owever quilt seems to be quite different, it calms you down and reminds of life outside"
     return state
 
 --Office
-onExamine Office state = do 
+onExaminePlace Office state = do 
     putStrLn "Man this place is devastated. Walls with holes punched into them, blinds ripped off the window.\
 \I can see an trapdoor under the ceeling. I can't reach it..."
     return state
 
 
 
-onExamine _ state = do 
+onExaminePlace _ state = do 
     putStrLn "I can't examine it"  -- Default case when none of the patterns match
     return state
 
+onExamineItem :: Item -> GameState -> IO GameState
+onExamineItem _ state = do 
+    putStrLn "I can't examine it"  -- Default case when none of the patterns match
+    return state
 
 -- examination(office) :-
 --     write("    Man this place is devastated. Walls with holes punched into them, blinds ripped off the window.
@@ -112,7 +116,7 @@ onExamine _ state = do
 --     assert(path(main_room, wooden_box)),
 
 --     write("     I decided to hit the clock as hard as I could. It worked! The clock shattered to pieces.
---     Now there is silence in the room. I can onExamine the desk once more. Maybe I can find here something else."),
+--     Now there is silence in the room. I can onExaminePlace the desk once more. Maybe I can find here something else."),
 --     !,nl.
 
 

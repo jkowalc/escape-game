@@ -4,8 +4,8 @@ import Core.Command (Command(..), printHelp)
 import Util.IO (printLines)
 import State.GameState (GameState(..), currentPlace)
 import Control.Exception (handle)
-import MapEventHandler.OnExamine (onExamine)
 import Feature.Inventory (dropItem, takeItem)
+import Feature.Examine (examinePlace, examineItem)
 
 handleCommand :: Command -> GameState -> IO GameState
 
@@ -22,11 +22,17 @@ handleCommand (Go place) state = do
     return $ state { currentPlace = place }  -- Update currentPlace in the state
 
 handleCommand Examine state = do
-    onExamine (currentPlace state) state
+    examinePlace (currentPlace state) state
+
+handleCommand (ExamineItem item) state = do
+    examineItem item state
+
+handleCommand (ExaminePlace place) state = do
+    examinePlace place state
 
 handleCommand (Take item) state = do
     takeItem item state
-    
+
 handleCommand (Drop item) state =
     dropItem item state
 
