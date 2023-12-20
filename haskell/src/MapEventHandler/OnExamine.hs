@@ -219,6 +219,10 @@ onExaminePlace AtticEntrance state = do
     putStrLn "\tTrapdoor has a T shaped handle. I barely cannot reach it. I may be able to hook something on it to pull it open"
     return state
 
+onExaminePlace CorridorDoor state = do
+    putStrLn "\tLocked... I can see key hole, it may fix the problem"
+    return state
+
 onExaminePlace BarricadedDoor state = do
     putStrLn "\tI'm on the other side of that heavy door. It's blocked with rumble. I can unlock it now and go back to main room"
     state1 <- spawnPath (Corridor, MainRoom) state
