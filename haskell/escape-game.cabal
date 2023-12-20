@@ -38,6 +38,7 @@ executable escape-game
                    MapEventHandler.OnUse
                    Object.Item
                    Object.Place
+                   Object.Lock
                    Feature.Inventory
                    Feature.ItemAt
                    Feature.Path
