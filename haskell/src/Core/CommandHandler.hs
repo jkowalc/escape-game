@@ -10,6 +10,7 @@ import Feature.Moving (go)
 import Feature.Look (printPossibilities)
 import Feature.Use (useOnPlace, useOnItem)
 import Feature.Combine (combine)
+import MapEventHandler.OnEnterCode (enterCode)
 
 handleCommand :: Command -> GameState -> IO GameState
 
@@ -42,6 +43,9 @@ handleCommand (Drop item) state =
 handleCommand Inventory state = do
     printInventory state
     return state
+    
+handleCommand (EnterCode userCode lock) state = do
+    enterCode state userCode (show lock)
 
 handleCommand (Use item) state = do
     useOnPlace item (currentPlace state) state
@@ -57,4 +61,8 @@ handleCommand (Combine item1 item2) state = do
 
 handleCommand Help state = do
     printHelp
+    return state
+
+handleCommand _ state = do
+    printLines ["Unknown command!"]
     return state

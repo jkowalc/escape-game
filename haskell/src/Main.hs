@@ -16,6 +16,7 @@ gameLoop state = do
     userInput <- getLine
 
     print (tokenize (words userInput)) -- For debugging. Remove later.
+    print (tokenize (words userInput))
     -- Parse user input into a command
     let command = parseCommand userInput
 

@@ -3,6 +3,7 @@ module State.GameState where
 import Object.Item (Item (..))
 import Object.Place (Place (..))
 import qualified Data.Map as Map
+import Object.Lock (LockState (LockState))
 
 data GameState = GameState
     { inventory :: [Item]
@@ -11,7 +12,8 @@ data GameState = GameState
     , unlockedSubplaces :: Map.Map Place [Place]
     , spawnedItems :: Map.Map Place [Item]
     , alarmRings :: Bool
-    } deriving (Show)
+    , lockStates :: [LockState]    
+    }
 
 initialState :: GameState
 initialState = GameState
@@ -37,4 +39,9 @@ initialState = GameState
         ]
     , spawnedItems = Map.empty
     , alarmRings = True
+    , lockStates = 
+    [LockState Pad10Digit False "Placeholder",
+    LockState Vault False "Placeholder",
+    LockState Computer False "Placeholder",
+    LockState ColorCode False "Placeholder"]
     }
