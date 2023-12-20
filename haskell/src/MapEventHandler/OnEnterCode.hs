@@ -30,9 +30,9 @@ enterCode gs user_code lockName = do
                 if not (isOpen (lS !! lockIndex))then do
                     if user_code == lockPassword (lS !! lockIndex) then do
                         printLines ["You managed to open the lock!"]
-                        state1 <- onOpenLock gs lockIndex
-                        let newGameState = changeLockState state1 lockIndex True
-                        return newGameState
+                        state <- onOpenLock gs lockIndex
+                        return state
+                        -- changeLockState state1 lockIndex True
                     else do
                         printLines ["Wrong password!"]
                         return gs
@@ -53,10 +53,13 @@ onOpenLock state 0 = do
     let state1 = despawnSubplace KeyCase Pad10Digit state
     spawnItem ExitKey KeyCase state1
     return state
+
 onOpenLock state 1 = do
     putStrLn "opened Vault"
-    spawnItem CorridorKey CoffeTable 
-    
+    state2 <- spawnItem CorridorKey CoffeTable state
+    let state1 = despawnSubplace CoffeTable Vault state2
+    return state1
+
 onOpenLock state 2 = do
     putStrLn "vault code TODO"
     return state
