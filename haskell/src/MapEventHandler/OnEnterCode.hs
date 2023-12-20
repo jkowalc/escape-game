@@ -50,7 +50,6 @@ onOpenLock state 0 = do
     putStrLn "opened KeyCase"
     let state1 = despawnSubplace KeyCase Pad10Digit state
     spawnItem ExitKey KeyCase state1
-    return state
 
 onOpenLock state 1 = do
     putStrLn "opened Vault"
@@ -64,10 +63,6 @@ onOpenLock state 2 = do
     printLines [lockPassword (lockStates state !! 1)]
     return state
 onOpenLock state 3 = do
-    putStrLn "opened ColorCode"
-    let state1 = despawnSubplace WoodenBox ColorCode state
-    spawnItem ScrewdriverHandle WoodenBox state1
-onOpenLock state 4 = do
     putStrLn "opened ColorCode"
     let state1 = despawnSubplace WoodenBox ColorCode state
     spawnItem ScrewdriverHandle WoodenBox state1

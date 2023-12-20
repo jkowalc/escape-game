@@ -46,7 +46,7 @@ onUsePlace LongStick Raven state = do
     putStrLn "\tI've succesfully pushed the RAVEN away. Not only it's now away from his nest, but also he left something behind."
     let state1 = despawnSubplace Window Raven state
     state2 <- spawnSubplace Window Nest state1
-    spawnItem Feather Window state
+    spawnItem Feather Window state2
 
 onUsePlace Cheese Rat state = do
     putStrLn "\tI baited the rat outside of the vent. I can crawl across it now."

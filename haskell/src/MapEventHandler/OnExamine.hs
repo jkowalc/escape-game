@@ -43,9 +43,7 @@ onExaminePlace Desk state
         state3 <- spawnPath (MainRoom, Bed) state2
         state4 <- spawnPath (Bed, SitOntoBed) state3
         state5 <- spawnPath (MainRoom, Painting) state4
-        state6 <- spawnPath (MainRoom, Window) state5
-        state7 <- spawnPath (Window, Nest) state6
-        state8 <- spawnPath (Window, Outside) state7
+        state8 <- spawnPath (MainRoom, Window) state5
         state9 <- spawnPath (MainRoom, Fireplace) state8
         state10 <- spawnPath (MainRoom, Chair) state9
         spawnPath (MainRoom, WoodenBox) state10
@@ -161,7 +159,7 @@ onExaminePlace Vault state = do
 
 onExaminePlace Computer state = do
     if isInInventory UVFlashlight state then do
-        if computerOn (computerState state) then
+        if not computerOn (computerState state) then
             putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (lockStates state !! 0) !! 2])
         else
              putStrLn "\tI can see something is written here - but I cannot read it. I need to turnoff the computer. "
@@ -169,7 +167,7 @@ onExaminePlace Computer state = do
     else do
         if hardDriveIn (computerState state) then do
             if computerOn (computerState state) then do
-                if isOpen (lockStates state !! 2) then do
+                if not isOpen (lockStates state !! 2) then do
                     let newState = spawnSubplace Computer ComputerPassword state
                     putStrLn "\tThe computer is on, but there's a password prompt, what can it be?"
                 else

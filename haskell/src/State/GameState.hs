@@ -27,7 +27,7 @@ initialState = GameState
     { inventory = [
         Handcuffs
     ]
-    , currentPlace = CoffeTable
+    , currentPlace = MainRoom
     , paths = [
         (MainRoom, Desk),
         (Office, CoffeTable),
@@ -40,10 +40,8 @@ initialState = GameState
         (Corridor, [BarricadedDoor, ExitDoor, DisplayCase]),
         (KeyCase, [Pad10Digit]),
         (Office, [CorridorDoor]),
-        (Bed, [SitOntoBed]),
         (WoodenBox, [ColorCode]),
-        (Cupboard, [LeftCompartment, MiddleCompartment, RightCompartment]),
-        (Computer, [ComputerPassword])
+        (Cupboard, [LeftCompartment, MiddleCompartment, RightCompartment])
         ]
     , spawnedItems = Map.empty
     , alarmRings = True
