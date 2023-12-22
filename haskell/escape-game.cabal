@@ -38,7 +38,6 @@ executable escape-game
                    MapEventHandler.OnUse
                    Object.Item
                    Object.Place
-                   Object.Lock
                    Feature.Inventory
                    Feature.ItemAt
                    Feature.Path
@@ -48,6 +47,7 @@ executable escape-game
                    Feature.Look
                    Feature.Use
                    Feature.Combine
+                   Feature.EnterCode
                    State.GameState
                    State.Util
                    Util.IO

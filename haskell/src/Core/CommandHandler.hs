@@ -10,7 +10,7 @@ import Feature.Moving (go)
 import Feature.Look (printPossibilities)
 import Feature.Use (useOnPlace, useOnItem)
 import Feature.Combine (combine)
-import MapEventHandler.OnEnterCode (enterCode)
+import Feature.EnterCode (enterCode)
 
 handleCommand :: Command -> GameState -> IO GameState
 

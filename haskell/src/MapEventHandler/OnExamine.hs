@@ -1,12 +1,11 @@
 module MapEventHandler.OnExamine where
 import Object.Place (Place (..))
 import Object.Item (Item (..))
-import State.GameState (GameState (..), computerOn, hardDriveIn)
+import State.GameState (GameState (..), ComputerState(computerOn, hardDriveIn), LockState(lockPassword, isOpen))
 import Feature.Path (spawnPath)
 import Feature.Subplace (spawnSubplace, despawnSubplace)
 import Feature.Inventory (isInInventory)
 import Feature.ItemAt (spawnItem)
-import Object.Lock (LockState(lockPassword), isOpen)
 
 onExaminePlace :: Place -> GameState -> IO GameState
 

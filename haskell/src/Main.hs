@@ -8,7 +8,6 @@ import Core.CommandParser (parseCommand, tokenize)
 import Core.Command (Command (Quit, InvalidLiteralCommand), helpCommandList, printHelp)
 import Util.IO (printLines)
 import MapEventHandler.OnArrival (onArrival)
-import Object.Lock (LockState(lockPassword))
 
 -- Game loop
 gameLoop :: GameState -> IO ()

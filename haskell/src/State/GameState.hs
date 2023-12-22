@@ -3,11 +3,17 @@ module State.GameState where
 import Object.Item (Item (..))
 import Object.Place (Place (..))
 import qualified Data.Map as Map
-import Object.Lock (LockState (LockState))
 
 data ComputerState = ComputerState
     { computerOn :: Bool
     , hardDriveIn :: Bool
+    }
+
+data LockState = LockState
+    {   
+        subPlace :: Place
+        ,isOpen :: Bool
+        ,lockPassword :: String
     }
 
 data GameState = GameState
