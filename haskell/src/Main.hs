@@ -1,6 +1,7 @@
 module Main where
 
-import State.GameState (GameState (currentPlace, randomSeed, lockStates), initialState, setRandomPasswords)
+import State.GameState (GameState (currentPlace, randomSeed, lockStates), initialState, LockState(lockPassword))
+import State.Util (setRandomPasswords, getLockState)
 import System.Random
 import System.IO (hFlush, stdout)
 import Core.CommandHandler (handleCommand)
@@ -8,6 +9,7 @@ import Core.CommandParser (parseCommand, tokenize)
 import Core.Command (Command (Quit, InvalidLiteralCommand), helpCommandList, printHelp)
 import Util.IO (printLines)
 import MapEventHandler.OnArrival (onArrival)
+import Object.Place (Place(KeyCase, Pad10Digit))
 
 -- Game loop
 gameLoop :: GameState -> IO ()
@@ -40,4 +42,5 @@ main = do
     gen <- newStdGen
     let (randomNumber, newGen) = randomR (10000, 99999) gen :: (Int, StdGen)
     -- putStrLn $ "Random number: " ++ show randomNumber
-    gameLoop (setRandomPasswords initialState randomNumber)
+    let stateWithPasswords = setRandomPasswords randomNumber initialState
+    gameLoop stateWithPasswords

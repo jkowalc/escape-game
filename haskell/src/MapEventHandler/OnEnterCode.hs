@@ -7,32 +7,36 @@ import Feature.Subplace (despawnSubplace)
 import Object.Item (Item(..))
 import Object.Place (Place(..))
 import Util.IO (printLines)
+import State.Util (getLockState)
 
-lockNames :: [String]
-lockNames = ["Pad10Digit", "Vault", "ComputerPassword", "ColorCode"]
+locks :: [Place]
+locks = [Pad10Digit, Vault, ComputerPassword, ColorCode]
 
-onOpenLock:: Int -> GameState -> IO GameState
-onOpenLock 0 state = do
+onOpenLock:: Place -> GameState -> IO GameState
+onOpenLock Pad10Digit state = do
     putStrLn "opened KeyCase"
     let state1 = despawnSubplace KeyCase Pad10Digit state
     spawnItem ExitKey KeyCase state1
 
-onOpenLock 1 state = do
+onOpenLock Vault state = do
     putStrLn "opened Vault"
     state2 <- spawnItem CorridorKey CoffeTable state
     let state1 = despawnSubplace CoffeTable Vault state2
     return state1
 
-onOpenLock 2 state = do
+onOpenLock ComputerPassword state = do
     putStrLn "Logged into computer!\n\
     \VAULT CODE: "
-    printLines [lockPassword (lockStates state !! 1)]
+    printLines [lockPassword (getLockState Vault state)]
     return state
-onOpenLock 3 state = do
+
+onOpenLock ColorCode state = do
     putStrLn "opened ColorCode"
     let state1 = despawnSubplace WoodenBox ColorCode state
     spawnItem ScrewdriverHandle WoodenBox state1
+
 onOpenLock _ state = do
+
     putStrLn "opened other"
     return state
 

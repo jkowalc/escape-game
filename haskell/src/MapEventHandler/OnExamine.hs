@@ -6,6 +6,7 @@ import Feature.Path (spawnPath)
 import Feature.Subplace (spawnSubplace, despawnSubplace)
 import Feature.Inventory (isInInventory)
 import Feature.ItemAt (spawnItem)
+import State.Util (getLockState)
 
 onExaminePlace :: Place -> GameState -> IO GameState
 
@@ -47,7 +48,7 @@ onExaminePlace Desk state
         state10 <- spawnPath (MainRoom, Chair) state9
         spawnPath (MainRoom, WoodenBox) state10
     | isInInventory UVFlashlight state = do
-        putStrLn ("\tI can see something is written here in UV ink - number " ++ [(lockPassword (lockStates (state) !! 0)) !! 1])
+        putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (getLockState Pad10Digit state) !! 1])
         return state
     | otherwise = do
         putStrLn "\tThere are few drawers under the desk. I can try to open them."
@@ -57,7 +58,7 @@ onExaminePlace Desk state
 
 onExaminePlace Window state =
     if isInInventory UVFlashlight state then do
-        putStrLn ("\tI can see something is written here in UV ink - number " ++ [(lockPassword (lockStates (state) !! 0)) !! 2])
+        putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (getLockState Pad10Digit state) !! 2])
         return state
     else do
         putStrLn "I can't examine it"
@@ -73,7 +74,7 @@ onExaminePlace TopDrawer state = do
 
 onExaminePlace Fireplace state = do
     if isInInventory UVFlashlight state then do
-        putStrLn ("\tI can see something is written here - number " ++ [(lockPassword (lockStates (state) !! 0)) !! 4])
+        putStrLn ("\tI can see something is written here - number " ++ [lockPassword (getLockState Pad10Digit state) !! 4])
         return state
     else do
         putStrLn "\tFire place wasn't used in a long time but there are still some charred but sturdy pieces of wood.\n\
@@ -125,7 +126,7 @@ onExaminePlace SitOntoBed state = do
 
 onExaminePlace Bed state = do
     if isInInventory UVFlashlight state then do
-        putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (lockStates state !! 0) !! 0])
+        putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (getLockState Pad10Digit state) !! 0])
         return state
     else do
         putStrLn "\tThere's a bed with disgustingly YELLOW legs. Your eyes are pulled to two CRIMSON blood-like pillows\n\
@@ -158,19 +159,19 @@ onExaminePlace Vault state = do
 
 onExaminePlace Computer state = do
     if isInInventory UVFlashlight state then do
-        if not(computerOn (computerState state)) then
-            putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (lockStates state !! 0) !! 3])
+        if not(computerOn (computerState state)) then do
+            putStrLn ("\tI can see something is written here in UV ink - number " ++ [lockPassword (getLockState Pad10Digit state) !! 3])
         else
-             putStrLn "\tI can see something is written here - but I cannot read it. I need to turnoff the computer. "
+            putStrLn "\tI can see something is written here - but I cannot read it. I need to turnoff the computer. "
         return state
     else do
         if hardDriveIn (computerState state) then do
             if computerOn (computerState state) then do
-                if not (isOpen (lockStates state !! 2)) then do
+                if not (isOpen (getLockState ComputerPassword state)) then do
                     let newState = spawnSubplace Computer ComputerPassword state
                     putStrLn "\tThe computer is on, but there's a password prompt, what can it be?"
                 else
-                    putStrLn ("\tI managed to log in!\n\tOn the screen there are 5 numbers - " ++ lockPassword (lockStates state !! 1))
+                    putStrLn ("\tI managed to log in!\n\tOn the screen there are 5 numbers - " ++ lockPassword (getLockState Vault state))
             else
                 putStrLn "\tIt's turned off but I hope it'll turn on now, but the on button is too small for my fingers.\n\tI need to use something to press it"
         else
