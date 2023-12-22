@@ -1,6 +1,6 @@
 module Main where
 
-import State.GameState (GameState (currentPlace, randomSeed, lockStates), initialState, LockState(lockPassword))
+import State.GameState (GameState (currentPlace, lockStates), initialState, LockState(lockPassword))
 import State.Util (setRandomPasswords, getLockState)
 import System.Random
 import System.IO (hFlush, stdout)

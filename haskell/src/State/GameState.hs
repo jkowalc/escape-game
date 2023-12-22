@@ -24,15 +24,14 @@ data GameState = GameState
     , alarmRings :: Bool
     , lockStates :: Map.Map Place LockState
     , computerState :: ComputerState
-    , randomSeed :: Int    
     }
 
 initialState :: GameState
 initialState = GameState
     { inventory = [
-        Handcuffs, UVFlashlight, CorridorKey
+        Handcuffs
     ]
-    , currentPlace = Office
+    , currentPlace = MainRoom
     , paths = [
         (MainRoom, Desk),
         (Office, CoffeTable),
@@ -57,5 +56,4 @@ initialState = GameState
         (ColorCode, LockState False "yellow red green blue")
     ]
     , computerState = ComputerState False False
-    , randomSeed = 0
     }
