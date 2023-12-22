@@ -16,23 +16,23 @@ onExaminePlace Corridor state = do
     return state
 
 onExaminePlace Pad10Digit state = do
-    putStrLn "\t10 digit keypad that will open key case when the code is right. There are 5 empty spots where code will apperar.\n\
+    putStrLn "\t10 digit keypad that will open key case when the code is right. There are 5 empty spots where code will appear.\n\
     \\t[ _ _ _ _ _ ]"
     return state
 
 onExaminePlace DisplayCase state = do
-    putStrLn "\tInside I can see an weird flashlight, it might help me. I should start using it on some objects"
+    putStrLn "\tInside I can see a weird flash light, it might help me. I should start using it on some objects"
     spawnItem UVFlashlight Corridor state
 
 onExaminePlace KeyCase state = do
-    putStrLn "\tIt's a key case! It has 10 digit padcase. May it contain the key to the exit?"
+    putStrLn "\tIt's a key case! It has 10 digit pad case. May it contain the key to the exit?"
     spawnSubplace Pad10Digit KeyCase state
 
 --MainRoom
 
 onExaminePlace MainRoom state = do
     putStrLn "\tHmmmm... Whoever lived here must have left long ago... \n\
-    \\tI feel a cool breeze coming from a vent located under the celing."
+    \\tI feel a cool breeze coming from a vent located under the ceiling."
     return state
 
 onExaminePlace Desk state
@@ -77,7 +77,7 @@ onExaminePlace Fireplace state = do
         putStrLn ("\tI can see something is written here - number " ++ [(lockPassword (lockStates (state) !! 0)) !! 4])
         return state
     else do
-        putStrLn "\tFire place wasn't used in a long time but there are still some chared but sturdy pices of wood.\n\
+        putStrLn "\tFire place wasn't used in a long time but there are still some charred but sturdy pieces of wood.\n\
         \\tLONG STICK always can come in handy."
         spawnItem LongStick Fireplace state
 
@@ -91,7 +91,7 @@ onExaminePlace Painting state =
         spawnSubplace Painting TornCorner state
 
 onExaminePlace TornCorner state = do
-    putStrLn "\tAfter pulling the canvas back I realised that there is a message scratched into painting backing.\n\
+    putStrLn "\tAfter pulling the canvas back I realized that there is a message scratched into painting backing.\n\
     \\tIt says:\"I have 4 legs, two heads, huge slender body and little friend.\""
     return state
 
@@ -102,12 +102,12 @@ onExaminePlace HeavyDoor state = do
 
 onExaminePlace Chair state = do
     putStrLn "\tMud smeared on top looks like a foot print... Why someone was standing on top of it?\n\
-    \\tOh! I can move it underneeth the vent I've seen before."
+    \\tOh! I can move it underneath the vent I've seen before."
     spawnSubplace Chair VentCover state
 
 onExaminePlace VentCover state = do
-    putStrLn "\tThis vent cover looks big enouth for me to go inside... \n\
-    \\tIt seems that one of the scews is missing. I may be able to loosen rest of them if I had the right tool..."
+    putStrLn "\tThis vent cover looks big enough for me to go inside... \n\
+    \\tIt seems that one of the screws is missing. I may be able to loosen rest of them if I had the right tool..."
     return state
 
 onExaminePlace WoodenBox state = do
@@ -115,7 +115,7 @@ onExaminePlace WoodenBox state = do
     return state
 
 onExaminePlace ColorCode state = do
-    putStrLn "\tQuite bizzare contraption. There are 4 button which all are different color - red, green, blue and yellow.\n\
+    putStrLn "\tQuite bizarre contraption. There are 4 buttons which all are different color - red, green, blue and yellow.\n\
     \\tMaybe I have to press them in some order?"
     putStrLn "To enter code use - eg.: enter blue yellow green red into color code"
     return state
@@ -130,23 +130,23 @@ onExaminePlace Bed state = do
         return state
     else do
         putStrLn "\tThere's a bed with disgustingly YELLOW legs. Your eyes are pulled to two CRIMSON blood-like pillows\n\
-        \\t owever quilt seems to be quite different, it calms you down and reminds of life outside"
+        \\t however quilt seems to be quite different, it calms you down and reminds of life outside"
         return state
 
 onExaminePlace Raven state = do
-    putStrLn "\tRAVEN doesn't seem to be scared by me at all. /*He just vibin*/\n\
-    \\tMaybe if I had something to push him away I could acces his nest.\n\
-    \\tThermometer shows that there is 40 degrees below 0, it must be broken. Right?"
+    putStrLn "\tRAVEN doesn't seem to be scared by me at all. /*He just vibin'*/\n\
+    \\tMaybe if I had something to push him away I could access his nest.\n\
+    \\tThermometer shows that there are 40 degrees below 0, it must be broken. Right?"
     return state
 
 onExaminePlace Nest state = do
-    putStrLn "\tNow with the bird gone I can see silver SCREWDRIVER BIT burried in the nest."
+    putStrLn "\tNow with the bird gone I can see silver SCREWDRIVER BIT buried in the nest."
     spawnItem ScrewdriverBit Window state
 
 --Office
 onExaminePlace Office state = do
     putStrLn "\tMan this place is devastated. Walls with holes punched into them, blinds ripped off the window.\n\
-    \\tI can see an trapdoor under the ceeling. I can't reach it..."
+    \\tI can see a trapdoor under the ceiling. I can't reach it..."
     spawnSubplace Office AtticEntrance state
 
 onExaminePlace CoffeTable state = do
@@ -175,7 +175,7 @@ onExaminePlace Computer state = do
             else
                 putStrLn "\tIt's turned off but I hope it'll turn on now, but the on button is too small for my fingers.\n\tI need to use something to press it"
         else
-            putStrLn "\tIt's turned off and will stay that way... I can see that few parts were ripped out of it's case.\n\tI won't boot without a HARD DRIVE"
+            putStrLn "\tIt's turned off and will stay that way... I can see that a few parts were ripped out of its case.\n\tI won't boot without a HARD DRIVE"
         return state
 
 onExaminePlace ComputerPassword state = do
@@ -183,11 +183,11 @@ onExaminePlace ComputerPassword state = do
     return state
 
 onExaminePlace LeftCompartment state = do
-    putStrLn "\tUser manual about assembling PC's. May be usefull"
+    putStrLn "\tUser manual about assembling PC's. May be useful"
     spawnItem AssemblyManual Cupboard state
 
 onExaminePlace RightCompartment state = do
-    putStrLn "\tOld journal covered with leather burried in useless junk at the botom of the compartment."
+    putStrLn "\tOld journal covered with leather buried in useless junk at the bottom of the compartment."
     spawnPath (Cupboard, Journal) state
 
 onExaminePlace Journal state = do
@@ -211,7 +211,7 @@ onExaminePlace Page1 state = do
 onExaminePlace Page2 state = do
     putStrLn "\tDate: October 14, 2006\n\
     \\tThe walls, they watch me with eyes unseen, judging my every thought and action.\n\
-    \\tThe air is thick with the stench of decay, as if the very fabric of reality is unraveling.\n\
+    \\tThe air is thick with the stench of decay, as if the very fabric of reality is unravelling.\n\
     \\tI hear the scratching, the scraping, the insidious skittering of unseen vermin that gnaw at the edges of my consciousness.\n\
     \\tWhispers become screams, and the laughter, oh, the laughter that echoes through the desolate corridors of my tortured mind."
     return state
@@ -226,7 +226,7 @@ onExaminePlace Page3 state = do
     \\tI am lost in the labyrinth of my own delusions,\n\
     \\ta madman condemned to dance upon the razor's edge between the realms of the living and the damned.\n\
     \\tThis journal, my only confidante in `this descent into madness,\n\
-    \\tbears witness to the unraveling of a mind consumed by the..."
+    \\tbears witness to the unravelling of a mind consumed by the..."
     spawnSubplace Journal TornOutPage state
 
 onExaminePlace TornOutPage state = do

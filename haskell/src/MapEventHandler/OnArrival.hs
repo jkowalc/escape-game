@@ -12,13 +12,13 @@ onArrival :: Place -> GameState -> IO GameState
 
 onArrival MainRoom state = do
     if alarmRings state then do
-        putStrLn "\tI'm in a small dark room. I'm handcuffed! I don't remeber anything. Surroundig is dirty and the room is very cold...\n\
-        \\tAn alarm clock is ringing very loudly and is exploading my head. I have to go to the desk and examine it.\n\
+        putStrLn "\tI'm in a small dark room. I'm handcuffed! I don't remember anything. Surrounding is dirty and the room is very cold...\n\
+        \\tAn alarm clock is ringing very loudly and is exploding my head. I have to go to the desk and examine it.\n\
         \\tMaybe I can disable the alarm."
         return state
     else do
         putStrLn "\tI'm in a small dark room. It' full of creepy energy all around...\n\
-        \\tSurroundig is dirty and the room is very cold..."
+        \\tSurrounding is dirty and the room is very cold..."
         return state
 
 onArrival Desk state = do
@@ -33,22 +33,22 @@ onArrival Desk state = do
 onArrival Fireplace state = do
     putStrLn "\tIt's and big antique fireplace.\n\
     \\tI wish it was lit so I could warm myself up.\n\
-    \\tUnfortunetly without matches even the half bured CANDLE sitting on top will be no use for me..."
+    \\tUnfortunately without matches even the half burned CANDLE sitting on top will be no use for me..."
     return state
 
 onArrival Painting state = do
-    putStrLn "\tIt's a mastepice. I've seen it in history books.\n\
-    \\tIt is beatifull, at least it was... before someone damaged it"
+    putStrLn "\tIt's a masterpiece. I've seen it in history books.\n\
+    \\tIt is beautiful, at least it was... before someone damaged it"
     return state
 
 onArrival TornCorner state = do
     putStrLn "\tIt's a torn corner of a painting.\n\
-    \\tFabric is deattached from glded wooden frame."
+    \\tFabric is detached from the gilded wooden frame."
     return state
 
 onArrival Chair state = do
     putStrLn "\tOld chair lined with red fabric.\n\
-    \\tLooks comfy apart of clay mud wiped all over it..."
+    \\tLooks comfy apart from the clay mud wiped all over it..."
     return state
 
 onArrival Vent state = do
@@ -56,10 +56,10 @@ onArrival Vent state = do
     spawnSubplace Vent Rat state
 
 onArrival Bed state = do
-    putStrLn "\tIn diferent situation, I would love to take a nap. Bed looks komfy, especially with that big PILLOW.\n\
+    putStrLn "\tIn at different situation, I would love to take a nap. Bed looks comfy, especially with that big PILLOW.\n\
     \\tI guess I can take a sit for a while to think..."
     newState <- spawnItem Pillow Bed state
-    putStrLn "\tThe bed is sqeeqing and the blanket is itchy.\n\
+    putStrLn "\tThe bed is squeaky and the blanket is itchy.\n\
     \\tBut it feels good to rest for a second."
     return newState
 
@@ -74,15 +74,15 @@ onArrival Window state = do
 
 onArrival Office state = do
     putStrLn "\tI'm standing in a middle of poorly lit, destroyed office room.\n\
-    \\tNot many things are where they supposed to be. I feel like somebody must have pluderd it long time ago..."
+    \\tNot many things are where they supposed to be. I feel like somebody must have plundered it long time ago..."
     return state
 
 onArrival CoffeTable state = do
-    putStrLn "\tI don't feel right about that coffee table. It's wiped clean of dust comared to the rest of the room."
+    putStrLn "\tI don't feel right about that coffee table. It's wiped clean of dust compared to the rest of the room."
     return state
 
 onArrival Computer state = do
-    putStrLn "\tOld PC. It's turned off. I hope it's OS was made in this centry..."
+    putStrLn "\tOld PC. It's turned off. I hope it's OS was made in this century..."
     return state
 
 onArrival AtticEntrance state = do
@@ -90,8 +90,8 @@ onArrival AtticEntrance state = do
     return state
 
 onArrival Cupboard state = do
-    putStrLn "\tWide cupboard. It's rotting away abaut to fall appart.\n\
-    \\tIt has 3 compartments. I'should check if there is something usefull in there."
+    putStrLn "\tWide cupboard. It's rotting away about to fall apart.\n\
+    \\tIt has 3 compartments. I'should check if there is something useful in there."
     return state
 
 onArrival Journal state = do
@@ -99,7 +99,7 @@ onArrival Journal state = do
     return state
 
 onArrival OfficeSafe state = do
-    putStrLn "\tSmall but sturdy. Too havy to lift.\n\
+    putStrLn "\tSmall but sturdy. Too heavy to lift.\n\
     \\tIt opens by unlocking a turning code mechanism"
     return state
 
@@ -115,8 +115,8 @@ onArrival DisplayCase state = do
     return state
 
 onArrival KeyCase state = do
-    putStrLn "\tLocked key box. Big beautifull key is stored inside.\n\
-    \\tIt has to be opened by inputing a code on a keypad"
+    putStrLn "\tLocked key box. Big beautiful key is stored inside.\n\
+    \\tIt has to be opened by inputting a code on a keypad"
     return state
 
 onArrival BarricadedDoor state = do

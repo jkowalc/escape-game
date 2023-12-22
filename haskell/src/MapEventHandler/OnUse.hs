@@ -43,26 +43,26 @@ onUsePlace UVFlashlight place state = do
         return state
 
 onUsePlace LongStick Raven state = do
-    putStrLn "\tI've succesfully pushed the RAVEN away. Not only it's now away from his nest, but also he left something behind."
+    putStrLn "\tI've successfully pushed the RAVEN away. Not only it's now away from his nest, but also he left something behind."
     let state1 = despawnSubplace Window Raven state
     state2 <- spawnSubplace Window Nest state1
     spawnItem Feather Window state2
 
 onUsePlace Cheese Rat state = do
-    putStrLn "\tI baited the rat outside of the vent. I can crawl across it now."
+    putStrLn "\tI baited the rat outside the vent. I can crawl across it now."
     spawnPath (Vent, Office) state
 
 onUsePlace Screwdriver VentCover state = do
-    putStrLn "\tI menaged to loosen the screws holding the vent cover. Now I can climb up to the vent itself."
+    putStrLn "\tI managed to loosen the screws holding the vent cover. Now I can climb up to the vent itself."
     let state1 = despawnSubplace Chair VentCover state
     state2 <- spawnPath (Chair, Vent) state1
     printPossibilities state2
     return state2
 
 onUsePlace HardDrive Computer state = do
-    putStrLn "Using HardDrive on computer" -- TODO
+    putStrLn "Using HardDrive on computer"
     if isInInventory AssemblyManual state then do
-        putStrLn "I managed to assebly computer using the manual!"
+        putStrLn "I managed to assemble the computer using the manual!"
         let newCS = ComputerState{
             computerOn = computerOn (computerState state),
             hardDriveIn = not (hardDriveIn (computerState state))
