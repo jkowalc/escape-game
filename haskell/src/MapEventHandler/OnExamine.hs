@@ -168,15 +168,17 @@ onExaminePlace Computer state = do
         if hardDriveIn (computerState state) then do
             if computerOn (computerState state) then do
                 if not (isOpen (getLockState ComputerPassword state)) then do
-                    let newState = spawnSubplace Computer ComputerPassword state
                     putStrLn "\tThe computer is on, but there's a password prompt, what can it be?"
-                else
+                    spawnSubplace Computer ComputerPassword state
+                else do
                     putStrLn ("\tI managed to log in!\n\tOn the screen there are 5 numbers - " ++ lockPassword (getLockState Vault state))
-            else
+                    return state
+            else do
                 putStrLn "\tIt's turned off but I hope it'll turn on now, but the on button is too small for my fingers.\n\tI need to use something to press it"
-        else
+                return state
+        else do
             putStrLn "\tIt's turned off and will stay that way... I can see that a few parts were ripped out of its case.\n\tI won't boot without a HARD DRIVE"
-        return state
+            return state
 
 onExaminePlace ComputerPassword state = do
     putStrLn "\tI can type in a password..." -- TODO
