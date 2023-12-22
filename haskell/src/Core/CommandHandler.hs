@@ -45,8 +45,8 @@ handleCommand Inventory state = do
     return state
     
 handleCommand (EnterCode userCode lock) state = do
-    enterCode state userCode (show lock)
-
+    enterCode userCode (show lock) state
+    
 handleCommand (Use item) state = do
     useOnPlace item (currentPlace state) state
 
